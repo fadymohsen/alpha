@@ -1,0 +1,96 @@
+{
+  "nav": { "home": "Home", "about": "About", "services": "Services", "careers": "Careers", "contact": "Contact", "faq": "FAQ" },
+  "hero": {
+    "title1": "ALFA TRANS, CO.LTD",
+    "title2": "Smart Transport.. Absolute Safety.. Logistics Leadership",
+    "subtitle": "Specializing in the land transport of goods, equipment, and materials, with leadership in bulk cement distribution using latest global techniques.",
+    "cta_primary": "Contact Now",
+    "cta_secondary": "Company Profile"
+  },
+  "about": {
+    "title": "About ALFA TRANS",
+    "description": "ALFA TRANS, CO.LTD is a pioneer in the land transport sector in Saudi Arabia, blending deep heritage with modern technology to deliver integrated logistics solutions supporting Vision 2030.",
+    "goals": {
+      "title": "Strategic Goals",
+      "desc1": "Adopting precise technical specifications for cargo safety.",
+      "desc2": "Developing human and technical capital for operational efficiency.",
+      "desc3": "Supporting supply chains in the Kingdom with international standards."
+    }
+  },
+  "stats": { "years": "Market Experts", "clients": "Successful Partnerships", "delivery": "Secure Deliveries", "fleet": "Modern Equipment" },
+  "vision_mission": {
+    "mission": {
+      "title": "Our Mission",
+      "desc": "Specializing in specialized land transport of goods, equipment, and materials, while leading in the bulk cement sector, committed to highest standards of precision."
+    },
+    "vision": {
+      "title": "Current Vision",
+      "desc": "Alfa relies on a technical specification system to determine the ideal transport method, ensuring proper conditions and access to the latest field developments globally."
+    },
+    "safety": {
+      "title": "Goods Safety Procedures",
+      "desc": "We possess a scientific method for inspecting goods based on evaluation according to certified models to accurately determine shipment status."
+    }
+  },
+  "why_choose_us": {
+    "title": "Why Alfa?",
+    "subtitle": "We don’t just transport goods; we build bridges of trust through integrated logistics solutions.",
+    "items": {
+      "monitoring": {
+        "title": "Transport Monitoring",
+        "desc": "Real-time tracking through a specialized system monitoring the shipment from start to delivery, with continuous head office communication."
+      },
+      "modern": {
+        "title": "Modern Techniques",
+        "desc": "Aspiring to be the first leader in using advanced technology in transport inside and outside the Kingdom according to international specifications."
+      }
+    }
+  },
+  "services": {
+    "title": "Our Service Ecosystem",
+    "list": [
+      { "id": "1", "title": "Specialized Land Transport", "desc": "Safe transport of goods, materials, machines, and commercial shipments." },
+      { "id": "2", "title": "Bulk Cement Distribution", "desc": "Specialized stations and tankers for highly efficient transport, sale, and distribution of bulk cement." },
+      { "id": "3", "title": "Cargo Safety & Evaluation", "desc": "Scientific evaluation before and after transport to ensure system effectiveness and protection." },
+      { "id": "4", "title": "International Transport", "desc": "Cross-border transport connecting the Kingdom with neighboring countries according to global standards." }
+    ]
+  },
+  "specialized_solutions": {
+    "title": "Specialized Bulk Cement & Heavy Transport Solutions",
+    "description": "We operate integrated distribution stations ensuring supply chain stability for our partners in the construction and infrastructure sector of the Kingdom.",
+    "quality_title": "Quality & Excellence",
+    "quality_desc": "We adhere to the highest international safety standards in all our operations.",
+    "pro_title": "Professionalism",
+    "pro_desc": "A trained and experienced team in supply chain management."
+  },
+  "contact": {
+    "title": "Contact Our Center",
+    "info": {
+      "hq": "Headquarters",
+      "call": "Call Us",
+      "email_us": "Email Address",
+      "working_hours": "Sun - Thu: 8:00 AM - 5:00 PM",
+      "address": "Riyadh 11433 - As Sulay, Harun Al Rashid St - P.O.Box 10484",
+      "phones": "0114152675 | 0555955056",
+      "email": "alfa.ex@hotmail.com",
+      "cr": "CR: 2511010026"
+    },
+    "form": {
+      "name": "Full Name",
+      "name_placeholder": "Enter your name here",
+      "email": "Email Address",
+      "email_placeholder": "example@mail.com",
+      "message": "Your Message",
+      "message_placeholder": "How can we help you today?",
+      "submit": "Send Message"
+    }
+  },
+  "faq": {
+    "list": [
+      { "q": "How can I track my shipment?", "a": "We provide a real-time satellite tracking system that allows our clients to accurately follow the shipment route from takeoff to unloading." },
+      { "q": "What are your specialties in construction transport?", "a": "We lead in bulk cement distribution and heavy equipment transport, providing integrated logistics solutions for the construction sector." },
+      { "q": "Does your service cover international transport?", "a": "Yes, we offer cross-border land transport connecting the Kingdom with Gulf and neighboring countries according to the highest technical standards." }
+    ]
+  },
+  "footer": { "copyright": "© 2026 ALFA TRANS, CO.LTD. All Rights Reserved", "slogan": "Our Commitment is the Secret of Our Success" }
+}
