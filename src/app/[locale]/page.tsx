@@ -346,7 +346,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
               className="space-y-16"
             >
                <div className="space-y-8 max-w-4xl mx-auto">
-                  <h2 className="text-5xl md:text-7xl font-black text-white leading-none tracking-tighter">{dict.specialized_solutions.title}</h2>
+                  <h2 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-tight-override">{dict.specialized_solutions.title}</h2>
                   <p className="text-xl text-white/80 leading-relaxed font-medium mx-auto max-w-2xl">{dict.specialized_solutions.description}</p>
                </div>
                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">

@@ -65,7 +65,7 @@ export default async function ServicesPage({ params }: { params: { locale: strin
             </div>
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                <div className="space-y-6">
-                  <h2 className="text-4xl font-black text-white leading-tight">
+                  <h2 className="text-4xl font-black text-white leading-tight-override">
                     {isRtl ? "حلول تخصصية لنقل الاسمنت السائب والمعدات الثقيلة" : "Specialized Bulk Cement & Heavy Transport Solutions"}
                   </h2>
                   <p className="text-base text-white/70 leading-relaxed font-medium">
