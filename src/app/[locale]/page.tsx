@@ -1,6 +1,6 @@
 "use client";
 import { useDictionary } from "@/i18n/dictionary-provider";
-import { ArrowLeft, ArrowRight, Truck, Crosshair, ShieldCheck, Activity, Award, Users, Zap, Coffee, Heart, Rocket } from "lucide-react";
+import { ArrowLeft, ArrowRight, Truck, Crosshair, ShieldCheck, Activity, Award, Users, Zap, Coffee, Heart, Rocket, MessageCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -302,11 +302,16 @@ export default function HomePage({ params }: { params: { locale: string } }) {
                       <h3 className="text-3xl font-black text-primary group-hover:text-white transition-colors tracking-tighter leading-none">{s.title}</h3>
                       <p className="text-base text-gray-500 font-medium leading-relaxed group-hover:text-white/60 transition-all">{s.desc}</p>
                     </div>
-                    <div className="pt-8 border-t border-primary/10 group-hover:border-white/10 flex items-center justify-between relative z-10">
-                       <span className="font-black text-xs uppercase tracking-[0.4em] text-accent group-hover:text-white transition-colors">Strategic Solution</span>
-                       <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary group-hover:rotate-45 transition-all shadow-md">
-                          <ArrowRight size={20} />
-                       </div>
+                    <div className="pt-6 relative z-10">
+                       <Link
+                         href={`https://wa.me/966555955056?text=${encodeURIComponent(`Hi, I'm interested in: ${s.title}`)}`}
+                         target="_blank"
+                         rel="noopener noreferrer"
+                         className="w-full flex items-center justify-center gap-3 bg-secondary text-white py-4 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-secondary/90 transition-all"
+                       >
+                         <MessageCircle size={18} />
+                         {isRtl ? "تواصل عبر واتساب" : "Inquire via WhatsApp"}
+                       </Link>
                     </div>
                  </motion.div>
                ))}
