@@ -47,15 +47,16 @@ export default async function AboutPage({ params }: { params: { locale: string }
                   <div className="absolute inset-x-0 bottom-0 top-0 opacity-[0.05] pointer-events-none">
                      <Globe2 size={500} className="absolute -right-20 -bottom-20 rotate-12" />
                   </div>
-                  <div className="relative z-10 w-full h-full bg-slate-100 rounded-[4rem] flex items-center justify-center group overflow-hidden">
-                     {/* Map Visualization */}
-                     <span className="text-primary/10 font-black text-9xl absolute transform -rotate-12 translate-x-10 translate-y-10 pointer-events-none">MAP</span>
-                     <div className="absolute inset-0 bg-primary/5 group-hover:bg-primary/10 transition-colors" />
-                     <div className="relative z-10 flex flex-col items-center gap-4">
-                        <MapPin size={60} className="text-accent animate-bounce" />
-                        <span className="font-black text-primary uppercase tracking-widest">{isRtl ? "توسع عالمي" : "Global Reach"}</span>
-                     </div>
-                  </div>
+                  <a href="https://maps.google.com/?q=24.706114,46.749271" target="_blank" rel="noopener noreferrer" className="relative z-10 w-full h-full rounded-[4rem] flex items-center justify-center group overflow-hidden cursor-pointer">
+                     <iframe
+                       src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3626.5!2d46.749271!3d24.706114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2ssa!4v1700000000000"
+                       className="absolute inset-0 w-full h-full rounded-[4rem] pointer-events-none"
+                       style={{ border: 0 }}
+                       allowFullScreen
+                       loading="lazy"
+                       referrerPolicy="no-referrer-when-downgrade"
+                     />
+                  </a>
                </div>
             </div>
          </div>
