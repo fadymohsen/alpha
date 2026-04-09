@@ -18,15 +18,7 @@ export function Footer() {
                   <Image src="/logo-transperent.png" alt="ALFA" fill className="object-contain" />
                </div>
             </Link>
-            <p className="text-gray-500 text-lg font-medium leading-relaxed max-w-sm">{dict.footer.slogan}</p>
-            <div className="flex items-center gap-4">
-               <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center hover:bg-accent hover:text-white transition-all cursor-pointer">
-                 <Mail size={18} className="text-primary group-hover:text-white" />
-               </div>
-               <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center hover:bg-secondary hover:text-white transition-all cursor-pointer">
-                 <Phone size={18} className="text-accent group-hover:text-white" />
-               </div>
-            </div>
+            <p className="text-gray-500 text-lg font-medium leading-relaxed max-w-sm">{dict.about.description}</p>
           </div>
 
           <div>
