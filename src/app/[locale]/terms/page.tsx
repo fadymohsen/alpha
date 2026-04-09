@@ -102,7 +102,7 @@ export default async function TermsPage({ params }: { params: { locale: string }
       ];
 
   return (
-    <main dir={isRtl ? "rtl" : "ltr"}>
+    <main dir={isRtl ? "rtl" : "ltr"} className="pt-32">
       {/* Hero Section */}
       <section className="bg-primary py-20 md:py-28">
         <div className="max-w-4xl mx-auto px-6 text-center">
