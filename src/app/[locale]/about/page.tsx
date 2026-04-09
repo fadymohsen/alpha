@@ -17,7 +17,7 @@ export default async function AboutPage({ params }: { params: { locale: string }
         <div className="max-w-4xl mx-auto px-6 relative z-10 space-y-8">
           <h1 className="text-5xl md:text-8xl font-black text-white tracking-tighter leading-none whitespace-pre-line">{dict.nav.about}</h1>
           <p className="text-xl text-accent font-bold uppercase tracking-[0.3em]">{dict.hero.title1}</p>
-          <p className="text-xl text-white/70 max-w-2xl mx-auto leading-relaxed font-medium">{dict.about.description}</p>
+          <p className="text-xl text-white/80 max-w-2xl mx-auto leading-relaxed font-medium">{dict.about.description}</p>
         </div>
       </section>
 
@@ -90,18 +90,18 @@ export default async function AboutPage({ params }: { params: { locale: string }
             <div className="space-y-10">
                <div className="space-y-4">
                   <h2 className="text-5xl font-black text-white leading-tight">{isRtl ? "شريككم اللوجستي الموثوق في المملكة" : "Your Trusted Logistics Partner in the Kingdom"}</h2>
-                  <p className="text-lg text-white/60 font-medium leading-relaxed">{isRtl ? "منذ تأسيسنا، ونحن نضع رضا العملاء هدفاً أسمى، والالتزام سراً لنجاحنا. نمتلك اليوم أسطولاً مجهزاً بأحدث التقنيات لنقل كافة أنواع المنقولات بكفاءة واحترافية." : "Since our founding, we have put customer satisfaction as a supreme goal, and commitment as the secret of our success. Today, we have a fleet equipped with the latest technologies to transport all types of cargo efficiently and professionally."}</p>
+                  <p className="text-lg text-white/80 font-medium leading-relaxed">{isRtl ? "منذ تأسيسنا، ونحن نضع رضا العملاء هدفاً أسمى، والالتزام سراً لنجاحنا. نمتلك اليوم أسطولاً مجهزاً بأحدث التقنيات لنقل كافة أنواع المنقولات بكفاءة واحترافية." : "Since our founding, we have put customer satisfaction as a supreme goal, and commitment as the secret of our success. Today, we have a fleet equipped with the latest technologies to transport all types of cargo efficiently and professionally."}</p>
                </div>
                <div className="grid grid-cols-2 gap-8">
                   <div className="space-y-2">
                      <Award size={32} className="text-accent" />
                      <h4 className="font-black text-white">{isRtl ? "الموثوقية" : "Reliability"}</h4>
-                     <p className="text-sm text-white/40">{isRtl ? "نلتزم بأعلى معايير الأمان الدولية في كافة عملياتنا." : "We adhere to the highest international safety standards in all our operations."}</p>
+                     <p className="text-base text-white/80">{isRtl ? "نلتزم بأعلى معايير الأمان الدولية في كافة عملياتنا." : "We adhere to the highest international safety standards in all our operations."}</p>
                   </div>
                   <div className="space-y-2">
                      <Users size={32} className="text-accent" />
                      <h4 className="font-black text-white">{isRtl ? "الاحترافية" : "Professionalism"}</h4>
-                     <p className="text-sm text-white/40">{isRtl ? "فريق عمل مدرب وخبير في إدارة سلاسل الإمداد." : "A trained and experienced team in supply chain management."}</p>
+                     <p className="text-base text-white/80">{isRtl ? "فريق عمل مدرب وخبير في إدارة سلاسل الإمداد." : "A trained and experienced team in supply chain management."}</p>
                   </div>
                </div>
             </div>
