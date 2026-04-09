@@ -38,19 +38,22 @@ body {
 
 [dir="rtl"] {
   font-family: var(--font-tajawal), sans-serif;
-  line-height: 1.9;
-  word-spacing: 0.05em;
 }
 
 [dir="rtl"] * {
   letter-spacing: 0 !important;
   text-transform: none !important;
+  line-height: 1.9 !important;
+  word-spacing: 0.12em !important;
 }
 
 [dir="ltr"] {
   font-family: var(--font-cairo), sans-serif;
-  letter-spacing: 0.03em;
-  line-height: 1.8;
+}
+
+[dir="ltr"] * {
+  letter-spacing: 0.04em !important;
+  line-height: 1.9 !important;
 }
 
 /* Logical spacing utilities for RTL */
