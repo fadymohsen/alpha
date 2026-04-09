@@ -34,6 +34,7 @@ export function Footer({ locale }: { locale: string }) {
                   { href: `/${locale}/services`, label: dict.nav.services },
                   { href: `/${locale}/careers`, label: dict.nav.careers },
                   { href: `/${locale}/contact`, label: dict.nav.contact },
+                  { href: `/${locale}/faq`, label: dict.nav.faq },
                 ].map((link) => (
                   <li key={link.href}>
                     <Link href={link.href} className="text-white/60 hover:text-white transition-colors font-medium text-sm">

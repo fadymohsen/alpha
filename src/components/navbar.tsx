@@ -39,6 +39,7 @@ export function Navbar({ locale }: { locale: string }) {
     { name: dict.nav.services, href: "/services" },
     { name: dict.nav.careers, href: "/careers" },
     { name: dict.nav.contact, href: "/contact" },
+    { name: dict.nav.faq, href: "/faq" },
   ];
 
   const currentLocale = locale || "ar";

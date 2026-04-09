@@ -107,6 +107,32 @@
     "contact_btn": "Contact Us Today"
   },
   "footer": { "copyright": "© 2026 ALFA TRANS, CO.LTD. All Rights Reserved", "slogan": "Our Commitment is the Secret of Our Success" },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Find answers to the most common questions about our logistics services and operations.",
+    "items": [
+      {
+        "q": "What types of goods does ALFA TRANS transport?",
+        "a": "ALFA TRANS specializes in the land transport of a wide range of goods including raw materials, heavy equipment, industrial machinery, and commercial shipments across Saudi Arabia. We also lead in bulk cement distribution through our integrated network of specialized stations and tankers, ensuring safe and timely delivery to construction and infrastructure projects nationwide."
+      },
+      {
+        "q": "What areas does ALFA TRANS cover in Saudi Arabia?",
+        "a": "Our operations span the entire Kingdom of Saudi Arabia, with strategic routes connecting all major cities, industrial zones, and construction sites. We maintain a fleet of over 500 vehicles positioned across multiple regions to ensure rapid response times and efficient coverage, supporting both urban development projects and remote infrastructure initiatives."
+      },
+      {
+        "q": "How does ALFA TRANS ensure cargo safety?",
+        "a": "We implement rigorous safety protocols at every stage of the transport process, including comprehensive pre-trip inspections, real-time GPS tracking, and certified securing methods for all cargo types. Our drivers undergo continuous training programs, and we maintain full insurance coverage on every shipment to guarantee the protection of our clients' valuable goods throughout the journey."
+      },
+      {
+        "q": "Can I request a custom logistics solution?",
+        "a": "Absolutely. We understand that every business has unique logistics requirements, and our dedicated team works closely with each client to design tailored transport solutions that align with their specific needs, schedules, and budget. Whether you need recurring bulk deliveries, one-time heavy equipment transport, or a comprehensive supply chain strategy, we are here to help."
+      },
+      {
+        "q": "How can I get a quote for transport services?",
+        "a": "Getting a quote is simple and fast. You can reach us directly through WhatsApp, call our office, or fill out the contact form on our website. Our team typically responds within a few hours with a detailed proposal, competitive pricing, and a clear timeline tailored to your shipment requirements and delivery schedule."
+      }
+    ]
+  },
   "cookie": {
     "title": "Cookie Notice",
     "message": "We use cookies to enhance your browsing experience and analyze site traffic. By continuing, you agree to our use of cookies.",

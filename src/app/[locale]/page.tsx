@@ -1,9 +1,9 @@
 "use client";
 import { useDictionary } from "@/i18n/dictionary-provider";
-import { ArrowLeft, ArrowRight, Truck, Crosshair, ShieldCheck, Activity, Award, Users, Zap, Coffee, Heart, Rocket, MessageCircle } from "lucide-react";
+import { ArrowLeft, ArrowRight, Truck, Crosshair, ShieldCheck, Activity, Award, Users, Zap, Coffee, Heart, Rocket, MessageCircle, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 const CountUpStat = ({ end, label, index, isRtl }: { end: number; label: string; index: number; isRtl: boolean }) => {
@@ -91,6 +91,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
   const dict = useDictionary();
   const locale = params.locale;
   const isRtl = locale === "ar";
+  const [faqOpen, setFaqOpen] = useState<number | null>(null);
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
@@ -363,6 +364,67 @@ export default function HomePage({ params }: { params: { locale: string } }) {
                </div>
             </motion.div>
          </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-24 bg-white">
+        <div className="max-w-3xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16 space-y-4"
+          >
+            <h2 className="text-5xl md:text-7xl font-black text-primary tracking-tighter leading-tight-override">{dict.faq.title}</h2>
+            <p className="text-lg text-gray-500 font-medium max-w-2xl mx-auto">{dict.faq.subtitle}</p>
+          </motion.div>
+
+          <div className="space-y-3">
+            {dict.faq.items.slice(0, 4).map((item: any, i: number) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.05 * i }}
+                className="bg-[#fafafa] rounded-2xl border border-primary/5 overflow-hidden"
+              >
+                <button
+                  onClick={() => setFaqOpen(faqOpen === i ? null : i)}
+                  className="w-full flex items-center justify-between p-6 text-start gap-4"
+                >
+                  <span className="text-base font-bold text-primary">{item.q}</span>
+                  <ChevronDown
+                    size={20}
+                    className={`text-secondary shrink-0 transition-transform duration-300 ${faqOpen === i ? "rotate-180" : ""}`}
+                  />
+                </button>
+                <AnimatePresence>
+                  {faqOpen === i && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-6">
+                        <p className="text-sm text-gray-500 leading-relaxed">{item.a}</p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex justify-center mt-12">
+            <Link href={`/${locale}/faq`} className="bg-secondary text-white px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-secondary/90 transition-all group flex items-center gap-3">
+              {isRtl ? "عرض جميع الأسئلة" : "View All FAQs"}
+              <ArrowRight size={18} className={`${isRtl ? "rotate-180" : ""} group-hover:translate-x-1 transition-transform`} />
+            </Link>
+          </motion.div>
+        </div>
       </section>
     </main>
   );
