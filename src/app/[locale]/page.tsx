@@ -252,7 +252,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
                   transition={{ delay: 0.1 * i }}
                   className="group p-12 rounded-[2.5rem] bg-slate-50 hover:bg-primary transition-all duration-700 space-y-10 overflow-hidden relative border border-primary/5"
                 >
-                    <div className="w-20 h-20 rounded-2xl bg-white flex items-center justify-center text-primary group-hover:bg-accent group-hover:text-primary transition-all shadow-xl relative z-10">
+                    <div className="w-20 h-20 rounded-2xl bg-white flex items-center justify-center text-primary group-hover:bg-accent group-hover:text-white transition-all shadow-xl relative z-10">
                        {i === 0 ? <Truck size={32} /> : i === 2 ? <ShieldCheck size={32} /> : <Activity size={32} />}
                     </div>
                     <div className="space-y-4 relative z-10">
