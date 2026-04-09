@@ -208,8 +208,8 @@ export default function HomePage({ params }: { params: { locale: string } }) {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                {[
                  { icon: <Heart className="text-secondary" />, title: isRtl ? "الالتزام" : "Commitment", desc: isRtl ? "نضع مواعيدكم كأولوية قصوى لا تقبل المساومة." : "We put your deadlines as a top uncompromising priority." },
-                 { icon: <Zap className="text-accent" />, title: isRtl ? "السرعة" : "Agility", desc: isRtl ? "استجابة سريعة لمتطلبات السوق المتغيرة باستمرار." : "Quick response to ever-changing market requirements." },
-                 { icon: <Coffee className="text-primary" />, title: isRtl ? "الموثوقية" : "Reliability", desc: isRtl ? "شراكة ممتدة عبر سنوات من الثقة المتبادلة." : "An extended partnership through years of mutual trust." }
+                 { icon: <Zap className="text-secondary" />, title: isRtl ? "السرعة" : "Agility", desc: isRtl ? "استجابة سريعة لمتطلبات السوق المتغيرة باستمرار." : "Quick response to ever-changing market requirements." },
+                 { icon: <Coffee className="text-secondary" />, title: isRtl ? "الموثوقية" : "Reliability", desc: isRtl ? "شراكة ممتدة عبر سنوات من الثقة المتبادلة." : "An extended partnership through years of mutual trust." }
                ].map((v, i) => (
                  <motion.div 
                   key={i} 
