@@ -107,7 +107,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
   return (
     <main className="flex-grow">
       {/* Enhanced Hero - Video Background */}
-      <section className="relative min-h-[100svh] flex items-center pt-20 md:pt-24 pb-8 md:pb-12 overflow-hidden bg-dark">
+      <section className="relative min-h-[100svh] flex items-center pt-32 pb-24 overflow-hidden bg-dark">
         {/* Video Background */}
         <div className="absolute inset-0 z-0">
           <video
@@ -125,25 +125,25 @@ export default function HomePage({ params }: { params: { locale: string } }) {
         </div>
 
         <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
-          <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-4 md:space-y-6 max-w-4xl mx-auto">
-             <motion.h1 className="text-4xl md:text-[5.5rem] font-black tracking-tight text-white leading-tight-override">
+          <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-6 2xl:space-y-8 max-w-4xl 2xl:max-w-5xl mx-auto">
+             <motion.h1 className="text-5xl md:text-[5.5rem] 2xl:text-[7rem] font-black tracking-tight text-white leading-tight-override">
                <motion.div variants={fadeUp}>
                  {dict.hero.title2.split("..")[0]}
                </motion.div>
                <motion.div variants={fadeUp} className="text-[#C1922C]">
                  {dict.hero.title2.split("..")[1]}
                </motion.div>
-               <motion.div variants={fadeUp} className="text-white/80 text-2xl md:text-5xl">
+               <motion.div variants={fadeUp} className="text-white/80 text-3xl md:text-5xl 2xl:text-6xl">
                  {dict.hero.title2.split("..")[2]}
                </motion.div>
              </motion.h1>
 
-             <motion.p variants={fadeUp} className="text-base md:text-lg text-white/70 max-w-xl mx-auto font-medium leading-relaxed">
+             <motion.p variants={fadeUp} className="text-lg 2xl:text-xl text-white/70 max-w-xl 2xl:max-w-2xl mx-auto font-medium leading-relaxed">
                {dict.hero.subtitle}
              </motion.p>
 
-             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
-                <Link href={`/${locale}/contact`} className="btn-primary w-56 md:w-64 h-[52px] md:h-[60px] !p-0 !text-xs md:!text-sm group shadow-xl flex items-center justify-center gap-3 active:scale-95 !rounded-3xl">
+             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-center justify-center gap-6 2xl:gap-8">
+                <Link href={`/${locale}/contact`} className="btn-primary w-64 2xl:w-72 h-[60px] 2xl:h-[68px] !p-0 !text-sm group shadow-xl flex items-center justify-center gap-3 active:scale-95 !rounded-3xl">
                    {isRtl ? (
                      <>
                         {dict.hero.cta_primary}
@@ -156,7 +156,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
                      </>
                    )}
                 </Link>
-                <Link href={`/${locale}/about`} className="bg-secondary text-white w-56 md:w-64 h-[52px] md:h-[60px] rounded-3xl text-xs md:text-sm font-black uppercase tracking-widest hover:bg-secondary/90 transition-all shadow-xl group flex items-center justify-center gap-4 active:scale-95">
+                <Link href={`/${locale}/about`} className="bg-secondary text-white w-64 2xl:w-72 h-[60px] 2xl:h-[68px] rounded-3xl text-sm font-black uppercase tracking-widest hover:bg-secondary/90 transition-all shadow-xl group flex items-center justify-center gap-4 active:scale-95">
                    {dict.hero.cta_secondary}
                    <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-primary transition-all shrink-0">
                      <ArrowRight size={18} className={isRtl ? "rotate-180" : ""} />
