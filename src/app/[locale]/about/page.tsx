@@ -92,12 +92,12 @@ export default async function AboutPage({ params }: { params: { locale: string }
                </div>
                <div className="grid grid-cols-2 gap-8">
                   <div className="space-y-2">
-                     <Award size={32} className="text-accent" />
+                     <Award size={32} className="text-[#C1922C]" />
                      <h4 className="font-black text-white">{isRtl ? "الموثوقية" : "Reliability"}</h4>
                      <p className="text-base text-white/80">{isRtl ? "نلتزم بأعلى معايير الأمان الدولية في كافة عملياتنا." : "We adhere to the highest international safety standards in all our operations."}</p>
                   </div>
                   <div className="space-y-2">
-                     <Users size={32} className="text-accent" />
+                     <Users size={32} className="text-[#C1922C]" />
                      <h4 className="font-black text-white">{isRtl ? "الاحترافية" : "Professionalism"}</h4>
                      <p className="text-base text-white/80">{isRtl ? "فريق عمل مدرب وخبير في إدارة سلاسل الإمداد." : "A trained and experienced team in supply chain management."}</p>
                   </div>
