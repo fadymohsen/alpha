@@ -277,7 +277,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
       {/* Services Grid */}
       <section className="py-32 bg-white">
          <div className="max-w-6xl mx-auto px-6">
-            <div className="flex flex-col justify-center items-center text-center gap-10 mb-28">
+            <div className="flex flex-col justify-center items-center text-center gap-10 mb-14">
                <motion.div initial={{ opacity: 0, scale: 0.98 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="space-y-6">
                   <h2 className="text-5xl md:text-7xl font-black text-primary tracking-tighter leading-none">{dict.services.title}</h2>
                   <p className="text-lg text-gray-500 font-medium max-w-2xl mx-auto">{dict.why_choose_us.subtitle}</p>
