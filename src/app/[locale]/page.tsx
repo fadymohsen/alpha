@@ -107,7 +107,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
   return (
     <main className="flex-grow">
       {/* Enhanced Hero - Video Background */}
-      <section className="relative h-[100svh] flex items-center pt-20 pb-10 md:pt-32 md:pb-24 overflow-hidden bg-dark">
+      <section className="relative h-[100dvh] flex items-center pt-20 pb-10 md:pt-32 md:pb-24 overflow-hidden bg-dark">
         {/* Video Background */}
         <div className="absolute inset-0 z-0">
           <video
