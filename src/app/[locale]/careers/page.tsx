@@ -62,7 +62,7 @@ export default async function CareersPage({ params: { locale } }: { params: { lo
                                <span className="flex items-center gap-1"><Clock size={14} /> {job.type}</span>
                             </div>
                          </div>
-                         <div className="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-primary group-hover:bg-accent group-hover:text-primary group-hover:rotate-45 transition-all"><ArrowRight size={20} className={isRtl ? "rotate-180" : ""} /></div>
+                         <div className="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-primary group-hover:bg-accent group-hover:text-white group-hover:rotate-45 transition-all"><ArrowRight size={20} className={isRtl ? "rotate-180" : ""} /></div>
                       </div>
                     ))}
                  </div>
