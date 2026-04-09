@@ -1,6 +1,7 @@
 import { getDictionary } from "@/i18n/get-dictionary";
-import { Truck, Activity, Construction, ShieldCheck, Microscope, Globe } from "lucide-react";
+import { Truck, Activity, Construction, ShieldCheck, Microscope, Globe, MessageCircle } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function ServicesPage({ params }: { params: { locale: string } }) {
   const { locale } = await params;
@@ -30,7 +31,15 @@ export default async function ServicesPage({ params }: { params: { locale: strin
               <p className="text-base text-gray-500 font-medium leading-relaxed group-hover:text-white/80 transition-all">{s.desc}</p>
             </div>
             <div className="pt-6 border-t border-primary/5 group-hover:border-white/10 flex items-center justify-between relative z-10">
-               <span className="font-black text-xs uppercase tracking-[0.4em] text-accent group-hover:text-white transition-colors">Premium Logistics</span>
+               <Link
+                 href={`https://wa.me/966555955056?text=${encodeURIComponent(`Hi, I'm interested in: ${s.title}`)}`}
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 className="flex items-center gap-2 font-black text-xs uppercase tracking-[0.2em] text-secondary group-hover:text-white transition-colors hover:opacity-80"
+               >
+                 <MessageCircle size={16} />
+                 {isRtl ? "تواصل عبر واتساب" : "Inquire via WhatsApp"}
+               </Link>
                <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-primary group-hover:bg-white group-hover:rotate-45 transition-all">
                   <Activity size={18} />
                </div>
