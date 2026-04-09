@@ -156,7 +156,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
                      </>
                    )}
                 </Link>
-                <Link href={`/${locale}/about`} className="bg-white/10 backdrop-blur-sm text-white w-64 h-[60px] rounded-3xl text-sm font-black uppercase tracking-widest hover:bg-white/20 transition-all shadow-xl group flex items-center justify-center gap-4 active:scale-95 border border-white/10">
+                <Link href={`/${locale}/about`} className="bg-secondary text-white w-64 h-[60px] rounded-3xl text-sm font-black uppercase tracking-widest hover:bg-secondary/90 transition-all shadow-xl group flex items-center justify-center gap-4 active:scale-95">
                    {dict.hero.cta_secondary}
                    <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-primary transition-all shrink-0">
                      <ArrowRight size={18} className={isRtl ? "rotate-180" : ""} />
