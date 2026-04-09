@@ -48,7 +48,7 @@ export function Navbar({ locale }: { locale: string }) {
 
   return (
     <>
-      <nav className={cn("fixed top-0 w-full z-50 transition-all duration-700", scrolled ? "bg-white/95 backdrop-blur-md h-20 shadow-xl border-b border-primary/5" : "bg-white h-32")}>
+      <nav className={cn("fixed top-0 w-full z-50 transition-all duration-700", scrolled ? "bg-white/95 backdrop-blur-md h-20 shadow-xl border-b border-primary/5" : "bg-transparent h-32")}>
         <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
           <Link href={`/${currentLocale}`} className="flex items-center gap-4 group">
             <motion.div 
