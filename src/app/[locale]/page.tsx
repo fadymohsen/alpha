@@ -107,7 +107,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
   return (
     <main className="flex-grow">
       {/* Enhanced Hero - Video Background */}
-      <section className="relative h-[100dvh] flex items-center pt-20 pb-10 md:pt-32 md:pb-24 overflow-hidden bg-dark">
+      <section className="relative min-h-[105dvh] md:h-[100dvh] flex items-center pt-28 pb-16 md:pt-32 md:pb-24 overflow-hidden bg-dark">
         {/* Video Background */}
         <div className="absolute inset-0 z-0">
           <video
@@ -125,7 +125,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
         </div>
 
         <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
-          <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-6 2xl:space-y-8 max-w-4xl 2xl:max-w-5xl mx-auto">
+          <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-8 md:space-y-6 2xl:space-y-8 max-w-4xl 2xl:max-w-5xl mx-auto">
              <motion.h1 className="text-5xl md:text-[5.5rem] 2xl:text-[7rem] font-black tracking-tight text-white leading-tight-override">
                <motion.div variants={fadeUp}>
                  {dict.hero.title2.split("..")[0]}
