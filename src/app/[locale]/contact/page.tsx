@@ -14,7 +14,7 @@ export default async function ContactPage({ params }: { params: { locale: string
          </div>
          <div className="max-w-4xl mx-auto px-6 relative z-10 space-y-4">
             <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none">{dict.contact.title}</h1>
-            <p className="text-lg text-white/50 font-medium leading-relaxed max-w-2xl mx-auto">{dict.footer.slogan}</p>
+            <p className="text-lg text-white/70 font-medium leading-relaxed max-w-2xl mx-auto">{dict.footer.slogan}</p>
          </div>
       </section>
 
@@ -26,26 +26,26 @@ export default async function ContactPage({ params }: { params: { locale: string
                    <div className="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center text-primary flex-shrink-0 shadow-lg"><MapPin size={24} /></div>
                    <div className="space-y-0.5">
                       <p className="font-black text-lg text-primary">{dict.contact.info.hq}</p>
-                      <p className="text-gray-500 font-medium text-sm leading-relaxed">{dict.contact.info.address}</p>
+                      <p className="text-gray-500 font-medium text-base leading-relaxed">{dict.contact.info.address}</p>
                    </div>
                 </div>
                 <div className="flex items-start gap-4">
                    <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary flex-shrink-0 shadow-lg"><Phone size={24} /></div>
                    <div className="space-y-0.5">
                       <p className="font-black text-lg text-primary">{dict.contact.info.call}</p>
-                      <p className="text-gray-500 font-medium text-sm leading-relaxed" dir="ltr">{dict.contact.info.phones}</p>
+                      <p className="text-gray-500 font-medium text-base leading-relaxed" dir="ltr">{dict.contact.info.phones}</p>
                    </div>
                 </div>
                 <div className="flex items-start gap-4">
                    <div className="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary flex-shrink-0 shadow-lg"><Mail size={24} /></div>
                    <div className="space-y-0.5">
                       <p className="font-black text-lg text-primary">{dict.contact.info.email_us}</p>
-                      <p className="text-gray-500 font-medium text-sm leading-relaxed">{dict.contact.info.email}</p>
+                      <p className="text-gray-500 font-medium text-base leading-relaxed">{dict.contact.info.email}</p>
                    </div>
                 </div>
              </div>
              <div className="pt-6 border-t border-primary/5">
-                <div className="flex items-center gap-3 text-primary font-black uppercase tracking-widest text-[10px]">
+                <div className="flex items-center gap-3 text-primary font-black uppercase tracking-widest text-xs">
                    <Clock size={14} className="text-accent" />
                    <span>{dict.contact.info.working_hours}</span>
                 </div>
@@ -58,19 +58,19 @@ export default async function ContactPage({ params }: { params: { locale: string
              <div className="absolute top-0 right-0 p-8 text-primary opacity-[0.03] pointer-events-none transform -rotate-12 translate-x-10 -translate-y-10 font-black text-7xl">ALFA</div>
              <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-2">
-                   <label className="text-[10px] font-black uppercase tracking-widest text-primary/50 px-2">{dict.contact.form.name}</label>
+                   <label className="text-xs font-black uppercase tracking-widest text-primary/50 px-2">{dict.contact.form.name}</label>
                    <input type="text" className="w-full px-6 py-4 bg-slate-50 rounded-2xl outline-none focus:ring-4 ring-primary/5 transition-all text-sm font-medium" placeholder={dict.contact.form.name_placeholder} />
                 </div>
                 <div className="space-y-2">
-                   <label className="text-[10px] font-black uppercase tracking-widest text-primary/50 px-2">{dict.contact.form.email}</label>
+                   <label className="text-xs font-black uppercase tracking-widest text-primary/50 px-2">{dict.contact.form.email}</label>
                    <input type="email" className="w-full px-6 py-4 bg-slate-50 rounded-2xl outline-none focus:ring-4 ring-primary/5 transition-all text-sm font-medium text-start" placeholder={dict.contact.form.email_placeholder} />
                 </div>
              </div>
              <div className="relative z-10 space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-widest text-primary/50 px-2">{dict.contact.form.message}</label>
+                <label className="text-xs font-black uppercase tracking-widest text-primary/50 px-2">{dict.contact.form.message}</label>
                 <textarea rows={5} className="w-full px-6 py-4 bg-slate-50 rounded-2xl outline-none focus:ring-4 ring-primary/5 transition-all text-sm font-medium resize-none" placeholder={dict.contact.form.message_placeholder}></textarea>
              </div>
-             <button className="relative z-10 w-full group overflow-hidden bg-primary text-white py-5 rounded-2xl font-black text-[10px] uppercase tracking-[0.3em] transition-all hover:scale-[1.01] active:scale-[0.99] shadow-xl flex items-center justify-center gap-4">
+             <button className="relative z-10 w-full group overflow-hidden bg-primary text-white py-5 rounded-2xl font-black text-xs uppercase tracking-[0.3em] transition-all hover:scale-[1.01] active:scale-[0.99] shadow-xl flex items-center justify-center gap-4">
                 <div className="absolute inset-0 bg-accent translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-700" />
                 <span className="relative z-10 flex items-center gap-3"><Send size={18} className={isRtl ? "rotate-180" : ""} /> {dict.contact.form.submit}</span>
              </button>

@@ -99,12 +99,12 @@ export default function HomePage({ params }: { params: { locale: string } }) {
                </motion.div>
              </motion.h1>
 
-             <motion.p variants={fadeUp} className="text-xl text-gray-400 max-w-xl mx-auto font-medium leading-relaxed">
+             <motion.p variants={fadeUp} className="text-xl text-gray-600 max-w-xl mx-auto font-medium leading-relaxed">
                {dict.hero.subtitle}
              </motion.p>
 
              <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-center justify-center gap-8 pt-4">
-                <Link href="/contact" className="btn-primary w-64 h-[72px] !p-0 !text-xs group shadow-xl flex items-center justify-center gap-3 active:scale-95 !rounded-3xl">
+                <Link href="/contact" className="btn-primary w-64 h-[72px] !p-0 !text-sm group shadow-xl flex items-center justify-center gap-3 active:scale-95 !rounded-3xl">
                    {isRtl ? (
                      <>
                         {dict.hero.cta_primary}
@@ -117,7 +117,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
                      </>
                    )}
                 </Link>
-                <Link href="/about" className="bg-accent text-white w-64 h-[72px] rounded-3xl text-xs font-black uppercase tracking-widest hover:bg-accent/90 transition-all shadow-xl group flex items-center justify-center gap-4 active:scale-95">
+                <Link href="/about" className="bg-accent text-white w-64 h-[72px] rounded-3xl text-sm font-black uppercase tracking-widest hover:bg-accent/90 transition-all shadow-xl group flex items-center justify-center gap-4 active:scale-95">
                    {dict.hero.cta_secondary}
                    <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-accent transition-all shrink-0">
                      <ArrowRight size={18} className={isRtl ? "rotate-180" : ""} />
@@ -146,7 +146,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
                  </div>
                  <div className="flex items-center gap-3">
                     <div className="w-1.5 h-1.5 rounded-full bg-accent" />
-                    <div className="text-white/20 text-[10px] font-black uppercase tracking-[0.4em]">{val as string}</div>
+                    <div className="text-white/70 text-xs font-black uppercase tracking-[0.4em]">{val as string}</div>
                  </div>
               </motion.div>
             ))}
@@ -163,7 +163,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
               className="max-w-2xl space-y-6 mb-24 text-center mx-auto"
             >
                <h2 className="text-5xl md:text-7xl font-black text-primary tracking-tighter leading-none">{isRtl ? "قيمنا الجوهرية" : "Our Core Values"}</h2>
-               <p className="text-lg text-gray-400 font-medium leading-relaxed max-w-xl mx-auto">{isRtl ? "نحن نؤمن بأن للوجيستيات روحاً، وقيمنا هي المحرك الرئيسي لكل رحلة نقوم بها لضمان رضا عملائنا." : "We believe logistics has a soul, and our values are the main engine for every journey we take to ensure our clients' satisfaction."}</p>
+               <p className="text-lg text-gray-500 font-medium leading-relaxed max-w-xl mx-auto">{isRtl ? "نحن نؤمن بأن للوجيستيات روحاً، وقيمنا هي المحرك الرئيسي لكل رحلة نقوم بها لضمان رضا عملائنا." : "We believe logistics has a soul, and our values are the main engine for every journey we take to ensure our clients' satisfaction."}</p>
             </motion.div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
@@ -185,7 +185,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
                     </div>
                     <div className="space-y-4">
                       <h4 className="text-3xl font-black text-primary tracking-tight">{v.title}</h4>
-                      <p className="text-sm text-gray-500 font-medium leading-relaxed px-2">{v.desc}</p>
+                      <p className="text-base text-gray-500 font-medium leading-relaxed px-2">{v.desc}</p>
                     </div>
                  </motion.div>
                ))}
@@ -199,10 +199,10 @@ export default function HomePage({ params }: { params: { locale: string } }) {
             <div className="flex flex-col justify-center items-center text-center gap-10 mb-28">
                <motion.div initial={{ opacity: 0, scale: 0.98 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="space-y-6">
                   <h2 className="text-5xl md:text-7xl font-black text-primary tracking-tighter leading-none">{dict.services.title}</h2>
-                  <p className="text-lg text-gray-400 font-medium max-w-2xl mx-auto">{dict.why_choose_us.subtitle}</p>
+                  <p className="text-lg text-gray-500 font-medium max-w-2xl mx-auto">{dict.why_choose_us.subtitle}</p>
                </motion.div>
                <Link href="/services" className="btn-secondary !rounded-full !px-12 !py-4 group border">
-                 <span className="flex items-center gap-4 font-black tracking-widest text-[10px]">
+                 <span className="flex items-center gap-4 font-black tracking-widest text-xs">
                    EXPLORE ECOSYSTEM <ArrowRight size={18} className="group-hover:translate-x-3 transition-transform" />
                  </span>
                </Link>
@@ -226,7 +226,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
                       <p className="text-base text-gray-500 font-medium leading-relaxed group-hover:text-white/60 transition-all">{s.desc}</p>
                     </div>
                     <div className="pt-8 border-t border-primary/10 group-hover:border-white/10 flex items-center justify-between relative z-10">
-                       <span className="font-black text-[10px] uppercase tracking-[0.4em] text-accent group-hover:text-white transition-colors">Strategic Solution</span>
+                       <span className="font-black text-xs uppercase tracking-[0.4em] text-accent group-hover:text-white transition-colors">Strategic Solution</span>
                        <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary group-hover:rotate-45 transition-all shadow-md">
                           <ArrowRight size={20} />
                        </div>
@@ -249,18 +249,18 @@ export default function HomePage({ params }: { params: { locale: string } }) {
             >
                <div className="space-y-8 max-w-4xl mx-auto">
                   <h2 className="text-5xl md:text-7xl font-black text-white leading-none tracking-tighter">{dict.specialized_solutions.title}</h2>
-                  <p className="text-xl text-white/30 leading-relaxed font-medium mx-auto max-w-2xl">{dict.specialized_solutions.description}</p>
+                  <p className="text-xl text-white/80 leading-relaxed font-medium mx-auto max-w-2xl">{dict.specialized_solutions.description}</p>
                </div>
                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
                   <div className="space-y-8 p-12 bg-white/5 rounded-[3rem] border border-white/5 hover:bg-white/10 transition-all duration-700 group">
                      <div className="w-16 h-16 mx-auto bg-accent/10 rounded-full flex items-center justify-center"><Award size={32} className="text-accent" /></div>
                      <h4 className="font-black text-2xl text-white">{dict.specialized_solutions.quality_title}</h4>
-                     <p className="text-base text-white/20 leading-relaxed mx-auto max-w-xs">{dict.specialized_solutions.quality_desc}</p>
+                     <p className="text-base text-white/70 leading-relaxed mx-auto max-w-xs">{dict.specialized_solutions.quality_desc}</p>
                   </div>
                   <div className="space-y-8 p-12 bg-white/5 rounded-[3rem] border border-white/5 hover:bg-white/10 transition-all duration-700 group">
                      <div className="w-16 h-16 mx-auto bg-accent/10 rounded-full flex items-center justify-center"><Users size={32} className="text-accent" /></div>
                      <h4 className="font-black text-2xl text-white">{dict.specialized_solutions.pro_title}</h4>
-                     <p className="text-base text-white/20 leading-relaxed mx-auto max-w-xs">{dict.specialized_solutions.pro_desc}</p>
+                     <p className="text-base text-white/70 leading-relaxed mx-auto max-w-xs">{dict.specialized_solutions.pro_desc}</p>
                   </div>
                </div>
             </motion.div>

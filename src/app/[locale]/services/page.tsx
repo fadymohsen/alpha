@@ -30,7 +30,7 @@ export default async function ServicesPage({ params }: { params: { locale: strin
               <p className="text-base text-gray-500 font-medium leading-relaxed group-hover:text-white/80 transition-all">{s.desc}</p>
             </div>
             <div className="pt-6 border-t border-primary/5 group-hover:border-white/10 flex items-center justify-between relative z-10">
-               <span className="font-black text-[9px] uppercase tracking-[0.4em] text-accent group-hover:text-white transition-colors">Premium Logistics</span>
+               <span className="font-black text-xs uppercase tracking-[0.4em] text-accent group-hover:text-white transition-colors">Premium Logistics</span>
                <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-primary group-hover:bg-white group-hover:rotate-45 transition-all">
                   <Activity size={18} />
                </div>
@@ -56,7 +56,7 @@ export default async function ServicesPage({ params }: { params: { locale: strin
                   <div className="flex items-center gap-4 pt-4">
                      <div className="p-3 bg-white/10 rounded-xl flex items-center gap-3">
                         <Microscope className="text-accent" size={20} />
-                        <span className="text-white font-bold text-[10px] tracking-widest uppercase">Precision Standards</span>
+                        <span className="text-white font-bold text-xs tracking-widest uppercase">Precision Standards</span>
                      </div>
                   </div>
                </div>
