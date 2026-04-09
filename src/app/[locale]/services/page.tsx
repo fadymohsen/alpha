@@ -22,7 +22,7 @@ export default async function ServicesPage({ params }: { params: { locale: strin
       <div className="max-w-6xl mx-auto px-6 -mt-16 relative z-20 grid grid-cols-1 md:grid-cols-2 gap-8">
         {dict.services.list.map((s: any, i: number) => (
           <div key={s.id} className="group p-10 rounded-[2.5rem] bg-white border border-primary/5 shadow-2xl hover:bg-primary transition-all duration-700 space-y-6 overflow-hidden relative">
-            <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-accent group-hover:text-primary transition-all shadow-inner relative z-10">
+            <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-accent group-hover:text-white transition-all shadow-inner relative z-10">
                {i === 0 ? <Truck size={32} /> : i === 1 ? <Construction size={32} /> : i === 2 ? <ShieldCheck size={32} /> : <Globe size={32} />}
             </div>
             <div className="space-y-3 relative z-10">
