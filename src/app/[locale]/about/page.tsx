@@ -74,7 +74,7 @@ export default async function AboutPage({ params }: { params: { locale: string }
             <p className="text-gray-500 font-medium leading-relaxed group-hover:text-white/70 transition-all">{dict.vision_mission.vision.desc}</p>
           </div>
           <div className="p-12 rounded-[3.5rem] bg-white border border-primary/5 shadow-2xl space-y-8 group hover:bg-accent transition-all duration-700">
-            <div className="w-20 h-20 rounded-3xl bg-accent flex items-center justify-center text-primary group-hover:bg-white transition-all shadow-[0_20px_40px_-10px_rgba(193,146,44,0.3)]"><Star size={40} /></div>
+            <div className="w-20 h-20 rounded-3xl bg-accent flex items-center justify-center text-primary group-hover:bg-white transition-all shadow-[0_20px_40px_-10px_rgba(122,54,59,0.3)]"><Star size={40} /></div>
             <h3 className="text-3xl font-black text-primary group-hover:text-primary transition-colors">{dict.about.goals.title}</h3>
             <ul className="space-y-4 text-gray-500 group-hover:text-primary transition-all">
                <li className="flex items-center gap-3 font-bold">• {dict.about.goals.desc1}</li>

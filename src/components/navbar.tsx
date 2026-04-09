@@ -68,7 +68,7 @@ export function Navbar({ locale }: { locale: string }) {
                 <motion.div key={link.href} whileHover={{ y: -2 }}>
                   <Link href={href} className={cn("text-sm font-black uppercase tracking-widest transition-all hover:text-accent relative py-2", isActive ? "text-primary" : "text-gray-500")}>
                     {link.name}
-                    {isActive && <motion.div layoutId="nav-glow" className="absolute -bottom-1 inset-x-0 h-1 bg-accent rounded-full shadow-[0_0_15px_rgba(193,146,44,0.5)]" />}
+                    {isActive && <motion.div layoutId="nav-glow" className="absolute -bottom-1 inset-x-0 h-1 bg-accent rounded-full shadow-[0_0_15px_rgba(122,54,59,0.5)]" />}
                   </Link>
                 </motion.div>
               );
