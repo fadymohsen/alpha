@@ -44,14 +44,14 @@ const CountUpStat = ({ end, label, index, isRtl }: { end: number; label: string;
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: 0.1 * index }}
-      className="space-y-6 group border-l border-white/5 pl-8"
+      className="space-y-4 group text-center md:text-start md:border-l md:border-white/5 md:pl-8"
     >
-      <div className="text-5xl md:text-7xl font-black text-white tracking-tighter group-hover:text-accent transition-colors duration-500">
+      <div className="text-4xl md:text-7xl font-black text-white tracking-tighter group-hover:text-white/80 transition-colors duration-500">
         {isRtl ? toArabicNumerals(count) : count}+
       </div>
-      <div className="flex items-center gap-3">
-        <div className="w-1.5 h-1.5 rounded-full bg-accent" />
-        <div className="text-white/70 text-xs font-black uppercase tracking-[0.4em]">{label}</div>
+      <div className="flex items-center justify-center md:justify-start gap-3">
+        <div className="w-1.5 h-1.5 rounded-full bg-white/40" />
+        <div className="text-white/70 text-xs font-black">{label}</div>
       </div>
     </motion.div>
   );
@@ -181,7 +181,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
       </section>
 
       {/* Stats - Standard Spacing */}
-      <section className="bg-primary py-32 relative overflow-hidden">
+      <section className="bg-secondary py-32 relative overflow-hidden">
          <div className="absolute top-0 right-0 w-1/2 h-full bg-accent/5 -skew-x-12 translate-x-1/2" />
          <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 gap-16 relative z-10">
             {Object.entries(dict.stats).map(([key, val], i) => {
