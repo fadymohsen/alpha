@@ -272,7 +272,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
                </motion.div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-stretch">
                {dict.services.list.map((s: any, i: number) => (
                  <motion.div
                   key={s.id}
@@ -280,7 +280,8 @@ export default function HomePage({ params }: { params: { locale: string } }) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 * i }}
-                  className="group p-12 rounded-[2.5rem] bg-slate-50 hover:bg-primary transition-all duration-700 overflow-hidden relative border border-primary/5 flex flex-col h-full"
+                  style={{ height: "100%" }}
+                  className="group p-12 rounded-[2.5rem] bg-slate-50 hover:bg-primary transition-all duration-700 overflow-hidden relative border border-primary/5 flex flex-col"
                 >
                     <div className="w-20 h-20 rounded-2xl bg-white flex items-center justify-center text-primary group-hover:bg-accent group-hover:text-white transition-all shadow-xl relative z-10 mb-10">
                        {i === 0 ? <Truck size={32} /> : i === 2 ? <ShieldCheck size={32} /> : <Activity size={32} />}
