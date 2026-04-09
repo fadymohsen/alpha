@@ -15,7 +15,7 @@ export function Footer({ locale }: { locale: string }) {
           {/* Brand Column */}
           <div className="space-y-6">
             <Link href={`/${locale}`} className="inline-block group">
-              <div className="relative w-20 h-20 transition-transform hover:scale-105">
+              <div className="relative w-28 h-28 transition-transform hover:scale-105">
                 <Image src="/logo-transperent.png" alt="ALFA" fill className="object-contain" />
               </div>
             </Link>
