@@ -43,14 +43,11 @@ export default async function AboutPage({ params }: { params: { locale: string }
                </div>
             </div>
             <div className="lg:col-span-1 order-1 lg:order-2">
-               <div className="relative aspect-square bg-white rounded-[5rem] shadow-2xl overflow-hidden border-8 border-white p-12">
-                  <div className="absolute inset-x-0 bottom-0 top-0 opacity-[0.05] pointer-events-none">
-                     <Globe2 size={500} className="absolute -right-20 -bottom-20 rotate-12" />
-                  </div>
-                  <a href="https://maps.google.com/?q=24.706114,46.749271" target="_blank" rel="noopener noreferrer" className="relative z-10 w-full h-full rounded-[4rem] flex items-center justify-center group overflow-hidden cursor-pointer">
+               <div className="relative aspect-square bg-white rounded-3xl shadow-2xl overflow-hidden">
+                  <a href="https://maps.google.com/?q=24.706114,46.749271" target="_blank" rel="noopener noreferrer" className="absolute inset-0 cursor-pointer">
                      <iframe
                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3626.5!2d46.749271!3d24.706114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2ssa!4v1700000000000"
-                       className="absolute inset-0 w-full h-full rounded-[4rem] pointer-events-none"
+                       className="absolute inset-0 w-full h-full pointer-events-none"
                        style={{ border: 0 }}
                        allowFullScreen
                        loading="lazy"
