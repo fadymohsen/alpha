@@ -72,8 +72,8 @@ export function Footer() {
 
         <div className="pt-16 border-t border-primary/5 flex flex-col md:flex-row items-center justify-between gap-8">
            <p className="text-gray-400 text-xs font-black uppercase tracking-widest">{dict.footer.copyright}</p>
-           <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.3em] text-primary opacity-30">
-              <span>Powered by VELIQ</span>
+           <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.3em] text-primary opacity-60">
+              <span>Powered by <a href="https://veliq.co" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity underline">VELIQ</a></span>
            </div>
         </div>
       </div>
