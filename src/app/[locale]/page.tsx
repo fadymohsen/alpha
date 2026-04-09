@@ -3,7 +3,7 @@ import { useDictionary } from "@/i18n/dictionary-provider";
 import { ArrowLeft, ArrowRight, Truck, Crosshair, ShieldCheck, Activity, Award, Users, Zap, Coffee, Heart, Rocket, MessageCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 const CountUpStat = ({ end, label, index, isRtl }: { end: number; label: string; index: number; isRtl: boolean }) => {
@@ -91,10 +91,6 @@ export default function HomePage({ params }: { params: { locale: string } }) {
   const dict = useDictionary();
   const locale = params.locale;
   const isRtl = locale === "ar";
-  const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
-  const y2 = useTransform(scrollY, [0, 500], [0, -150]);
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
@@ -110,48 +106,39 @@ export default function HomePage({ params }: { params: { locale: string } }) {
 
   return (
     <main className="flex-grow">
-      {/* Enhanced Hero - Centered & Premium Branding */}
-      <section className="relative min-h-[85vh] flex items-center pt-32 pb-24 overflow-hidden bg-white">
-        {/* Logo Watermark Background - Enhanced Visibility */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 0.1, scale: 1 }}
-          transition={{ duration: 2, ease: "easeOut" }}
-          className="absolute inset-0 flex items-center justify-center pointer-events-none z-0"
-        >
-           <div className="relative w-[800px] h-[800px]">
-              <Image src="/logo-transperent.png" alt="Watermark" fill className="object-contain grayscale" priority />
-           </div>
-        </motion.div>
-
-        {/* Ambient Soul Background */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <motion.div 
-            style={{ y: y1 }}
-            className="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] bg-primary/5 rounded-full blur-[100px]" 
-          />
-          <motion.div 
-            style={{ y: y2 }}
-            className="absolute top-[20%] -right-[5%] w-[35%] h-[35%] bg-accent/5 rounded-full blur-[80px]" 
-          />
-          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.015]" />
+      {/* Enhanced Hero - Video Background */}
+      <section className="relative min-h-[85vh] flex items-center pt-32 pb-24 overflow-hidden bg-dark">
+        {/* Video Background */}
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/hero-bg.mp4" type="video/mp4" />
+          </video>
+          {/* Dark overlay for text readability */}
+          <div className="absolute inset-0 bg-dark/70" />
+          <div className="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-dark/50" />
         </div>
-        
+
         <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
           <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-12 max-w-4xl mx-auto">
-             <motion.h1 className="text-5xl md:text-[5.5rem] font-black tracking-tight leading-[1.1] text-primary">
+             <motion.h1 className="text-5xl md:text-[5.5rem] font-black tracking-tight leading-[1.1] text-white">
                <motion.div variants={fadeUp} className="mb-2">
                  {dict.hero.title2.split("..")[0]}
                </motion.div>
-               <motion.div variants={fadeUp} className="text-accent mb-2">
+               <motion.div variants={fadeUp} className="text-[#C1922C] mb-2">
                  {dict.hero.title2.split("..")[1]}
                </motion.div>
-               <motion.div variants={fadeUp} className="text-[#C1922C] text-3xl md:text-5xl">
+               <motion.div variants={fadeUp} className="text-white/80 text-3xl md:text-5xl">
                  {dict.hero.title2.split("..")[2]}
                </motion.div>
              </motion.h1>
 
-             <motion.p variants={fadeUp} className="text-xl text-gray-600 max-w-xl mx-auto font-medium leading-relaxed">
+             <motion.p variants={fadeUp} className="text-xl text-white/70 max-w-xl mx-auto font-medium leading-relaxed">
                {dict.hero.subtitle}
              </motion.p>
 
@@ -169,9 +156,9 @@ export default function HomePage({ params }: { params: { locale: string } }) {
                      </>
                    )}
                 </Link>
-                <Link href={`/${locale}/about`} className="bg-secondary text-white w-64 h-[72px] rounded-3xl text-sm font-black uppercase tracking-widest hover:bg-secondary/90 transition-all shadow-xl group flex items-center justify-center gap-4 active:scale-95">
+                <Link href={`/${locale}/about`} className="bg-white/10 backdrop-blur-sm text-white w-64 h-[72px] rounded-3xl text-sm font-black uppercase tracking-widest hover:bg-white/20 transition-all shadow-xl group flex items-center justify-center gap-4 active:scale-95 border border-white/10">
                    {dict.hero.cta_secondary}
-                   <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-secondary transition-all shrink-0">
+                   <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-primary transition-all shrink-0">
                      <ArrowRight size={18} className={isRtl ? "rotate-180" : ""} />
                    </div>
                 </Link>
