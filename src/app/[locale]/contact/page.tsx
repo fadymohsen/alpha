@@ -1,5 +1,17 @@
 import { getDictionary } from "@/i18n/get-dictionary";
 import { Send, MapPin, Phone, Mail, MessageCircle } from "lucide-react";
+import type { Metadata } from "next";
+
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+  const { locale } = params;
+  const isAr = locale === "ar";
+  return {
+    title: isAr ? "اتصل بنا" : "Contact Us",
+    description: isAr
+      ? "تواصل مع شركة ألفا للنقل المحدودة. الرياض، المملكة العربية السعودية. هاتف: 0114152675 | واتساب: 0555955056"
+      : "Contact ALFA TRANS, CO.LTD. Riyadh, Saudi Arabia. Phone: 0114152675 | WhatsApp: 0555955056",
+  };
+}
 
 export default async function ContactPage({ params }: { params: { locale: string } }) {
   const { locale } = await params;

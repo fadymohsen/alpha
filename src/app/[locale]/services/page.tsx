@@ -2,6 +2,18 @@ import { getDictionary } from "@/i18n/get-dictionary";
 import { Truck, Activity, Construction, ShieldCheck, Microscope, Globe, MessageCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+  const { locale } = params;
+  const isAr = locale === "ar";
+  return {
+    title: isAr ? "خدماتنا" : "Our Services",
+    description: isAr
+      ? "خدمات النقل البري المتخصص، توزيع الاسمنت السائب، فحص وسلامة الشحنات، وحلول النقل الدولي."
+      : "Specialized land transport, bulk cement distribution, cargo safety evaluation, and international transport solutions.",
+  };
+}
 
 export default async function ServicesPage({ params }: { params: { locale: string } }) {
   const { locale } = await params;

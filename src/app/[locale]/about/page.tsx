@@ -1,6 +1,18 @@
 import { getDictionary } from "@/i18n/get-dictionary";
 import { Target, Eye, Star, Award, Users, MapPin, Globe2 } from "lucide-react";
 import Image from "next/image";
+import type { Metadata } from "next";
+
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+  const { locale } = params;
+  const isAr = locale === "ar";
+  return {
+    title: isAr ? "من نحن" : "About Us",
+    description: isAr
+      ? "تعرّف على شركة ألفا للنقل المحدودة، رائدة النقل البري في المملكة العربية السعودية منذ أكثر من 15 عاماً."
+      : "Learn about ALFA TRANS, a pioneer in land transport in Saudi Arabia for over 15 years.",
+  };
+}
 
 export default async function AboutPage({ params }: { params: { locale: string } }) {
   const { locale } = await params;
