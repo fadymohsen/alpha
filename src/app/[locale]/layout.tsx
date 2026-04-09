@@ -4,6 +4,8 @@ import { getDictionary } from "@/i18n/get-dictionary";
 import { DictionaryProvider } from "@/i18n/dictionary-provider";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { CookieConsent } from "@/components/cookie-consent";
+import { GoogleTagManager, GoogleTagManagerNoscript } from "@/components/gtm";
 import type { Metadata } from "next";
 import "@/app/globals.css";
 
@@ -74,11 +76,16 @@ export default async function LocaleLayout({ children, params }: { children: Rea
   const dict = await getDictionary(locale as any);
   return (
     <html lang={locale} dir={isRtl ? "rtl" : "ltr"} className={`${tajawal.variable} ${cairo.variable}`}>
+      <head>
+        <GoogleTagManager />
+      </head>
       <body className="antialiased min-h-screen flex flex-col">
+        <GoogleTagManagerNoscript />
         <DictionaryProvider dictionary={dict}>
            <Navbar locale={locale} />
            {children}
            <Footer locale={locale} />
+           <CookieConsent locale={locale} />
         </DictionaryProvider>
       </body>
     </html>

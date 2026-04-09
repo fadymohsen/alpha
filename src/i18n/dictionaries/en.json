@@ -106,5 +106,12 @@
     "contact_desc": "Let's discuss how our logistics solutions can support your business goals.",
     "contact_btn": "Contact Us Today"
   },
-  "footer": { "copyright": "© 2026 ALFA TRANS, CO.LTD. All Rights Reserved", "slogan": "Our Commitment is the Secret of Our Success" }
+  "footer": { "copyright": "© 2026 ALFA TRANS, CO.LTD. All Rights Reserved", "slogan": "Our Commitment is the Secret of Our Success" },
+  "cookie": {
+    "title": "Cookie Notice",
+    "message": "We use cookies to enhance your browsing experience and analyze site traffic. By continuing, you agree to our use of cookies.",
+    "accept": "Accept All",
+    "decline": "Decline",
+    "privacy_link": "Privacy Policy"
+  }
 }
