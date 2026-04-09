@@ -17,7 +17,7 @@ export default async function AboutPage({ params }: { params: { locale: string }
         <div className="max-w-4xl mx-auto px-6 relative z-10 space-y-8">
           <h1 className="text-5xl md:text-8xl font-black text-white tracking-tighter leading-none whitespace-pre-line">{dict.nav.about}</h1>
           <p className="text-xl text-[#C1922C] font-bold uppercase tracking-[0.3em]">{dict.hero.title1}</p>
-          <p className="text-xl text-[#C1922C]/80 max-w-2xl mx-auto leading-relaxed font-medium">{dict.about.description}</p>
+          <p className="text-xl text-white/80 max-w-2xl mx-auto leading-relaxed font-medium">{dict.about.description}</p>
         </div>
       </section>
 

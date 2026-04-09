@@ -193,6 +193,48 @@ export default function HomePage({ params }: { params: { locale: string } }) {
          </div>
       </section>
 
+      {/* Partners */}
+      <section className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-14"
+          >
+            <h2 className="text-3xl md:text-4xl font-black text-primary tracking-tight">{isRtl ? "شركاؤنا" : "Our Partners"}</h2>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center"
+          >
+            {[
+              { src: "/partners/sabic.jpeg", alt: "SABIC" },
+              { src: "/partners/sapac.jpeg", alt: "SAPAC" },
+              { src: "/partners/al-terais.jpeg", alt: "Saudi Al-Terais" },
+              { src: "/partners/nagadi.jpeg", alt: "T. Nagadi" },
+              { src: "/partners/tawuniya.jpeg", alt: "Tawuniya" },
+              { src: "/partners/qassim-cement.jpeg", alt: "Qassim Cement" },
+            ].map((partner, i) => (
+              <motion.div
+                key={partner.alt}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 * i }}
+                className="flex items-center justify-center p-4 rounded-2xl hover:shadow-lg transition-all duration-300 bg-gray-50 h-28"
+              >
+                <div className="relative w-full h-full">
+                  <Image src={partner.src} alt={partner.alt} fill className="object-contain grayscale hover:grayscale-0 transition-all duration-500" />
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* Core Values */}
       <section className="py-32 bg-[#fafafa] relative overflow-hidden">
          <div className="max-w-6xl mx-auto px-6">
