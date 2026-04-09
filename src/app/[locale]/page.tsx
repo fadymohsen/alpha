@@ -4,7 +4,58 @@ import { ArrowLeft, ArrowRight, Truck, Crosshair, ShieldCheck, Activity, Award, 
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
+const CountUpStat = ({ end, label, index, isRtl }: { end: number; label: string; index: number; isRtl: boolean }) => {
+  const [count, setCount] = useState(0);
+  const [hasStarted, setHasStarted] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting && !hasStarted) setHasStarted(true); },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [hasStarted]);
+
+  useEffect(() => {
+    if (!hasStarted) return;
+    const duration = 2000;
+    const start = performance.now();
+    const step = (now: number) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(eased * end));
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }, [hasStarted, end]);
+
+  const toArabicNumerals = (n: number) => n.toString().replace(/\d/g, (d) => "٠١٢٣٤٥٦٧٨٩"[parseInt(d)]);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.1 * index }}
+      className="space-y-6 group border-l border-white/5 pl-8"
+    >
+      <div className="text-5xl md:text-7xl font-black text-white tracking-tighter group-hover:text-accent transition-colors duration-500">
+        {isRtl ? toArabicNumerals(count) : count}+
+      </div>
+      <div className="flex items-center gap-3">
+        <div className="w-1.5 h-1.5 rounded-full bg-accent" />
+        <div className="text-white/70 text-xs font-black uppercase tracking-[0.4em]">{label}</div>
+      </div>
+    </motion.div>
+  );
+};
 
 const TypewriterText = ({ text, delay = 0 }: { text: string, delay?: number }) => {
   const characters = Array.from(text);
@@ -132,24 +183,12 @@ export default function HomePage({ params }: { params: { locale: string } }) {
       <section className="bg-primary py-32 relative overflow-hidden">
          <div className="absolute top-0 right-0 w-1/2 h-full bg-accent/5 -skew-x-12 translate-x-1/2" />
          <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 gap-16 relative z-10">
-            {Object.entries(dict.stats).map(([key, val], i) => (
-              <motion.div 
-                key={key} 
-                initial={{ opacity: 0, y: 20 }} 
-                whileInView={{ opacity: 1, y: 0 }} 
-                viewport={{ once: true }} 
-                transition={{ delay: 0.1 * i }} 
-                className="space-y-6 group border-l border-white/5 pl-8"
-              >
-                 <div className="text-5xl md:text-7xl font-black text-white tracking-tighter group-hover:text-accent transition-colors duration-500">
-                   {i === 0 ? (isRtl ? "١٥+" : "15+") : i === 1 ? (isRtl ? "٥٠٠+" : "500+") : i === 2 ? (isRtl ? "١٠+" : "10+") : (isRtl ? "٢٠٠+" : "200+")}
-                 </div>
-                 <div className="flex items-center gap-3">
-                    <div className="w-1.5 h-1.5 rounded-full bg-accent" />
-                    <div className="text-white/70 text-xs font-black uppercase tracking-[0.4em]">{val as string}</div>
-                 </div>
-              </motion.div>
-            ))}
+            {Object.entries(dict.stats).map(([key, val], i) => {
+              const values = [15, 500, 10, 200];
+              return (
+                <CountUpStat key={key} end={values[i]} label={val as string} index={i} isRtl={isRtl} />
+              );
+            })}
          </div>
       </section>
 
