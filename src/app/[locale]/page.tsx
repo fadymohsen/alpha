@@ -232,50 +232,24 @@ export default function HomePage({ params }: { params: { locale: string } }) {
          </div>
       </section>
 
-      {/* CTA → Services */}
-      <section className="py-20 bg-white">
-        <div className="max-w-5xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="bg-primary rounded-[2rem] p-12 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-start"
-          >
-            <div className="space-y-3 max-w-lg">
-              <h3 className="text-3xl md:text-4xl font-black text-white tracking-tight">{dict.cta.services_heading}</h3>
-              <p className="text-base text-white/70 font-medium leading-relaxed">{dict.cta.services_desc}</p>
-            </div>
-            <Link href="/services" className="shrink-0 bg-secondary text-white px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-secondary/90 transition-all group flex items-center gap-3">
-              {dict.cta.services_btn}
-              <ArrowRight size={18} className={`${isRtl ? "rotate-180" : ""} group-hover:translate-x-1 transition-transform`} />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Services Grid */}
-      <section className="py-32 bg-white">
+      <section className="pt-32 pb-16 bg-white">
          <div className="max-w-6xl mx-auto px-6">
             <div className="flex flex-col justify-center items-center text-center gap-10 mb-14">
                <motion.div initial={{ opacity: 0, scale: 0.98 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="space-y-6">
                   <h2 className="text-5xl md:text-7xl font-black text-primary tracking-tighter leading-none">{dict.services.title}</h2>
                   <p className="text-lg text-gray-500 font-medium max-w-2xl mx-auto">{dict.why_choose_us.subtitle}</p>
                </motion.div>
-               <Link href="/services" className="btn-secondary !rounded-full !px-12 !py-4 group border">
-                 <span className="flex items-center gap-4 font-black tracking-widest text-xs">
-                   EXPLORE ECOSYSTEM <ArrowRight size={18} className="group-hover:translate-x-3 transition-transform" />
-                 </span>
-               </Link>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                {dict.services.list.map((s: any, i: number) => (
-                 <motion.div 
-                  key={s.id} 
-                  initial={{ opacity: 0, y: 30 }} 
-                  whileInView={{ opacity: 1, y: 0 }} 
-                  viewport={{ once: true }} 
-                  transition={{ delay: 0.1 * i }} 
+                 <motion.div
+                  key={s.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 * i }}
                   className="group p-12 rounded-[2.5rem] bg-slate-50 hover:bg-primary transition-all duration-700 space-y-10 overflow-hidden relative border border-primary/5"
                 >
                     <div className="w-20 h-20 rounded-2xl bg-white flex items-center justify-center text-primary group-hover:bg-accent group-hover:text-primary transition-all shadow-xl relative z-10">
@@ -294,6 +268,13 @@ export default function HomePage({ params }: { params: { locale: string } }) {
                  </motion.div>
                ))}
             </div>
+
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex justify-center mt-16">
+              <Link href="/services" className="bg-secondary text-white px-12 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-secondary/90 transition-all group flex items-center gap-3">
+                {dict.cta.services_btn}
+                <ArrowRight size={18} className={`${isRtl ? "rotate-180" : ""} group-hover:translate-x-1 transition-transform`} />
+              </Link>
+            </motion.div>
          </div>
       </section>
 
