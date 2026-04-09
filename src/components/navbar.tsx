@@ -82,7 +82,7 @@ export function Navbar({ locale }: { locale: string }) {
               <Globe size={16} />
               <span>{currentLocale === "ar" ? "English" : "عربي"}</span>
             </Link>
-            <Link href="https://wa.me/966555955056" target="_blank" className="btn-primary flex items-center gap-2 !px-8 !py-4">
+            <Link href="https://wa.me/966555955056" target="_blank" className="bg-secondary text-white px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-widest shadow-2xl hover:bg-secondary/90 transition-all active:scale-95 flex items-center gap-2">
                <Phone size={16} />{currentLocale === "ar" ? "طلب عرض سعر" : "Get Quote"}
             </Link>
           </div>
