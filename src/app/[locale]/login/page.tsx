@@ -64,7 +64,7 @@ export default function LoginPage({ params: { locale } }: { params: { locale: st
           </div>
 
           <button type="submit" className="w-full group relative overflow-hidden bg-primary text-white py-6 rounded-3xl font-black text-xs uppercase tracking-[0.3em] transition-all hover:scale-[1.02] active:scale-[0.98] shadow-2xl flex items-center justify-center gap-4">
-            <div className="absolute inset-0 bg-accent translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-700" />
+            <div className="absolute inset-0 bg-secondary translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-700" />
             <span className="relative z-10 flex items-center gap-3">{isRtl ? "الدخول الآن" : "Login Now"} <ArrowRight size={20} className={isRtl ? "rotate-180" : ""} /></span>
           </button>
         </form>

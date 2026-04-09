@@ -168,9 +168,9 @@ export default function HomePage({ params }: { params: { locale: string } }) {
                      </>
                    )}
                 </Link>
-                <Link href="/about" className="bg-accent text-white w-64 h-[72px] rounded-3xl text-sm font-black uppercase tracking-widest hover:bg-accent/90 transition-all shadow-xl group flex items-center justify-center gap-4 active:scale-95">
+                <Link href="/about" className="bg-secondary text-white w-64 h-[72px] rounded-3xl text-sm font-black uppercase tracking-widest hover:bg-secondary/90 transition-all shadow-xl group flex items-center justify-center gap-4 active:scale-95">
                    {dict.hero.cta_secondary}
-                   <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-accent transition-all shrink-0">
+                   <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-secondary transition-all shrink-0">
                      <ArrowRight size={18} className={isRtl ? "rotate-180" : ""} />
                    </div>
                 </Link>
@@ -266,7 +266,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
               <h3 className="text-3xl md:text-4xl font-black text-white tracking-tight">{dict.cta.services_heading}</h3>
               <p className="text-base text-white/70 font-medium leading-relaxed">{dict.cta.services_desc}</p>
             </div>
-            <Link href="/services" className="shrink-0 bg-accent text-white px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-accent/90 transition-all group flex items-center gap-3">
+            <Link href="/services" className="shrink-0 bg-secondary text-white px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-secondary/90 transition-all group flex items-center gap-3">
               {dict.cta.services_btn}
               <ArrowRight size={18} className={`${isRtl ? "rotate-180" : ""} group-hover:translate-x-1 transition-transform`} />
             </Link>
@@ -369,7 +369,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
          </div>
       </section>
       {/* CTA → Contact */}
-      <section className="py-20 bg-accent">
+      <section className="py-20 bg-secondary">
         <div className="max-w-5xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

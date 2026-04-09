@@ -71,7 +71,7 @@ export default async function ContactPage({ params }: { params: { locale: string
                 <textarea rows={5} className="w-full px-6 py-4 bg-slate-50 rounded-2xl outline-none focus:ring-4 ring-primary/5 transition-all text-sm font-medium resize-none" placeholder={dict.contact.form.message_placeholder}></textarea>
              </div>
              <button className="relative z-10 w-full group overflow-hidden bg-primary text-white py-5 rounded-2xl font-black text-xs uppercase tracking-[0.3em] transition-all hover:scale-[1.01] active:scale-[0.99] shadow-xl flex items-center justify-center gap-4">
-                <div className="absolute inset-0 bg-accent translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-secondary translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-700" />
                 <span className="relative z-10 flex items-center gap-3"><Send size={18} className={isRtl ? "rotate-180" : ""} /> {dict.contact.form.submit}</span>
              </button>
           </form>
