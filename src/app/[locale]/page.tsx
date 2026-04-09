@@ -145,7 +145,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
                <motion.div variants={fadeUp} className="text-accent mb-2">
                  {dict.hero.title2.split("..")[1]}
                </motion.div>
-               <motion.div variants={fadeUp} className="italic text-secondary text-3xl md:text-5xl">
+               <motion.div variants={fadeUp} className="italic text-[#C1922C] text-3xl md:text-5xl">
                  {dict.hero.title2.split("..")[2]}
                </motion.div>
              </motion.h1>
