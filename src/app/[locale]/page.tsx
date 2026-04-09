@@ -328,25 +328,18 @@ export default function HomePage({ params }: { params: { locale: string } }) {
             </motion.div>
          </div>
       </section>
-      {/* CTA → Contact */}
-      <section className="py-20 bg-secondary">
-        <div className="max-w-5xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-start"
-          >
-            <div className="space-y-3 max-w-lg">
-              <h3 className="text-3xl md:text-4xl font-black text-white tracking-tight">{dict.cta.contact_heading}</h3>
-              <p className="text-base text-white/80 font-medium leading-relaxed">{dict.cta.contact_desc}</p>
-            </div>
-            <Link href="/contact" className="shrink-0 bg-white text-primary px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-white/90 transition-all group flex items-center gap-3">
-              {dict.cta.contact_btn}
-              <ArrowRight size={18} className={`${isRtl ? "rotate-180" : ""} group-hover:translate-x-1 transition-transform`} />
-            </Link>
-          </motion.div>
-        </div>
+      {/* Map Section */}
+      <section className="w-full">
+        <a href="https://maps.google.com/?q=24.706114,46.749271" target="_blank" rel="noopener noreferrer" className="block w-full h-[400px] relative">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3626.5!2d46.749271!3d24.706114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2ssa!4v1700000000000"
+            className="absolute inset-0 w-full h-full pointer-events-none"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </a>
       </section>
     </main>
   );
