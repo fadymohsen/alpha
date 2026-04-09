@@ -31,13 +31,13 @@ export default async function AboutPage({ params }: { params: { locale: string }
                     {isRtl ? "نحن نربط المملكة العربية السعودية بالعالم عبر أسطولنا المتطور وشبكتنا اللوجستية الواسعة. نغطي كافة مناطق المملكة ونمتد إلى دول الخليج والشرق الأوسط، مع رؤية للتوسع العالمي." : "We connect the Kingdom of Saudi Arabia to the world through our advanced fleet and wide logistics network. We cover all regions of the Kingdom and extend to the Gulf and Middle East countries, with a vision for global expansion."}
                   </p>
                </div>
-               <div className="grid grid-cols-2 gap-8">
-                  <div className="space-y-4">
+               <div className="grid grid-cols-2 gap-8 overflow-hidden">
+                  <div className="space-y-4 min-w-0">
                      <span className="text-4xl font-black text-accent">{isRtl ? "١٠٠%" : "100%"}</span>
                      <p className="text-sm font-bold text-primary uppercase tracking-widest">{isRtl ? "تغطية محلية" : "Local Coverage"}</p>
                   </div>
-                  <div className="space-y-4">
-                     <span className="text-4xl font-black text-secondary">{isRtl ? "دولي" : "International"}</span>
+                  <div className="space-y-4 min-w-0">
+                     <span className="text-2xl md:text-4xl font-black text-secondary">{isRtl ? "دولي" : "International"}</span>
                      <p className="text-sm font-bold text-primary uppercase tracking-widest">{isRtl ? "درب الحرير" : "Global Corridors"}</p>
                   </div>
                </div>
