@@ -33,7 +33,6 @@ export function Footer({ locale }: { locale: string }) {
                   { href: `/${locale}/about`, label: dict.nav.about },
                   { href: `/${locale}/services`, label: dict.nav.services },
                   { href: `/${locale}/careers`, label: dict.nav.careers },
-                  { href: `/${locale}/faq`, label: dict.nav.faq },
                   { href: `/${locale}/contact`, label: dict.nav.contact },
                 ].map((link) => (
                   <li key={link.href}>
