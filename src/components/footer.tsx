@@ -72,9 +72,8 @@ export function Footer() {
 
         <div className="pt-16 border-t border-primary/5 flex flex-col md:flex-row items-center justify-between gap-8">
            <p className="text-gray-400 text-xs font-black uppercase tracking-widest">{dict.footer.copyright}</p>
-           <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.3em] text-accent opacity-30">
-              <ShieldCheck size={16} />
-              <span>Certified Logistics Protocol</span>
+           <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.3em] text-primary opacity-30">
+              <span>Powered by VELIQ</span>
            </div>
         </div>
       </div>
