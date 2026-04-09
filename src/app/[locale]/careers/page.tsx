@@ -12,8 +12,8 @@ export default async function CareersPage({ params: { locale } }: { params: { lo
   ];
 
   return (
-    <main className="flex-grow pt-32 pb-24">
-      <section className="bg-primary py-32 text-center relative overflow-hidden">
+    <main className="flex-grow pt-32 pb-16">
+      <section className="bg-primary py-24 text-center relative overflow-hidden">
         <div className="absolute inset-x-0 bottom-0 top-0 opacity-10 pointer-events-none">
            <Briefcase size={500} className="absolute -left-20 -bottom-20 -rotate-12" />
         </div>
@@ -23,9 +23,9 @@ export default async function CareersPage({ params: { locale } }: { params: { lo
         </div>
       </section>
 
-      <section className="py-32 bg-white">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center mb-32">
+           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div className="space-y-10">
                  <div className="space-y-4">
                     <h2 className="text-5xl font-black text-primary leading-tight">{isRtl ? "لماذا تعمل في ألفا؟" : "Why Work at ALFA?"}</h2>
