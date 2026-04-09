@@ -23,7 +23,7 @@ export function Footer({ locale }: { locale: string }) {
           </div>
 
           {/* Quick Links - Centered */}
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-start lg:items-center">
             <div>
               <h4 className="text-xs font-black uppercase tracking-[0.4em] text-secondary mb-8">
                 {isRtl ? "روابط سريعة" : "Quick Links"}
