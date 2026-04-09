@@ -64,8 +64,8 @@ export default async function AboutPage({ params }: { params: { locale: string }
 
       <section className="py-32 max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          <div className="p-12 rounded-[3.5rem] bg-white border border-primary/5 shadow-2xl space-y-8 group hover:bg-primary transition-all duration-700">
-            <div className="w-20 h-20 rounded-3xl bg-primary flex items-center justify-center text-white group-hover:bg-accent group-hover:text-primary transition-all shadow-[0_20px_40px_-10px_rgba(33,59,99,0.3)]"><Target size={40} /></div>
+          <div className="p-12 rounded-[3.5rem] bg-white border border-primary/5 shadow-2xl space-y-8 group hover:bg-secondary transition-all duration-700">
+            <div className="w-20 h-20 rounded-3xl bg-secondary flex items-center justify-center text-white group-hover:bg-white group-hover:text-secondary transition-all shadow-[0_20px_40px_-10px_rgba(122,54,59,0.3)]"><Target size={40} /></div>
             <h3 className="text-3xl font-black text-primary group-hover:text-white transition-colors">{dict.vision_mission.mission.title}</h3>
             <p className="text-gray-500 font-medium leading-relaxed group-hover:text-white/70 transition-all">{dict.vision_mission.mission.desc}</p>
           </div>
@@ -74,10 +74,10 @@ export default async function AboutPage({ params }: { params: { locale: string }
             <h3 className="text-3xl font-black text-primary group-hover:text-white transition-colors">{dict.vision_mission.vision.title}</h3>
             <p className="text-gray-500 font-medium leading-relaxed group-hover:text-white/70 transition-all">{dict.vision_mission.vision.desc}</p>
           </div>
-          <div className="p-12 rounded-[3.5rem] bg-white border border-primary/5 shadow-2xl space-y-8 group hover:bg-accent transition-all duration-700">
-            <div className="w-20 h-20 rounded-3xl bg-accent flex items-center justify-center text-primary group-hover:bg-white transition-all shadow-[0_20px_40px_-10px_rgba(122,54,59,0.3)]"><Star size={40} /></div>
-            <h3 className="text-3xl font-black text-primary group-hover:text-primary transition-colors">{dict.about.goals.title}</h3>
-            <ul className="space-y-4 text-gray-500 group-hover:text-primary transition-all">
+          <div className="p-12 rounded-[3.5rem] bg-white border border-primary/5 shadow-2xl space-y-8 group hover:bg-secondary transition-all duration-700">
+            <div className="w-20 h-20 rounded-3xl bg-secondary flex items-center justify-center text-white group-hover:bg-white group-hover:text-secondary transition-all shadow-[0_20px_40px_-10px_rgba(122,54,59,0.3)]"><Star size={40} /></div>
+            <h3 className="text-3xl font-black text-primary group-hover:text-white transition-colors">{dict.about.goals.title}</h3>
+            <ul className="space-y-4 text-gray-500 group-hover:text-white/70 transition-all">
                <li className="flex items-center gap-3 font-bold">• {dict.about.goals.desc1}</li>
                <li className="flex items-center gap-3 font-bold">• {dict.about.goals.desc2}</li>
                <li className="flex items-center gap-3 font-bold">• {dict.about.goals.desc3}</li>
