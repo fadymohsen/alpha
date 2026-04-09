@@ -30,19 +30,16 @@ export default async function ServicesPage({ params }: { params: { locale: strin
               <h3 className="text-3xl font-black text-primary group-hover:text-white transition-colors tracking-tighter">{s.title}</h3>
               <p className="text-base text-gray-500 font-medium leading-relaxed group-hover:text-white/80 transition-all">{s.desc}</p>
             </div>
-            <div className="pt-6 border-t border-primary/5 group-hover:border-white/10 flex items-center justify-between relative z-10">
+            <div className="pt-6 relative z-10">
                <Link
                  href={`https://wa.me/966555955056?text=${encodeURIComponent(`Hi, I'm interested in: ${s.title}`)}`}
                  target="_blank"
                  rel="noopener noreferrer"
-                 className="flex items-center gap-2 font-black text-xs uppercase tracking-[0.2em] text-secondary group-hover:text-white transition-colors hover:opacity-80"
+                 className="w-full flex items-center justify-center gap-3 bg-secondary text-white py-4 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-secondary/90 transition-all"
                >
-                 <MessageCircle size={16} />
+                 <MessageCircle size={18} />
                  {isRtl ? "تواصل عبر واتساب" : "Inquire via WhatsApp"}
                </Link>
-               <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-primary group-hover:bg-white group-hover:rotate-45 transition-all">
-                  <Activity size={18} />
-               </div>
             </div>
           </div>
         ))}
