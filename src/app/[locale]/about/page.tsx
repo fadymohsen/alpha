@@ -33,7 +33,7 @@ export default async function AboutPage({ params }: { params: { locale: string }
                </div>
                <div className="grid grid-cols-2 gap-8">
                   <div className="space-y-4">
-                     <span className="text-4xl font-black text-accent">١٠٠%</span>
+                     <span className="text-4xl font-black text-accent">{isRtl ? "١٠٠%" : "100%"}</span>
                      <p className="text-sm font-bold text-primary uppercase tracking-widest">{isRtl ? "تغطية محلية" : "Local Coverage"}</p>
                   </div>
                   <div className="space-y-4">
