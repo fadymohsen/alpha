@@ -56,6 +56,12 @@ body {
   line-height: 1.9 !important;
 }
 
+/* Override for headings that need tight line-height */
+.leading-tight-override,
+.leading-tight-override * {
+  line-height: 1.15 !important;
+}
+
 /* Logical spacing utilities for RTL */
 .ps-4 { padding-inline-start: 1rem; }
 .pe-4 { padding-inline-end: 1rem; }

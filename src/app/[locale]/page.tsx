@@ -126,7 +126,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
 
         <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
           <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-6 max-w-4xl mx-auto">
-             <motion.h1 style={{ lineHeight: 1.15 }} className="text-5xl md:text-[5.5rem] font-black tracking-tight text-white">
+             <motion.h1 className="text-5xl md:text-[5.5rem] font-black tracking-tight text-white leading-tight-override">
                <motion.div variants={fadeUp}>
                  {dict.hero.title2.split("..")[0]}
                </motion.div>
