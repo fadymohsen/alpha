@@ -4,9 +4,9 @@ import { Phone, MapPin } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
-export function Footer() {
+export function Footer({ locale }: { locale: string }) {
   const dict = useDictionary();
-  const isRtl = dict.nav.home === "الرئيسية";
+  const isRtl = locale === "ar";
 
   return (
     <footer className="bg-primary text-white pt-20 pb-10 relative overflow-hidden">
@@ -14,7 +14,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16 pb-16 border-b border-white/10">
           {/* Brand Column */}
           <div className="space-y-6 lg:col-span-1">
-            <Link href="/" className="inline-block group">
+            <Link href={`/${locale}`} className="inline-block group">
               <div className="relative w-20 h-20 transition-transform hover:scale-105">
                 <Image src="/logo-transperent.png" alt="ALFA" fill className="object-contain brightness-0 invert" />
               </div>
@@ -29,11 +29,11 @@ export function Footer() {
             </h4>
             <ul className="space-y-4">
               {[
-                { href: "/about", label: dict.nav.about },
-                { href: "/services", label: dict.nav.services },
-                { href: "/careers", label: dict.nav.careers },
-                { href: "/faq", label: dict.nav.faq },
-                { href: "/contact", label: dict.nav.contact },
+                { href: `/${locale}/about`, label: dict.nav.about },
+                { href: `/${locale}/services`, label: dict.nav.services },
+                { href: `/${locale}/careers`, label: dict.nav.careers },
+                { href: `/${locale}/faq`, label: dict.nav.faq },
+                { href: `/${locale}/contact`, label: dict.nav.contact },
               ].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="text-white/70 hover:text-white transition-colors font-medium text-sm">

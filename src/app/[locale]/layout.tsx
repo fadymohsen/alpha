@@ -28,7 +28,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
         <DictionaryProvider dictionary={dict}>
            <Navbar locale={locale} />
            {children}
-           <Footer />
+           <Footer locale={locale} />
         </DictionaryProvider>
       </body>
     </html>
