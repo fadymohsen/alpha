@@ -19,7 +19,7 @@ export default async function CareersPage({ params: { locale } }: { params: { lo
         </div>
         <div className="max-w-4xl mx-auto px-6 relative z-10 space-y-6">
           <h1 className="text-6xl md:text-8xl font-black text-white tracking-tighter leading-none">{isRtl ? "انضم لفريقنا" : "Join Our Team"}</h1>
-          <p className="text-xl text-white/80 font-medium max-w-2xl mx-auto italic">{isRtl ? "ابنِ مستقبلك المهني مع رائد حلول النقل في المملكة" : "Build your career with the leader of transport solutions in the Kingdom"}</p>
+          <p className="text-xl text-white/80 font-medium max-w-2xl mx-auto">{isRtl ? "ابنِ مستقبلك المهني مع رائد حلول النقل في المملكة" : "Build your career with the leader of transport solutions in the Kingdom"}</p>
         </div>
       </section>
 
