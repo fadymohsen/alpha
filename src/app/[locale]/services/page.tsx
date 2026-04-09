@@ -9,7 +9,7 @@ export default async function ServicesPage({ params }: { params: { locale: strin
   const isRtl = locale === "ar";
   
   return (
-    <main className="flex-grow pt-32 pb-24">
+    <main className="flex-grow pt-32 pb-16">
       {/* Header Section - Refined */}
       <section className="bg-[#fafafa] py-24 text-center relative overflow-hidden">
          <div className="absolute top-0 right-0 w-80 h-80 bg-accent/5 rounded-full blur-[100px]" />
@@ -46,7 +46,7 @@ export default async function ServicesPage({ params }: { params: { locale: strin
       </div>
 
       {/* Expertise Section - Constrained Width & Downsized (30%) */}
-      <section className="py-24 mt-16">
+      <section className="py-16 mt-8">
          <div className="max-w-5xl mx-auto px-6 bg-primary rounded-[4rem] p-12 md:p-16 overflow-hidden relative">
             <div className="absolute top-0 right-0 w-full h-full opacity-5 pointer-events-none">
                <Truck size={300} className="absolute -bottom-10 -right-10 rotate-12" />
