@@ -130,10 +130,10 @@ export default function HomePage({ params }: { params: { locale: string } }) {
                <motion.div variants={fadeUp}>
                  {dict.hero.title2.split("..")[0]}
                </motion.div>
-               <motion.div variants={fadeUp} className="text-[#4A7CC9]">
+               <motion.div variants={fadeUp} className="text-[#C1922C]">
                  {dict.hero.title2.split("..")[1]}
                </motion.div>
-               <motion.div variants={fadeUp} className="text-[#C4616B] text-3xl md:text-5xl">
+               <motion.div variants={fadeUp} className="text-white/80 text-3xl md:text-5xl">
                  {dict.hero.title2.split("..")[2]}
                </motion.div>
              </motion.h1>
