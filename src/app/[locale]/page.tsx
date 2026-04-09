@@ -280,16 +280,16 @@ export default function HomePage({ params }: { params: { locale: string } }) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 * i }}
-                  className="group p-12 rounded-[2.5rem] bg-slate-50 hover:bg-primary transition-all duration-700 space-y-10 overflow-hidden relative border border-primary/5"
+                  className="group p-12 rounded-[2.5rem] bg-slate-50 hover:bg-primary transition-all duration-700 overflow-hidden relative border border-primary/5 flex flex-col h-full"
                 >
-                    <div className="w-20 h-20 rounded-2xl bg-white flex items-center justify-center text-primary group-hover:bg-accent group-hover:text-white transition-all shadow-xl relative z-10">
+                    <div className="w-20 h-20 rounded-2xl bg-white flex items-center justify-center text-primary group-hover:bg-accent group-hover:text-white transition-all shadow-xl relative z-10 mb-10">
                        {i === 0 ? <Truck size={32} /> : i === 2 ? <ShieldCheck size={32} /> : <Activity size={32} />}
                     </div>
-                    <div className="space-y-4 relative z-10">
+                    <div className="space-y-4 relative z-10 flex-grow">
                       <h3 className="text-3xl font-black text-primary group-hover:text-white transition-colors tracking-tighter leading-none">{s.title}</h3>
                       <p className="text-base text-gray-500 font-medium leading-relaxed group-hover:text-white/60 transition-all">{s.desc}</p>
                     </div>
-                    <div className="pt-6 relative z-10">
+                    <div className="pt-6 relative z-10 mt-auto">
                        <Link
                          href={`https://wa.me/966555955056?text=${encodeURIComponent(`Hi, I'm interested in: ${s.title}`)}`}
                          target="_blank"
