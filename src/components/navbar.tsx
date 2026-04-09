@@ -51,11 +51,11 @@ export function Navbar({ locale }: { locale: string }) {
       <nav className={cn("fixed top-0 w-full z-50 transition-all duration-700", scrolled ? "bg-white/95 backdrop-blur-md h-20 shadow-xl border-b border-primary/5" : "bg-transparent h-32")}>
         <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
           <Link href={`/${currentLocale}`} className="flex items-center gap-4 group">
-            <motion.div 
+            <motion.div
               whileHover={{ scale: 1.05, rotate: 2 }}
               className="relative w-20 h-20 md:w-24 md:h-24 overflow-hidden"
             >
-               <Image src="/logo-transperent.png" alt="ALFA" fill className="object-contain" />
+               <Image src="/logo-transperent.png" alt="ALFA" fill className={cn("object-contain transition-all duration-700", scrolled ? "" : "brightness-0 invert")} />
             </motion.div>
           </Link>
 
@@ -66,9 +66,9 @@ export function Navbar({ locale }: { locale: string }) {
               const isActive = pathname === href || (pathname === `/${currentLocale}` && link.href === "/");
               return (
                 <motion.div key={link.href} whileHover={{ y: -2 }}>
-                  <Link href={href} className={cn("text-sm font-black uppercase tracking-widest transition-all hover:text-accent relative py-2", isActive ? "text-primary" : "text-gray-500")}>
+                  <Link href={href} className={cn("text-sm font-black uppercase tracking-widest transition-all relative py-2", scrolled ? (isActive ? "text-primary" : "text-gray-500") : (isActive ? "text-white" : "text-white/70"), scrolled ? "hover:text-accent" : "hover:text-white")}>
                     {link.name}
-                    {isActive && <motion.div layoutId="nav-glow" className="absolute -bottom-1 inset-x-0 h-1 bg-accent rounded-full shadow-[0_0_15px_rgba(122,54,59,0.5)]" />}
+                    {isActive && <motion.div layoutId="nav-glow" className={cn("absolute -bottom-1 inset-x-0 h-1 rounded-full", scrolled ? "bg-accent shadow-[0_0_15px_rgba(122,54,59,0.5)]" : "bg-white shadow-[0_0_15px_rgba(255,255,255,0.3)]")} />}
                   </Link>
                 </motion.div>
               );
@@ -76,7 +76,7 @@ export function Navbar({ locale }: { locale: string }) {
           </div>
 
           <div className="hidden lg:flex items-center gap-6">
-            <Link href={switchHref} className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-primary hover:text-accent transition-all">
+            <Link href={switchHref} className={cn("flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] transition-all", scrolled ? "text-primary hover:text-accent" : "text-white hover:text-white/80")}>
               <Globe size={16} />
               <span>{currentLocale === "ar" ? "English" : "عربي"}</span>
             </Link>
@@ -86,7 +86,7 @@ export function Navbar({ locale }: { locale: string }) {
           </div>
 
           {/* Mobile Toggle */}
-          <button className="lg:hidden relative w-12 h-12 flex items-center justify-center rounded-2xl bg-primary text-white shadow-2xl transition-transform active:scale-95" onClick={() => setIsOpen(true)}>
+          <button className={cn("lg:hidden relative w-12 h-12 flex items-center justify-center rounded-2xl shadow-2xl transition-all active:scale-95", scrolled ? "bg-primary text-white" : "bg-white/20 backdrop-blur-sm text-white")} onClick={() => setIsOpen(true)}>
             <Menu size={24} />
           </button>
         </div>
