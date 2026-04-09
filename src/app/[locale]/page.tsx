@@ -328,19 +328,6 @@ export default function HomePage({ params }: { params: { locale: string } }) {
             </motion.div>
          </div>
       </section>
-      {/* Map Section */}
-      <section className="w-full">
-        <a href="https://maps.google.com/?q=24.706114,46.749271" target="_blank" rel="noopener noreferrer" className="block w-full h-[400px] relative">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3626.5!2d46.749271!3d24.706114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2ssa!4v1700000000000"
-            className="absolute inset-0 w-full h-full pointer-events-none"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-        </a>
-      </section>
     </main>
   );
 }
