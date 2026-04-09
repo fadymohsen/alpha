@@ -355,12 +355,12 @@ export default function HomePage({ params }: { params: { locale: string } }) {
                </div>
                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
                   <div className="space-y-8 p-12 bg-white/5 rounded-[3rem] border border-white/5 hover:bg-white/10 transition-all duration-700 group">
-                     <div className="w-16 h-16 mx-auto bg-accent/10 rounded-full flex items-center justify-center"><Award size={32} className="text-accent" /></div>
+                     <div className="w-16 h-16 mx-auto bg-[#C1922C]/10 rounded-full flex items-center justify-center"><Award size={32} className="text-[#C1922C]" /></div>
                      <h4 className="font-black text-2xl text-white">{dict.specialized_solutions.quality_title}</h4>
                      <p className="text-base text-white/70 leading-relaxed mx-auto max-w-xs">{dict.specialized_solutions.quality_desc}</p>
                   </div>
                   <div className="space-y-8 p-12 bg-white/5 rounded-[3rem] border border-white/5 hover:bg-white/10 transition-all duration-700 group">
-                     <div className="w-16 h-16 mx-auto bg-accent/10 rounded-full flex items-center justify-center"><Users size={32} className="text-accent" /></div>
+                     <div className="w-16 h-16 mx-auto bg-[#C1922C]/10 rounded-full flex items-center justify-center"><Users size={32} className="text-[#C1922C]" /></div>
                      <h4 className="font-black text-2xl text-white">{dict.specialized_solutions.pro_title}</h4>
                      <p className="text-base text-white/70 leading-relaxed mx-auto max-w-xs">{dict.specialized_solutions.pro_desc}</p>
                   </div>
