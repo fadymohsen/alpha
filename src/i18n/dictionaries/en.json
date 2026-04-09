@@ -92,5 +92,19 @@
       { "q": "Does your service cover international transport?", "a": "Yes, we offer cross-border land transport connecting the Kingdom with Gulf and neighboring countries according to the highest technical standards." }
     ]
   },
+  "cta": {
+    "about_heading": "Our Story of Excellence",
+    "about_desc": "Discover how we became a leader in Saudi logistics, blending heritage with cutting-edge technology.",
+    "about_btn": "Learn About Us",
+    "services_heading": "Solutions Built for You",
+    "services_desc": "Explore our full range of specialized transport and logistics services tailored to your needs.",
+    "services_btn": "View All Services",
+    "careers_heading": "Build Your Future With Us",
+    "careers_desc": "Join a team that's shaping the future of logistics in the Kingdom. We're always looking for driven talent.",
+    "careers_btn": "Explore Careers",
+    "contact_heading": "Ready to Get Started?",
+    "contact_desc": "Let's discuss how our logistics solutions can support your business goals.",
+    "contact_btn": "Contact Us Today"
+  },
   "footer": { "copyright": "© 2026 ALFA TRANS, CO.LTD. All Rights Reserved", "slogan": "Our Commitment is the Secret of Our Success" }
 }

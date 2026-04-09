@@ -192,6 +192,27 @@ export default function HomePage({ params }: { params: { locale: string } }) {
          </div>
       </section>
 
+      {/* CTA → About */}
+      <section className="py-20 bg-cream">
+        <div className="max-w-5xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-start"
+          >
+            <div className="space-y-3 max-w-lg">
+              <h3 className="text-3xl md:text-4xl font-black text-primary tracking-tight">{dict.cta.about_heading}</h3>
+              <p className="text-base text-gray-500 font-medium leading-relaxed">{dict.cta.about_desc}</p>
+            </div>
+            <Link href="/about" className="shrink-0 bg-primary text-white px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-primary/90 transition-all group flex items-center gap-3">
+              {dict.cta.about_btn}
+              <ArrowRight size={18} className={`${isRtl ? "rotate-180" : ""} group-hover:translate-x-1 transition-transform`} />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Core Values */}
       <section className="py-32 bg-[#fafafa] relative overflow-hidden">
          <div className="max-w-6xl mx-auto px-6">
@@ -230,6 +251,27 @@ export default function HomePage({ params }: { params: { locale: string } }) {
                ))}
             </div>
          </div>
+      </section>
+
+      {/* CTA → Services */}
+      <section className="py-20 bg-white">
+        <div className="max-w-5xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-primary rounded-[2rem] p-12 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-start"
+          >
+            <div className="space-y-3 max-w-lg">
+              <h3 className="text-3xl md:text-4xl font-black text-white tracking-tight">{dict.cta.services_heading}</h3>
+              <p className="text-base text-white/70 font-medium leading-relaxed">{dict.cta.services_desc}</p>
+            </div>
+            <Link href="/services" className="shrink-0 bg-accent text-white px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-accent/90 transition-all group flex items-center gap-3">
+              {dict.cta.services_btn}
+              <ArrowRight size={18} className={`${isRtl ? "rotate-180" : ""} group-hover:translate-x-1 transition-transform`} />
+            </Link>
+          </motion.div>
+        </div>
       </section>
 
       {/* Services Grid */}
@@ -276,6 +318,27 @@ export default function HomePage({ params }: { params: { locale: string } }) {
          </div>
       </section>
 
+      {/* CTA → Careers */}
+      <section className="py-20 bg-[#fafafa]">
+        <div className="max-w-5xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="border-2 border-primary/10 rounded-[2rem] p-12 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-start"
+          >
+            <div className="space-y-3 max-w-lg">
+              <h3 className="text-3xl md:text-4xl font-black text-primary tracking-tight">{dict.cta.careers_heading}</h3>
+              <p className="text-base text-gray-500 font-medium leading-relaxed">{dict.cta.careers_desc}</p>
+            </div>
+            <Link href="/careers" className="shrink-0 bg-secondary text-white px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-secondary/90 transition-all group flex items-center gap-3">
+              {dict.cta.careers_btn}
+              <ArrowRight size={18} className={`${isRtl ? "rotate-180" : ""} group-hover:translate-x-1 transition-transform`} />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Specialized Solutions */}
       <section className="py-32 bg-primary relative overflow-hidden">
          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-5 pointer-events-none" />
@@ -304,6 +367,26 @@ export default function HomePage({ params }: { params: { locale: string } }) {
                </div>
             </motion.div>
          </div>
+      </section>
+      {/* CTA → Contact */}
+      <section className="py-20 bg-accent">
+        <div className="max-w-5xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-start"
+          >
+            <div className="space-y-3 max-w-lg">
+              <h3 className="text-3xl md:text-4xl font-black text-white tracking-tight">{dict.cta.contact_heading}</h3>
+              <p className="text-base text-white/80 font-medium leading-relaxed">{dict.cta.contact_desc}</p>
+            </div>
+            <Link href="/contact" className="shrink-0 bg-white text-primary px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-white/90 transition-all group flex items-center gap-3">
+              {dict.cta.contact_btn}
+              <ArrowRight size={18} className={`${isRtl ? "rotate-180" : ""} group-hover:translate-x-1 transition-transform`} />
+            </Link>
+          </motion.div>
+        </div>
       </section>
     </main>
   );
