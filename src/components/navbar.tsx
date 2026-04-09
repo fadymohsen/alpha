@@ -108,38 +108,35 @@ export function Navbar({ locale }: { locale: string }) {
 
             {/* Header */}
             <div className="flex shrink-0 h-28 px-8 items-center justify-end relative z-10">
-               <button onClick={() => setIsOpen(false)} className="w-14 h-14 rounded-2xl bg-accent text-primary flex items-center justify-center hover:rotate-90 transition-transform duration-500 shadow-2xl active:scale-90">
-                 <X size={32} />
+               <button onClick={() => setIsOpen(false)} className="w-12 h-12 rounded-xl bg-white/10 text-white flex items-center justify-center hover:rotate-90 transition-transform duration-500 active:scale-90">
+                 <X size={24} />
                </button>
             </div>
 
             {/* Navigation Links */}
-            <div className="flex-grow flex flex-col justify-center px-10 relative z-10">
-               <div className="space-y-4 max-w-lg">
+            <div className="flex-grow flex flex-col justify-center px-8 relative z-10">
+               <div className="space-y-1 max-w-lg">
                   {navLinks.map((link, i) => (
-                    <motion.div 
-                      key={link.href} 
-                      className="overflow-hidden border-b border-white/5"
+                    <motion.div
+                      key={link.href}
+                      className="overflow-hidden"
                     >
-                       <Link 
-                          href={`/${currentLocale}${link.href}`} 
-                          onClick={() => setIsOpen(false)} 
-                          className="group flex items-center justify-between py-6 transition-all"
+                       <Link
+                          href={`/${currentLocale}${link.href}`}
+                          onClick={() => setIsOpen(false)}
+                          className="group flex items-center justify-between py-4 border-b border-white/5 transition-all"
                           style={{
-                             animation: `slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards ${i * 60}ms`,
+                             animation: `slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards ${i * 50}ms`,
                              opacity: 0,
-                             transform: 'translateY(20px)'
+                             transform: 'translateY(15px)'
                           }}
                        >
-                          <span className="text-3xl font-semibold uppercase tracking-tight group-hover:gradient-text transition-all duration-300">
+                          <span className="text-xl font-bold text-white group-hover:text-secondary transition-colors duration-300">
                              {link.name}
                           </span>
-                          <motion.div 
-                             whileHover={{ x: isRtl ? -10 : 10 }}
-                             className="text-white/20 group-hover:text-accent transition-colors"
-                          >
-                             {isRtl ? <ArrowLeft size={28} /> : <ArrowRight size={28} />}
-                          </motion.div>
+                          <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-secondary/20 transition-colors">
+                             {isRtl ? <ArrowLeft size={16} className="text-white/30 group-hover:text-secondary transition-colors" /> : <ArrowRight size={16} className="text-white/30 group-hover:text-secondary transition-colors" />}
+                          </div>
                        </Link>
                     </motion.div>
                   ))}
@@ -147,17 +144,18 @@ export function Navbar({ locale }: { locale: string }) {
             </div>
 
             {/* Bottom Actions */}
-            <div className="p-10 shrink-0 border-t border-white/5 relative z-10 flex flex-col gap-6">
-               <Link href={switchHref} className="btn-secondary !bg-white/5 flex items-center justify-center gap-3 !py-5">
-                 <Globe size={20} className="text-accent" />
+            <div className="px-8 pb-10 pt-6 shrink-0 relative z-10 flex flex-col gap-4">
+               <Link href={switchHref} onClick={() => setIsOpen(false)} className="flex items-center justify-center gap-3 py-4 rounded-2xl border border-white/10 bg-white/5 text-white text-sm font-bold">
+                 <Globe size={18} className="text-secondary" />
                  <span>{currentLocale === "ar" ? "English" : "عربي"}</span>
                </Link>
-               <Link 
-                 href={`/${currentLocale}/contact`} 
+               <Link
+                 href={`/${currentLocale}/contact`}
                  onClick={() => setIsOpen(false)}
-                 className="btn-primary text-center !py-5"
+                 className="flex items-center justify-center gap-3 py-4 rounded-2xl bg-secondary text-white text-sm font-bold"
                >
-                 {currentLocale === "ar" ? "ابدأ رحلتك معنا" : "Start Your Journey"}
+                 <Phone size={18} />
+                 {currentLocale === "ar" ? "تواصل معنا" : "Contact Us"}
                </Link>
             </div>
 
