@@ -29,7 +29,7 @@ body {
 }
 
 .btn-primary {
-  @apply bg-primary text-white px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-widest shadow-2xl hover:bg-secondary transition-all active:scale-95;
+  @apply bg-secondary text-white px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-widest shadow-2xl hover:bg-primary transition-all active:scale-95;
 }
 
 .btn-secondary {
