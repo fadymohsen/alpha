@@ -211,7 +211,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 * i }}
-                className="flex items-center justify-center p-4 rounded-2xl hover:shadow-lg transition-all duration-300 bg-gray-50 h-28"
+                className="flex items-center justify-center p-4 rounded-2xl transition-all duration-300 bg-transparent h-28"
               >
                 <div className="relative w-full h-full">
                   <Image src={partner.src} alt={partner.alt} fill className="object-contain grayscale hover:grayscale-0 transition-all duration-500" />
