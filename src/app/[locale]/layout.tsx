@@ -11,6 +11,13 @@ const cairo = Cairo({ subsets: ["arabic"], weight: ["400", "700"], variable: "--
 
 export async function generateStaticParams() { return locales.map((locale) => ({ locale })); }
 
+export const metadata = {
+  icons: {
+    icon: "/logo-transperent.png",
+    apple: "/logo-transperent.png",
+  },
+};
+
 export default async function LocaleLayout({ children, params }: { children: React.ReactNode; params: { locale: string } }) {
   const { locale } = params;
   const isRtl = rtlLocales.includes(locale as any);
