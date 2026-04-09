@@ -53,7 +53,7 @@ export function Navbar({ locale }: { locale: string }) {
           <Link href={`/${currentLocale}`} className="flex items-center gap-4 group">
             <motion.div 
               whileHover={{ scale: 1.05, rotate: 2 }}
-              className="relative w-16 h-16 md:w-20 md:h-20 overflow-hidden"
+              className="relative w-20 h-20 md:w-24 md:h-24 overflow-hidden"
             >
                <Image src="/logo-transperent.png" alt="ALFA" fill className="object-contain" />
             </motion.div>
@@ -76,7 +76,7 @@ export function Navbar({ locale }: { locale: string }) {
           </div>
 
           <div className="hidden lg:flex items-center gap-6">
-            <Link href={switchHref} className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-primary hover:text-accent transition-all">
+            <Link href={switchHref} className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-primary hover:text-accent transition-all">
               <Globe size={16} />
               <span>{currentLocale === "ar" ? "English" : "عربي"}</span>
             </Link>

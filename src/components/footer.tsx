@@ -14,7 +14,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20 mb-32">
           <div className="space-y-10">
             <Link href="/" className="flex items-center gap-4 group">
-               <div className="relative w-20 h-20 transition-transform hover:scale-105">
+               <div className="relative w-24 h-24 transition-transform hover:scale-105">
                   <Image src="/logo-transperent.png" alt="ALFA" fill className="object-contain" />
                </div>
             </Link>
@@ -72,7 +72,7 @@ export function Footer() {
 
         <div className="pt-16 border-t border-primary/5 flex flex-col md:flex-row items-center justify-between gap-8">
            <p className="text-gray-400 text-xs font-black uppercase tracking-widest">{dict.footer.copyright}</p>
-           <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-accent opacity-30">
+           <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.3em] text-accent opacity-30">
               <ShieldCheck size={16} />
               <span>Certified Logistics Protocol</span>
            </div>
