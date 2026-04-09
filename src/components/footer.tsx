@@ -11,7 +11,7 @@ export function Footer() {
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent to-transparent" />
       
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20 mb-32">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 mb-32">
           <div className="space-y-10">
             <Link href="/" className="flex items-center gap-4 group">
                <div className="relative w-24 h-24 transition-transform hover:scale-105">
@@ -19,20 +19,6 @@ export function Footer() {
                </div>
             </Link>
             <p className="text-gray-500 text-lg font-medium leading-relaxed max-w-sm">{dict.about.description}</p>
-          </div>
-
-          <div>
-            <h4 className="text-xs font-black uppercase tracking-[0.4em] text-accent mb-10">{dict.nav.services}</h4>
-            <ul className="space-y-6">
-               {dict.services.list.map((s: any) => (
-                 <li key={s.id}>
-                    <Link href="/services" className="text-gray-600 hover:text-accent transition-all font-bold text-sm tracking-tight flex items-center gap-2 group">
-                       <div className="w-1.5 h-1.5 rounded-full bg-accent group-hover:w-4 transition-all" />
-                       {s.title}
-                    </Link>
-                 </li>
-               ))}
-            </ul>
           </div>
 
           <div>
