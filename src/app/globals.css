@@ -38,6 +38,8 @@ body {
 
 [dir="rtl"] {
   font-family: var(--font-tajawal), sans-serif;
+  line-height: 1.9;
+  word-spacing: 0.05em;
 }
 
 [dir="rtl"] * {
@@ -47,6 +49,8 @@ body {
 
 [dir="ltr"] {
   font-family: var(--font-cairo), sans-serif;
+  letter-spacing: 0.03em;
+  line-height: 1.8;
 }
 
 /* Logical spacing utilities for RTL */
