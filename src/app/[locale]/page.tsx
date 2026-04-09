@@ -214,7 +214,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
                 className="flex items-center justify-center p-4 rounded-2xl transition-all duration-300 bg-transparent h-28"
               >
                 <div className="relative w-full h-full">
-                  <Image src={partner.src} alt={partner.alt} fill className="object-contain grayscale hover:grayscale-0 transition-all duration-500" />
+                  <Image src={partner.src} alt={partner.alt} fill className="object-contain transition-all duration-500" />
                 </div>
               </motion.div>
             ))}
