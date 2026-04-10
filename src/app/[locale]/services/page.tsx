@@ -26,6 +26,8 @@ export default async function ServicesPage({ params }: { params: { locale: strin
   const isRtl = locale === "ar";
 
   const services = await prisma.service.findMany({ orderBy: { updatedAt: "desc" } });
+  const whatsappSetting = await prisma.setting.findUnique({ where: { key: "whatsapp" } });
+  const whatsapp = whatsappSetting?.value || "966555955056";
 
   // Fallback to dictionary if no DB services yet
   const list = services.length > 0
@@ -58,7 +60,7 @@ export default async function ServicesPage({ params }: { params: { locale: strin
               </div>
               <div className="pt-6 relative z-10 mt-auto">
                  <Link
-                   href={`https://wa.me/966555955056?text=${encodeURIComponent(`Hi, I'm interested in: ${s.title}`)}`}
+                   href={`https://wa.me/${whatsapp}?text=${encodeURIComponent(`Hi, I'm interested in: ${s.title}`)}`}
                    target="_blank"
                    rel="noopener noreferrer"
                    className="w-full flex items-center justify-center gap-3 bg-secondary text-white py-4 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-secondary/90 transition-all"

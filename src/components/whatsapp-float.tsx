@@ -1,10 +1,12 @@
 "use client";
 import { motion } from "framer-motion";
+import { useSettings } from "@/lib/settings-context";
 
 export function WhatsAppFloat() {
+  const { whatsapp } = useSettings();
   return (
     <motion.a
-      href="https://wa.me/966555955056"
+      href={`https://wa.me/${whatsapp}`}
       target="_blank"
       rel="noopener noreferrer"
       initial={{ scale: 0, opacity: 0 }}

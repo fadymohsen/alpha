@@ -1,11 +1,13 @@
 "use client";
 import { useDictionary } from "@/i18n/dictionary-provider";
+import { useSettings } from "@/lib/settings-context";
 import { Phone, MapPin, Mail, MessageCircle } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
 export function Footer({ locale }: { locale: string }) {
   const dict = useDictionary();
+  const settings = useSettings();
   const isRtl = locale === "ar";
 
   return (
@@ -72,21 +74,21 @@ export function Footer({ locale }: { locale: string }) {
           <div>
             <h4 className="text-xs font-black uppercase tracking-[0.4em] text-[#C1922C] mb-8">{dict.nav.contact}</h4>
             <div className="space-y-5">
-              <a href="tel:0114152675" className="flex items-center gap-3 group">
+              <a href={`tel:${settings.phone}`} className="flex items-center gap-3 group">
                 <Phone size={18} className="text-[#C1922C] flex-shrink-0" />
-                <span className="text-white/60 group-hover:text-white transition-colors font-medium text-sm" dir="ltr">0114152675</span>
+                <span className="text-white/60 group-hover:text-white transition-colors font-medium text-sm" dir="ltr">{settings.phone}</span>
               </a>
-              <a href="https://wa.me/966555955056" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 group">
+              <a href={`https://wa.me/${settings.whatsapp}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 group">
                 <MessageCircle size={18} className="text-[#C1922C] flex-shrink-0" />
-                <span className="text-white/60 group-hover:text-white transition-colors font-medium text-sm" dir="ltr">0555955056</span>
+                <span className="text-white/60 group-hover:text-white transition-colors font-medium text-sm" dir="ltr">{settings.whatsapp}</span>
               </a>
-              <a href="mailto:alfa.ex@hotmail.com" className="flex items-center gap-3 group">
+              <a href={`mailto:${settings.email}`} className="flex items-center gap-3 group">
                 <Mail size={18} className="text-[#C1922C] flex-shrink-0" />
-                <span className="text-white/60 group-hover:text-white transition-colors font-medium text-sm">alfa.ex@hotmail.com</span>
+                <span className="text-white/60 group-hover:text-white transition-colors font-medium text-sm">{settings.email}</span>
               </a>
               <div className="flex items-start gap-3">
                 <MapPin size={18} className="text-[#C1922C] flex-shrink-0 mt-0.5" />
-                <p className="text-white/60 text-sm font-medium leading-relaxed">{dict.contact.info.address}</p>
+                <p className="text-white/60 text-sm font-medium leading-relaxed">{isRtl ? settings.address_ar : settings.address_en}</p>
               </div>
             </div>
           </div>

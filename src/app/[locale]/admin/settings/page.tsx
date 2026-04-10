@@ -1,15 +1,13 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Loader2, Save, Phone, Mail, MessageCircle, Globe, FileText } from "lucide-react";
+import { Loader2, Save, Phone, Mail, MessageCircle, MapPin } from "lucide-react";
 
 const settingFields = [
   { key: "phone", label: { ar: "رقم الهاتف", en: "Phone Number" }, icon: Phone, placeholder: "0114152675" },
   { key: "whatsapp", label: { ar: "رقم الواتساب", en: "WhatsApp Number" }, icon: MessageCircle, placeholder: "966555955056" },
   { key: "email", label: { ar: "البريد الإلكتروني", en: "Email Address" }, icon: Mail, placeholder: "alfa.ex@hotmail.com" },
-  { key: "website", label: { ar: "الموقع الإلكتروني", en: "Website URL" }, icon: Globe, placeholder: "https://alpha-transportation.vercel.app" },
-  { key: "profile_pdf", label: { ar: "رابط ملف التعريف PDF", en: "Company Profile PDF URL" }, icon: FileText, placeholder: "/profile.pdf" },
-  { key: "address_ar", label: { ar: "العنوان (عربي)", en: "Address (Arabic)" }, icon: Globe, placeholder: "" },
-  { key: "address_en", label: { ar: "العنوان (إنجليزي)", en: "Address (English)" }, icon: Globe, placeholder: "" },
+  { key: "address_ar", label: { ar: "العنوان (عربي)", en: "Address (Arabic)" }, icon: MapPin, placeholder: "" },
+  { key: "address_en", label: { ar: "العنوان (إنجليزي)", en: "Address (English)" }, icon: MapPin, placeholder: "" },
 ];
 
 export default function AdminSettingsPage({ params: { locale } }: { params: { locale: string } }) {

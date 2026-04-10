@@ -1,6 +1,9 @@
 import { getDictionary } from "@/i18n/get-dictionary";
+import { prisma } from "@/lib/prisma";
 import { Send, MapPin, Phone, Mail, MessageCircle } from "lucide-react";
 import type { Metadata } from "next";
+
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const { locale } = params;
@@ -18,6 +21,16 @@ export default async function ContactPage({ params }: { params: { locale: string
   const dict = await getDictionary(locale as any);
   const isRtl = locale === "ar";
 
+  const settingsRows = await prisma.setting.findMany();
+  const s: Record<string, string> = {};
+  settingsRows.forEach((r) => { s[r.key] = r.value; });
+  const phone = s.phone || "0114152675";
+  const whatsapp = s.whatsapp || "966555955056";
+  const email = s.email || "alfa.ex@hotmail.com";
+  const address = isRtl
+    ? (s.address_ar || dict.contact.info.address)
+    : (s.address_en || dict.contact.info.address);
+
   return (
     <main className="flex-grow pt-32 pb-16">
       <section className="bg-primary py-24 text-center relative overflow-hidden">
@@ -32,31 +45,31 @@ export default async function ContactPage({ params }: { params: { locale: string
         <div className="bg-white p-10 rounded-[2.5rem] shadow-2xl border border-primary/5 space-y-8">
           <h3 className="text-2xl font-black text-primary">{dict.contact.info.hq}</h3>
           <div className="space-y-5">
-            <a href="tel:0114152675" className="flex items-center gap-4 group">
+            <a href={`tel:${phone}`} className="flex items-center gap-4 group">
               <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center flex-shrink-0">
                 <Phone size={20} className="text-secondary" />
               </div>
               <div>
                 <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-0.5">{dict.contact.info.call}</p>
-                <p className="text-primary font-bold text-sm group-hover:text-secondary transition-colors" dir="ltr">0114152675</p>
+                <p className="text-primary font-bold text-sm group-hover:text-secondary transition-colors" dir="ltr">{phone}</p>
               </div>
             </a>
-            <a href="https://wa.me/966555955056" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
+            <a href={`https://wa.me/${whatsapp}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
               <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center flex-shrink-0">
                 <MessageCircle size={20} className="text-secondary" />
               </div>
               <div>
                 <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-0.5">WhatsApp</p>
-                <p className="text-primary font-bold text-sm group-hover:text-secondary transition-colors" dir="ltr">0555955056</p>
+                <p className="text-primary font-bold text-sm group-hover:text-secondary transition-colors" dir="ltr">{whatsapp}</p>
               </div>
             </a>
-            <a href="mailto:alfa.ex@hotmail.com" className="flex items-center gap-4 group">
+            <a href={`mailto:${email}`} className="flex items-center gap-4 group">
               <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center flex-shrink-0">
                 <Mail size={20} className="text-secondary" />
               </div>
               <div>
                 <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-0.5">{dict.contact.info.email_us}</p>
-                <p className="text-primary font-bold text-sm group-hover:text-secondary transition-colors">alfa.ex@hotmail.com</p>
+                <p className="text-primary font-bold text-sm group-hover:text-secondary transition-colors">{email}</p>
               </div>
             </a>
             <div className="flex items-center gap-4">
@@ -65,7 +78,7 @@ export default async function ContactPage({ params }: { params: { locale: string
               </div>
               <div>
                 <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-0.5">{dict.contact.info.hq}</p>
-                <p className="text-gray-500 font-medium text-sm leading-relaxed">{dict.contact.info.address}</p>
+                <p className="text-gray-500 font-medium text-sm leading-relaxed">{address}</p>
               </div>
             </div>
           </div>

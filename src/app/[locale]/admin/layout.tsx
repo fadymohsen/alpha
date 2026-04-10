@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import {
-  LayoutDashboard,
   Truck,
   Briefcase,
   HelpCircle,
@@ -16,7 +15,6 @@ import {
 } from "lucide-react";
 
 const navItems = [
-  { key: "dashboard", icon: LayoutDashboard, label: { ar: "لوحة التحكم", en: "Dashboard" }, href: "" },
   { key: "services", icon: Truck, label: { ar: "الخدمات", en: "Services" }, href: "/services" },
   { key: "careers", icon: Briefcase, label: { ar: "الوظائف", en: "Careers" }, href: "/careers" },
   { key: "faq", icon: HelpCircle, label: { ar: "الأسئلة الشائعة", en: "FAQ" }, href: "/faq" },
@@ -100,7 +98,7 @@ export default function AdminLayout({ children, params }: { children: React.Reac
   );
 
   return (
-    <div className="min-h-screen flex bg-slate-50" dir={isRtl ? "rtl" : "ltr"}>
+    <div className="min-h-screen flex bg-slate-50 overflow-x-hidden" dir={isRtl ? "rtl" : "ltr"}>
       {/* Desktop Sidebar */}
       <aside className="hidden lg:block w-64 flex-shrink-0 fixed inset-y-0 start-0 z-40">
         {sidebar}
@@ -115,7 +113,7 @@ export default function AdminLayout({ children, params }: { children: React.Reac
       )}
 
       {/* Main Content */}
-      <div className="flex-1 lg:ms-64">
+      <div className="flex-1 lg:ms-64 overflow-x-hidden min-w-0">
         {/* Top Bar */}
         <header className="sticky top-0 z-30 bg-white/80 backdrop-blur-md border-b border-slate-200 px-6 py-4 flex items-center justify-between">
           <button onClick={() => setSidebarOpen(true)} className="lg:hidden text-slate-600">

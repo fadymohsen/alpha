@@ -113,7 +113,7 @@ export default function AdminCareersPage({ params: { locale } }: { params: { loc
         </div>
       ) : (
         <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
-          <div className="overflow-x-auto">
+          <div>
             <table className="w-full">
               <thead>
                 <tr className="border-b border-slate-100">

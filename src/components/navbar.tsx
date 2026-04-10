@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useDictionary } from "@/i18n/dictionary-provider";
+import { useSettings } from "@/lib/settings-context";
 import { useState, useEffect } from "react";
 import { Menu, X, Globe, Phone, ArrowLeft, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -13,6 +14,7 @@ function cn(...inputs: ClassValue[]) { return twMerge(clsx(inputs)); }
 
 export function Navbar({ locale }: { locale: string }) {
   const dict = useDictionary();
+  const { whatsapp } = useSettings();
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -83,7 +85,7 @@ export function Navbar({ locale }: { locale: string }) {
               <Globe size={16} />
               <span>{currentLocale === "ar" ? "English" : "عربي"}</span>
             </Link>
-            <Link href="https://wa.me/966555955056" target="_blank" className="bg-secondary text-white px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-widest shadow-2xl hover:bg-secondary/90 transition-all active:scale-95 flex items-center gap-2">
+            <Link href={`https://wa.me/${whatsapp}`} target="_blank" className="bg-secondary text-white px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-widest shadow-2xl hover:bg-secondary/90 transition-all active:scale-95 flex items-center gap-2">
                <Phone size={16} />{currentLocale === "ar" ? "طلب عرض سعر" : "Get Quote"}
             </Link>
           </div>

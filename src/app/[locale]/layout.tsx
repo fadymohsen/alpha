@@ -3,6 +3,7 @@ import { locales, rtlLocales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { DictionaryProvider } from "@/i18n/dictionary-provider";
 import { SiteShell } from "@/components/site-shell";
+import { SettingsProvider } from "@/lib/settings-context";
 import { GoogleTagManager, GoogleTagManagerNoscript } from "@/components/gtm";
 import type { Metadata } from "next";
 import "@/app/globals.css";
@@ -80,9 +81,11 @@ export default async function LocaleLayout({ children, params }: { children: Rea
       <body className="antialiased min-h-screen flex flex-col">
         <GoogleTagManagerNoscript />
         <DictionaryProvider dictionary={dict}>
+          <SettingsProvider>
            <SiteShell locale={locale}>
              {children}
            </SiteShell>
+          </SettingsProvider>
         </DictionaryProvider>
       </body>
     </html>

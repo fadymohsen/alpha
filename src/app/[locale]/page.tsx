@@ -1,5 +1,6 @@
 "use client";
 import { useDictionary } from "@/i18n/dictionary-provider";
+import { useSettings } from "@/lib/settings-context";
 import { ArrowLeft, ArrowRight, Truck, Crosshair, ShieldCheck, Activity, Award, Users, Zap, Coffee, Heart, Rocket, MessageCircle, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -94,6 +95,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
   const dict = useDictionary();
   const locale = params.locale;
   const isRtl = locale === "ar";
+  const settings = useSettings();
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
   const [dbServices, setDbServices] = useState<DbService[] | null>(null);
   const [dbFaqs, setDbFaqs] = useState<DbFaq[] | null>(null);
@@ -317,7 +319,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
                     </div>
                     <div className="pt-6 relative z-10 mt-auto">
                        <Link
-                         href={`https://wa.me/966555955056?text=${encodeURIComponent(`Hi, I'm interested in: ${s.title}`)}`}
+                         href={`https://wa.me/${settings.whatsapp}?text=${encodeURIComponent(`Hi, I'm interested in: ${s.title}`)}`}
                          target="_blank"
                          rel="noopener noreferrer"
                          className="w-full flex items-center justify-center gap-3 bg-secondary text-white py-4 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-secondary/90 transition-all"

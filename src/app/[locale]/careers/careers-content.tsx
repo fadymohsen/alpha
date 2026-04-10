@@ -2,8 +2,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Briefcase, MapPin, Clock, ArrowRight, Heart, Star, Sparkles, X, User, Phone, Mail, FileText, Send } from "lucide-react";
-
-const WHATSAPP_NUMBER = "966555955056";
+import { useSettings } from "@/lib/settings-context";
 
 interface Job {
   title: string;
@@ -19,6 +18,7 @@ interface CareersContentProps {
 
 export default function CareersContent({ locale, jobs }: CareersContentProps) {
   const isRtl = locale === "ar";
+  const { whatsapp } = useSettings();
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
   const [form, setForm] = useState({ name: "", phone: "", email: "", about: "" });
 
@@ -40,7 +40,7 @@ export default function CareersContent({ locale, jobs }: CareersContentProps) {
 📍 Location: ${selectedJob.location}
 💼 About: ${form.about}`;
 
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    const url = `https://wa.me/${whatsapp}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
     setSelectedJob(null);
     setForm({ name: "", phone: "", email: "", about: "" });
