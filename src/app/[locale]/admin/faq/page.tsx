@@ -22,6 +22,7 @@ export default function AdminFaqPage({ params: { locale } }: { params: { locale:
   const [modal, setModal] = useState<{ open: boolean; editing: FaqItem | null }>({ open: false, editing: null });
   const [form, setForm] = useState(empty);
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const visibleCount = faqs.filter((f) => f.visible).length;
 
@@ -71,6 +72,15 @@ export default function AdminFaqPage({ params: { locale } }: { params: { locale:
   };
 
   const handleToggleVisible = async (f: FaqItem) => {
+    if (!f.visible && visibleCount >= 4) {
+      setError(
+        isRtl
+          ? "لا يمكن تفعيل أكثر من 4 أسئلة في الصفحة الرئيسية. قم بإيقاف سؤال آخر أولاً."
+          : "You cannot enable more than 4 FAQs on the homepage. Please disable another FAQ first."
+      );
+      return;
+    }
+    setError(null);
     const updated = !f.visible;
     setFaqs((prev) => prev.map((x) => (x.id === f.id ? { ...x, visible: updated } : x)));
     await fetch("/api/faq", {
@@ -96,7 +106,7 @@ export default function AdminFaqPage({ params: { locale } }: { params: { locale:
         <div>
           <h1 className="text-2xl font-black text-primary">{isRtl ? "إدارة الأسئلة الشائعة" : "FAQ Management"}</h1>
           <p className="text-sm text-slate-500 mt-1">
-            {isRtl ? `${visibleCount} ظاهرة في الموقع (الحد الأقصى 4 في الرئيسية)` : `${visibleCount} visible on website (max 4 on homepage)`}
+            {isRtl ? `${visibleCount}/4 مفعّلة في الصفحة الرئيسية` : `${visibleCount}/4 enabled on homepage`}
           </p>
         </div>
         <button onClick={openAdd} className="flex items-center gap-2 bg-primary text-white px-5 py-3 rounded-xl font-bold text-sm hover:bg-primary/90 transition-colors">
@@ -104,6 +114,15 @@ export default function AdminFaqPage({ params: { locale } }: { params: { locale:
           {isRtl ? "إضافة سؤال" : "Add FAQ"}
         </button>
       </div>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 rounded-xl px-5 py-4 flex items-center justify-between gap-4">
+          <p className="text-sm font-bold text-red-600">{error}</p>
+          <button onClick={() => setError(null)} className="text-red-400 hover:text-red-600 transition-colors shrink-0">
+            <X size={18} />
+          </button>
+        </div>
+      )}
 
       {loading ? (
         <div className="flex items-center justify-center py-20"><Loader2 size={32} className="animate-spin text-primary" /></div>
