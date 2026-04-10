@@ -20,7 +20,7 @@ model Service {
   title_en    String
   desc_ar     String
   desc_en     String
-  visible     Boolean  @default(true)
+  visible     Boolean  @default(false)
   updatedAt   DateTime @updatedAt
 }
 
