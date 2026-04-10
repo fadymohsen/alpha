@@ -14,7 +14,7 @@ export default function FaqPage({ params }: { params: { locale: string } }) {
   const [dbFaqs, setDbFaqs] = useState<DbFaq[] | null>(null);
 
   useEffect(() => {
-    fetch("/api/faq?visible=true")
+    fetch("/api/faq")
       .then((r) => r.ok ? r.json() : [])
       .then((d) => { if (Array.isArray(d) && d.length > 0) setDbFaqs(d); })
       .catch(() => {});

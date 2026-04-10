@@ -50,7 +50,7 @@ model Faq {
   answer_ar   String
   answer_en   String
   order       Int     @default(0)
-  visible     Boolean  @default(true)
+  visible     Boolean  @default(false)
   createdAt   DateTime @default(now())
 }
 
