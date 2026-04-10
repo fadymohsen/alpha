@@ -21,6 +21,7 @@ export default function AdminServicesPage({ params: { locale } }: { params: { lo
   const [modal, setModal] = useState<{ open: boolean; editing: Service | null }>({ open: false, editing: null });
   const [form, setForm] = useState(empty);
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const visibleCount = services.filter((s) => s.visible).length;
 
@@ -75,6 +76,15 @@ export default function AdminServicesPage({ params: { locale } }: { params: { lo
   };
 
   const handleToggleVisible = async (s: Service) => {
+    if (!s.visible && visibleCount >= 4) {
+      setError(
+        isRtl
+          ? "لا يمكن تفعيل أكثر من 4 خدمات في الصفحة الرئيسية. قم بإيقاف خدمة أخرى أولاً."
+          : "You cannot enable more than 4 services on the homepage. Please disable another service first."
+      );
+      return;
+    }
+    setError(null);
     const updated = !s.visible;
     setServices((prev) => prev.map((x) => (x.id === s.id ? { ...x, visible: updated } : x)));
     await fetch("/api/services", {
@@ -101,7 +111,7 @@ export default function AdminServicesPage({ params: { locale } }: { params: { lo
         <div>
           <h1 className="text-2xl font-black text-primary">{isRtl ? "إدارة الخدمات" : "Services Management"}</h1>
           <p className="text-sm text-slate-500 mt-1">
-            {isRtl ? `${visibleCount} ظاهرة في الموقع (الحد الأقصى 4 في الرئيسية)` : `${visibleCount} visible on website (max 4 on homepage)`}
+            {isRtl ? `${visibleCount}/4 مفعّلة في الصفحة الرئيسية` : `${visibleCount}/4 enabled on homepage`}
           </p>
         </div>
         <button onClick={openAdd} className="flex items-center gap-2 bg-primary text-white px-5 py-3 rounded-xl font-bold text-sm hover:bg-primary/90 transition-colors">
@@ -109,6 +119,16 @@ export default function AdminServicesPage({ params: { locale } }: { params: { lo
           {isRtl ? "إضافة خدمة" : "Add Service"}
         </button>
       </div>
+
+      {/* Error Banner */}
+      {error && (
+        <div className="bg-red-50 border border-red-200 rounded-xl px-5 py-4 flex items-center justify-between gap-4">
+          <p className="text-sm font-bold text-red-600">{error}</p>
+          <button onClick={() => setError(null)} className="text-red-400 hover:text-red-600 transition-colors shrink-0">
+            <X size={18} />
+          </button>
+        </div>
+      )}
 
       {/* Table */}
       {loading ? (
