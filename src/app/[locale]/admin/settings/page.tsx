@@ -48,24 +48,24 @@ export default function AdminSettingsPage({ params: { locale } }: { params: { lo
   if (loading) return <div className="flex items-center justify-center py-20"><Loader2 size={32} className="animate-spin text-primary" /></div>;
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
+    <div className="space-y-4 sm:space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-black text-primary">{isRtl ? "الإعدادات العامة" : "General Settings"}</h1>
-          <p className="text-sm text-slate-500 mt-1">{isRtl ? "معلومات الاتصال والروابط" : "Contact info and links"}</p>
+          <h1 className="text-xl sm:text-2xl font-black text-primary">{isRtl ? "الإعدادات العامة" : "General Settings"}</h1>
+          <p className="text-xs sm:text-sm text-slate-500 mt-1">{isRtl ? "معلومات الاتصال" : "Contact info"}</p>
         </div>
-        <button onClick={handleSave} disabled={saving} className="flex items-center gap-2 bg-primary text-white px-5 py-3 rounded-xl font-bold text-sm hover:bg-primary/90 transition-colors disabled:opacity-50">
+        <button onClick={handleSave} disabled={saving} className="flex items-center justify-center gap-2 bg-primary text-white px-4 py-2.5 sm:px-5 sm:py-3 rounded-xl font-bold text-sm hover:bg-primary/90 disabled:opacity-50 w-full sm:w-auto">
           {saving ? <Loader2 size={16} className="animate-spin" /> : <Save size={16} />}
           {saved ? (isRtl ? "تم الحفظ!" : "Saved!") : (isRtl ? "حفظ الإعدادات" : "Save Settings")}
         </button>
       </div>
 
-      <div className="bg-white rounded-2xl border border-slate-200 divide-y divide-slate-100">
+      <div className="bg-white rounded-xl border border-slate-200 divide-y divide-slate-100">
         {settingFields.map((field) => (
-          <div key={field.key} className="p-6 flex flex-col sm:flex-row sm:items-center gap-4">
-            <div className="flex items-center gap-3 sm:w-56 flex-shrink-0">
-              <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center text-slate-500">
-                <field.icon size={18} />
+          <div key={field.key} className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center gap-3">
+            <div className="flex items-center gap-3 sm:w-48 shrink-0">
+              <div className="w-9 h-9 bg-slate-100 rounded-lg flex items-center justify-center text-slate-500 shrink-0">
+                <field.icon size={16} />
               </div>
               <span className="text-sm font-bold text-primary">{field.label[isRtl ? "ar" : "en"]}</span>
             </div>
@@ -74,7 +74,7 @@ export default function AdminSettingsPage({ params: { locale } }: { params: { lo
               value={data[field.key] || ""}
               onChange={(e) => setData({ ...data, [field.key]: e.target.value })}
               placeholder={field.placeholder}
-              className="flex-1 px-4 py-3 bg-slate-50 rounded-xl outline-none focus:ring-2 ring-primary/20 font-medium text-sm"
+              className="flex-1 px-3 py-2.5 bg-slate-50 rounded-xl outline-none focus:ring-2 ring-primary/20 font-medium text-sm w-full"
             />
           </div>
         ))}

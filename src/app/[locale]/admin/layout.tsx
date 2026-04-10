@@ -115,20 +115,23 @@ export default function AdminLayout({ children, params }: { children: React.Reac
       {/* Main Content */}
       <div className="flex-1 lg:ms-64 overflow-x-hidden min-w-0">
         {/* Top Bar */}
-        <header className="sticky top-0 z-30 bg-white/80 backdrop-blur-md border-b border-slate-200 px-6 py-4 flex items-center justify-between">
+        <header className="sticky top-0 z-30 bg-white/80 backdrop-blur-md border-b border-slate-200 px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between gap-2">
           <button onClick={() => setSidebarOpen(true)} className="lg:hidden text-slate-600">
             <Menu size={24} />
           </button>
           <h2 className="text-lg font-black text-primary tracking-tight">
             {navItems.find((item) => isActive(item.href))?.label[isRtl ? "ar" : "en"] || (isRtl ? "لوحة التحكم" : "Dashboard")}
           </h2>
-          <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">
-            {isRtl ? "مشرف" : "Admin"}
-          </div>
+          <Link
+            href={pathname.replace(`/${locale}/`, `/${locale === "ar" ? "en" : "ar"}/`)}
+            className="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-xs font-black text-primary uppercase tracking-widest transition-colors"
+          >
+            {locale === "ar" ? "EN" : "عربي"}
+          </Link>
         </header>
 
         {/* Page Content */}
-        <main className="p-6">{children}</main>
+        <main className="p-4 sm:p-6">{children}</main>
       </div>
     </div>
   );
