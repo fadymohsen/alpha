@@ -71,7 +71,6 @@ export default function AdminFaqPage({ params: { locale } }: { params: { locale:
   };
 
   const handleToggleVisible = async (f: FaqItem) => {
-    if (!f.visible && visibleCount >= 4) return;
     const updated = !f.visible;
     setFaqs((prev) => prev.map((x) => (x.id === f.id ? { ...x, visible: updated } : x)));
     await fetch("/api/faq", {
@@ -97,7 +96,7 @@ export default function AdminFaqPage({ params: { locale } }: { params: { locale:
         <div>
           <h1 className="text-2xl font-black text-primary">{isRtl ? "إدارة الأسئلة الشائعة" : "FAQ Management"}</h1>
           <p className="text-sm text-slate-500 mt-1">
-            {isRtl ? `${visibleCount}/4 ظاهرة في الموقع` : `${visibleCount}/4 visible on website`}
+            {isRtl ? `${visibleCount} ظاهرة في الموقع (الحد الأقصى 4 في الرئيسية)` : `${visibleCount} visible on website (max 4 on homepage)`}
           </p>
         </div>
         <button onClick={openAdd} className="flex items-center gap-2 bg-primary text-white px-5 py-3 rounded-xl font-bold text-sm hover:bg-primary/90 transition-colors">
@@ -122,9 +121,7 @@ export default function AdminFaqPage({ params: { locale } }: { params: { locale:
               <div className="flex items-center gap-4 flex-1 min-w-0">
                 <button
                   onClick={() => handleToggleVisible(f)}
-                  disabled={!f.visible && visibleCount >= 4}
-                  className={`relative w-12 h-7 rounded-full transition-colors flex-shrink-0 ${f.visible ? "bg-green-500" : "bg-slate-300"} ${!f.visible && visibleCount >= 4 ? "cursor-not-allowed" : "cursor-pointer"}`}
-                  title={!f.visible && visibleCount >= 4 ? (isRtl ? "الحد الأقصى 4" : "Max 4 visible") : ""}
+                  className={`relative w-12 h-7 rounded-full transition-colors flex-shrink-0 cursor-pointer ${f.visible ? "bg-green-500" : "bg-slate-300"}`}
                 >
                   <span className={`absolute top-0.5 w-6 h-6 bg-white rounded-full shadow transition-all ${f.visible ? "start-5" : "start-0.5"}`} />
                 </button>
