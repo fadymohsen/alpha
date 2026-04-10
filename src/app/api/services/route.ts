@@ -4,8 +4,13 @@ import { prisma } from "@/lib/prisma";
 export const dynamic = "force-dynamic";
 
 export async function GET() {
-  const services = await prisma.service.findMany({ orderBy: { updatedAt: "desc" } });
-  return NextResponse.json(services);
+  try {
+    const services = await prisma.service.findMany({ orderBy: { updatedAt: "desc" } });
+    return NextResponse.json(services);
+  } catch (e) {
+    console.error("GET /api/services error:", e);
+    return NextResponse.json({ error: "Failed to fetch services" }, { status: 500 });
+  }
 }
 
 export async function POST(req: NextRequest) {

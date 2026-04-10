@@ -20,13 +20,17 @@ export default function AdminAboutPage({ params: { locale } }: { params: { local
 
   useEffect(() => {
     fetch("/api/content?prefix=about.")
-      .then((r) => r.json())
+      .then((r) => {
+        if (!r.ok) throw new Error("API error");
+        return r.json();
+      })
       .then((items: { key: string; value_ar: string; value_en: string }[]) => {
         const map: Record<string, { value_ar: string; value_en: string }> = {};
-        items.forEach((item) => { map[item.key] = { value_ar: item.value_ar, value_en: item.value_en }; });
+        if (Array.isArray(items)) items.forEach((item) => { map[item.key] = { value_ar: item.value_ar, value_en: item.value_en }; });
         setData(map);
-        setLoading(false);
-      });
+      })
+      .catch((e) => console.error("Failed to fetch about content:", e))
+      .finally(() => setLoading(false));
   }, []);
 
   const getValue = (key: string, lang: "ar" | "en") => data[key]?.[`value_${lang}`] || "";

@@ -31,13 +31,17 @@ export default function AdminHomepagePage({ params: { locale } }: { params: { lo
 
   useEffect(() => {
     fetch("/api/content?prefix=hero.,stats.,vision_mission.,why_choose_us.")
-      .then((r) => r.json())
+      .then((r) => {
+        if (!r.ok) throw new Error("API error");
+        return r.json();
+      })
       .then((items: { key: string; value_ar: string; value_en: string }[]) => {
         const map: Record<string, { value_ar: string; value_en: string }> = {};
-        items.forEach((item) => { map[item.key] = { value_ar: item.value_ar, value_en: item.value_en }; });
+        if (Array.isArray(items)) items.forEach((item) => { map[item.key] = { value_ar: item.value_ar, value_en: item.value_en }; });
         setData(map);
-        setLoading(false);
-      });
+      })
+      .catch((e) => console.error("Failed to fetch homepage content:", e))
+      .finally(() => setLoading(false));
   }, []);
 
   const getValue = (key: string, lang: "ar" | "en") => data[key]?.[`value_${lang}`] || "";

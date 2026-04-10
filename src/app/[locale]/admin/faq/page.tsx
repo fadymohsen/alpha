@@ -24,10 +24,17 @@ export default function AdminFaqPage({ params: { locale } }: { params: { locale:
 
   const fetchFaqs = async () => {
     setLoading(true);
-    const res = await fetch("/api/faq");
-    const data = await res.json();
-    setFaqs(data);
-    setLoading(false);
+    try {
+      const res = await fetch("/api/faq");
+      if (!res.ok) throw new Error("API error");
+      const data = await res.json();
+      setFaqs(Array.isArray(data) ? data : []);
+    } catch (e) {
+      console.error("Failed to fetch FAQs:", e);
+      setFaqs([]);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => { fetchFaqs(); }, []);

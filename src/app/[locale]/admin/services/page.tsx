@@ -23,10 +23,17 @@ export default function AdminServicesPage({ params: { locale } }: { params: { lo
 
   const fetchServices = async () => {
     setLoading(true);
-    const res = await fetch("/api/services");
-    const data = await res.json();
-    setServices(data);
-    setLoading(false);
+    try {
+      const res = await fetch("/api/services");
+      if (!res.ok) throw new Error("API error");
+      const data = await res.json();
+      setServices(Array.isArray(data) ? data : []);
+    } catch (e) {
+      console.error("Failed to fetch services:", e);
+      setServices([]);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => { fetchServices(); }, []);

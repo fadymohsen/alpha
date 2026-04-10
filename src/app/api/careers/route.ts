@@ -4,8 +4,13 @@ import { prisma } from "@/lib/prisma";
 export const dynamic = "force-dynamic";
 
 export async function GET() {
-  const careers = await prisma.career.findMany({ orderBy: { createdAt: "desc" } });
-  return NextResponse.json(careers);
+  try {
+    const careers = await prisma.career.findMany({ orderBy: { createdAt: "desc" } });
+    return NextResponse.json(careers);
+  } catch (e) {
+    console.error("GET /api/careers error:", e);
+    return NextResponse.json({ error: "Failed to fetch careers" }, { status: 500 });
+  }
 }
 
 export async function POST(req: NextRequest) {

@@ -21,13 +21,17 @@ export default function AdminSettingsPage({ params: { locale } }: { params: { lo
 
   useEffect(() => {
     fetch("/api/settings")
-      .then((r) => r.json())
+      .then((r) => {
+        if (!r.ok) throw new Error("API error");
+        return r.json();
+      })
       .then((items: { key: string; value: string }[]) => {
         const map: Record<string, string> = {};
-        items.forEach((item) => { map[item.key] = item.value; });
+        if (Array.isArray(items)) items.forEach((item) => { map[item.key] = item.value; });
         setData(map);
-        setLoading(false);
-      });
+      })
+      .catch((e) => console.error("Failed to fetch settings:", e))
+      .finally(() => setLoading(false));
   }, []);
 
   const handleSave = async () => {

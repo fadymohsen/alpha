@@ -4,8 +4,13 @@ import { prisma } from "@/lib/prisma";
 export const dynamic = "force-dynamic";
 
 export async function GET() {
-  const settings = await prisma.setting.findMany();
-  return NextResponse.json(settings);
+  try {
+    const settings = await prisma.setting.findMany();
+    return NextResponse.json(settings);
+  } catch (e) {
+    console.error("GET /api/settings error:", e);
+    return NextResponse.json({ error: "Failed to fetch settings" }, { status: 500 });
+  }
 }
 
 export async function PUT(req: NextRequest) {

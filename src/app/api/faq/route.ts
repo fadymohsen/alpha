@@ -4,8 +4,13 @@ import { prisma } from "@/lib/prisma";
 export const dynamic = "force-dynamic";
 
 export async function GET() {
-  const faqs = await prisma.faq.findMany({ orderBy: { order: "asc" } });
-  return NextResponse.json(faqs);
+  try {
+    const faqs = await prisma.faq.findMany({ orderBy: { order: "asc" } });
+    return NextResponse.json(faqs);
+  } catch (e) {
+    console.error("GET /api/faq error:", e);
+    return NextResponse.json({ error: "Failed to fetch FAQs" }, { status: 500 });
+  }
 }
 
 export async function POST(req: NextRequest) {

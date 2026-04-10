@@ -25,10 +25,17 @@ export default function AdminCareersPage({ params: { locale } }: { params: { loc
 
   const fetchCareers = async () => {
     setLoading(true);
-    const res = await fetch("/api/careers");
-    const data = await res.json();
-    setCareers(data);
-    setLoading(false);
+    try {
+      const res = await fetch("/api/careers");
+      if (!res.ok) throw new Error("API error");
+      const data = await res.json();
+      setCareers(Array.isArray(data) ? data : []);
+    } catch (e) {
+      console.error("Failed to fetch careers:", e);
+      setCareers([]);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => { fetchCareers(); }, []);

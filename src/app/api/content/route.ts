@@ -4,11 +4,22 @@ import { prisma } from "@/lib/prisma";
 export const dynamic = "force-dynamic";
 
 export async function GET(req: NextRequest) {
-  const prefix = req.nextUrl.searchParams.get("prefix");
-  const contents = prefix
-    ? await prisma.siteContent.findMany({ where: { key: { startsWith: prefix } } })
-    : await prisma.siteContent.findMany();
-  return NextResponse.json(contents);
+  try {
+    const prefix = req.nextUrl.searchParams.get("prefix");
+    let contents;
+    if (prefix) {
+      const prefixes = prefix.split(",").filter(Boolean);
+      contents = await prisma.siteContent.findMany({
+        where: { OR: prefixes.map((p) => ({ key: { startsWith: p } })) },
+      });
+    } else {
+      contents = await prisma.siteContent.findMany();
+    }
+    return NextResponse.json(contents);
+  } catch (e) {
+    console.error("GET /api/content error:", e);
+    return NextResponse.json({ error: "Failed to fetch content" }, { status: 500 });
+  }
 }
 
 export async function PUT(req: NextRequest) {
