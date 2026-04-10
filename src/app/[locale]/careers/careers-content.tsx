@@ -11,16 +11,15 @@ interface Job {
   location: string;
 }
 
-export default function CareersContent({ locale }: { locale: string }) {
+interface CareersContentProps {
+  locale: string;
+  jobs: Job[];
+}
+
+export default function CareersContent({ locale, jobs }: CareersContentProps) {
   const isRtl = locale === "ar";
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
   const [form, setForm] = useState({ name: "", phone: "", email: "", about: "" });
-
-  const jobs: Job[] = [
-    { title: isRtl ? "سائق نقل ثقيل" : "Heavy Truck Driver", type: isRtl ? "دوام كامل" : "Full Time", location: isRtl ? "الرياض" : "Riyadh" },
-    { title: isRtl ? "مشرف لوجستي" : "Logistics Supervisor", type: isRtl ? "دوام كامل" : "Full Time", location: isRtl ? "جدة" : "Jeddah" },
-    { title: isRtl ? "منسق سلاسل إمداد" : "Supply Chain Coordinator", type: isRtl ? "دوام كامل" : "Full Time", location: isRtl ? "الدمام" : "Dammam" },
-  ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
