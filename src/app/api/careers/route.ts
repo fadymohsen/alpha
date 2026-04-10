@@ -3,13 +3,9 @@ import { prisma } from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
-    const visibleOnly = req.nextUrl.searchParams.get("visible") === "true";
-    const careers = await prisma.career.findMany({
-      where: visibleOnly ? { visible: true } : undefined,
-      orderBy: { createdAt: "desc" },
-    });
+    const careers = await prisma.career.findMany({ orderBy: { createdAt: "desc" } });
     return NextResponse.json(careers);
   } catch (e) {
     console.error("GET /api/careers error:", e);
@@ -25,6 +21,7 @@ export async function POST(req: NextRequest) {
       title_en: body.title_en,
       location_ar: body.location_ar,
       location_en: body.location_en,
+      type: body.type || "full_time",
       req_ar: body.req_ar,
       req_en: body.req_en,
     },
@@ -41,18 +38,10 @@ export async function PUT(req: NextRequest) {
       title_en: body.title_en,
       location_ar: body.location_ar,
       location_en: body.location_en,
+      type: body.type,
       req_ar: body.req_ar,
       req_en: body.req_en,
     },
-  });
-  return NextResponse.json(career);
-}
-
-export async function PATCH(req: NextRequest) {
-  const body = await req.json();
-  const career = await prisma.career.update({
-    where: { id: body.id },
-    data: { visible: body.visible },
   });
   return NextResponse.json(career);
 }

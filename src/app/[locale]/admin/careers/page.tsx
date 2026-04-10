@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Plus, Pencil, Trash2, X, Loader2, MapPin } from "lucide-react";
+import { Plus, Pencil, Trash2, X, Loader2, MapPin, Clock } from "lucide-react";
 
 interface Career {
   id: string;
@@ -8,12 +8,15 @@ interface Career {
   title_en: string;
   location_ar: string;
   location_en: string;
+  type: string;
   req_ar: string;
   req_en: string;
-  visible: boolean;
 }
 
-const empty = { title_ar: "", title_en: "", location_ar: "", location_en: "", req_ar: "", req_en: "" };
+const empty = { title_ar: "", title_en: "", location_ar: "", location_en: "", type: "full_time", req_ar: "", req_en: "" };
+
+const typeLabel = (type: string, isRtl: boolean) =>
+  type === "part_time" ? (isRtl ? "دوام جزئي" : "Part Time") : (isRtl ? "دوام كامل" : "Full Time");
 
 export default function AdminCareersPage({ params: { locale } }: { params: { locale: string } }) {
   const isRtl = locale === "ar";
@@ -23,8 +26,6 @@ export default function AdminCareersPage({ params: { locale } }: { params: { loc
   const [modal, setModal] = useState<{ open: boolean; editing: Career | null }>({ open: false, editing: null });
   const [form, setForm] = useState(empty);
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
-
-  const visibleCount = careers.filter((c) => c.visible).length;
 
   const fetchCareers = async () => {
     setLoading(true);
@@ -49,7 +50,7 @@ export default function AdminCareersPage({ params: { locale } }: { params: { loc
   };
 
   const openEdit = (c: Career) => {
-    setForm({ title_ar: c.title_ar, title_en: c.title_en, location_ar: c.location_ar, location_en: c.location_en, req_ar: c.req_ar, req_en: c.req_en });
+    setForm({ title_ar: c.title_ar, title_en: c.title_en, location_ar: c.location_ar, location_en: c.location_en, type: c.type, req_ar: c.req_ar, req_en: c.req_en });
     setModal({ open: true, editing: c });
   };
 
@@ -76,16 +77,6 @@ export default function AdminCareersPage({ params: { locale } }: { params: { loc
     fetchCareers();
   };
 
-  const handleToggleVisible = async (c: Career) => {
-    const updated = !c.visible;
-    setCareers((prev) => prev.map((x) => (x.id === c.id ? { ...x, visible: updated } : x)));
-    await fetch("/api/careers", {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id: c.id, visible: updated }),
-    });
-  };
-
   const handleDelete = async (id: string) => {
     await fetch("/api/careers", {
       method: "DELETE",
@@ -98,13 +89,10 @@ export default function AdminCareersPage({ params: { locale } }: { params: { loc
 
   return (
     <div className="space-y-6">
-      {/* Header */}
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-black text-primary">{isRtl ? "إدارة الوظائف" : "Careers Management"}</h1>
-          <p className="text-sm text-slate-500 mt-1">
-            {isRtl ? `${visibleCount} ظاهرة في الموقع (الحد الأقصى 4 في الرئيسية)` : `${visibleCount} visible on website (max 4 on homepage)`}
-          </p>
+          <p className="text-sm text-slate-500 mt-1">{isRtl ? "إدارة فرص العمل المتاحة" : "Manage job openings"}</p>
         </div>
         <button onClick={openAdd} className="flex items-center gap-2 bg-primary text-white px-5 py-3 rounded-xl font-bold text-sm hover:bg-primary/90 transition-colors">
           <Plus size={18} />
@@ -112,7 +100,6 @@ export default function AdminCareersPage({ params: { locale } }: { params: { loc
         </button>
       </div>
 
-      {/* Table */}
       {loading ? (
         <div className="flex items-center justify-center py-20">
           <Loader2 size={32} className="animate-spin text-primary" />
@@ -130,23 +117,15 @@ export default function AdminCareersPage({ params: { locale } }: { params: { loc
             <table className="w-full">
               <thead>
                 <tr className="border-b border-slate-100">
-                  <th className="text-start px-6 py-4 text-xs font-black text-slate-400 uppercase tracking-widest">{isRtl ? "الحالة" : "Visible"}</th>
                   <th className="text-start px-6 py-4 text-xs font-black text-slate-400 uppercase tracking-widest">{isRtl ? "المسمى الوظيفي" : "Job Title"}</th>
                   <th className="text-start px-6 py-4 text-xs font-black text-slate-400 uppercase tracking-widest">{isRtl ? "الموقع" : "Location"}</th>
+                  <th className="text-start px-6 py-4 text-xs font-black text-slate-400 uppercase tracking-widest">{isRtl ? "النوع" : "Type"}</th>
                   <th className="text-start px-6 py-4 text-xs font-black text-slate-400 uppercase tracking-widest">{isRtl ? "الإجراءات" : "Actions"}</th>
                 </tr>
               </thead>
               <tbody>
                 {careers.map((c) => (
-                  <tr key={c.id} className={`border-b border-slate-50 hover:bg-slate-50/50 transition-colors ${!c.visible ? "opacity-50" : ""}`}>
-                    <td className="px-6 py-4">
-                      <button
-                        onClick={() => handleToggleVisible(c)}
-                        className={`relative w-12 h-7 rounded-full transition-colors cursor-pointer ${c.visible ? "bg-green-500" : "bg-slate-300"}`}
-                      >
-                        <span className={`absolute top-0.5 w-6 h-6 bg-white rounded-full shadow transition-all ${c.visible ? "start-5" : "start-0.5"}`} />
-                      </button>
-                    </td>
+                  <tr key={c.id} className="border-b border-slate-50 hover:bg-slate-50/50 transition-colors">
                     <td className="px-6 py-4">
                       <p className="font-bold text-sm text-primary">{isRtl ? c.title_ar : c.title_en}</p>
                       <p className="text-xs text-slate-400 mt-0.5">{isRtl ? c.title_en : c.title_ar}</p>
@@ -155,6 +134,12 @@ export default function AdminCareersPage({ params: { locale } }: { params: { loc
                       <span className="flex items-center gap-1 text-sm text-slate-600 font-medium">
                         <MapPin size={14} className="text-slate-400" />
                         {isRtl ? c.location_ar : c.location_en}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4">
+                      <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold ${c.type === "full_time" ? "bg-green-50 text-green-600" : "bg-blue-50 text-blue-600"}`}>
+                        <Clock size={12} />
+                        {typeLabel(c.type, isRtl)}
                       </span>
                     </td>
                     <td className="px-6 py-4">
@@ -216,6 +201,17 @@ export default function AdminCareersPage({ params: { locale } }: { params: { loc
                   <label className="block text-xs font-black text-slate-500 uppercase tracking-widest mb-2">{isRtl ? "الموقع (إنجليزي)" : "Location (English)"}</label>
                   <input required dir="ltr" value={form.location_en} onChange={(e) => setForm({ ...form, location_en: e.target.value })} className="w-full px-4 py-3 bg-slate-50 rounded-xl outline-none focus:ring-2 ring-primary/20 font-medium text-sm" />
                 </div>
+              </div>
+              <div>
+                <label className="block text-xs font-black text-slate-500 uppercase tracking-widest mb-2">{isRtl ? "نوع الدوام" : "Job Type"}</label>
+                <select
+                  value={form.type}
+                  onChange={(e) => setForm({ ...form, type: e.target.value })}
+                  className="w-full px-4 py-3 bg-slate-50 rounded-xl outline-none focus:ring-2 ring-primary/20 font-medium text-sm"
+                >
+                  <option value="full_time">{isRtl ? "دوام كامل" : "Full Time"}</option>
+                  <option value="part_time">{isRtl ? "دوام جزئي" : "Part Time"}</option>
+                </select>
               </div>
               <div>
                 <label className="block text-xs font-black text-slate-500 uppercase tracking-widest mb-2">{isRtl ? "المتطلبات (عربي)" : "Requirements (Arabic)"}</label>

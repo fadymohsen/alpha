@@ -30,9 +30,9 @@ model Career {
   title_en     String
   location_ar  String
   location_en  String
+  type         String   @default("full_time")
   req_ar       String
   req_en       String
-  visible      Boolean  @default(true)
   createdAt    DateTime @default(now())
 }
 

@@ -15,30 +15,16 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 
 export const dynamic = "force-dynamic";
 
-const fallbackJobs = {
-  ar: [
-    { title: "سائق نقل ثقيل", type: "دوام كامل", location: "الرياض" },
-    { title: "مشرف لوجستي", type: "دوام كامل", location: "جدة" },
-    { title: "منسق سلاسل إمداد", type: "دوام كامل", location: "الدمام" },
-  ],
-  en: [
-    { title: "Heavy Truck Driver", type: "Full Time", location: "Riyadh" },
-    { title: "Logistics Supervisor", type: "Full Time", location: "Jeddah" },
-    { title: "Supply Chain Coordinator", type: "Full Time", location: "Dammam" },
-  ],
-};
-
 export default async function CareersPage({ params: { locale } }: { params: { locale: string } }) {
   const isRtl = locale === "ar";
-  const careers = await prisma.career.findMany({ where: { visible: true }, orderBy: { createdAt: "desc" } });
+  const careers = await prisma.career.findMany({ orderBy: { createdAt: "desc" } });
 
-  const jobs = careers.length > 0
-    ? careers.map((c) => ({
-        title: isRtl ? c.title_ar : c.title_en,
-        type: isRtl ? "دوام كامل" : "Full Time",
-        location: isRtl ? c.location_ar : c.location_en,
-      }))
-    : fallbackJobs[isRtl ? "ar" : "en"];
+  const jobs = careers.map((c) => ({
+    title: isRtl ? c.title_ar : c.title_en,
+    type: c.type === "part_time" ? (isRtl ? "دوام جزئي" : "Part Time") : (isRtl ? "دوام كامل" : "Full Time"),
+    location: isRtl ? c.location_ar : c.location_en,
+    requirements: isRtl ? c.req_ar : c.req_en,
+  }));
 
   return <CareersContent locale={locale} jobs={jobs} />;
 }

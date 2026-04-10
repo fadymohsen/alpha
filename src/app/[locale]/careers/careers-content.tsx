@@ -9,6 +9,7 @@ interface Job {
   title: string;
   type: string;
   location: string;
+  requirements: string;
 }
 
 interface CareersContentProps {
@@ -111,18 +112,26 @@ export default function CareersContent({ locale, jobs }: CareersContentProps) {
                   <div
                     key={i}
                     onClick={() => setSelectedJob(job)}
-                    className="p-8 bg-white rounded-3xl shadow-sm border border-primary/5 flex items-center justify-between group hover:border-accent transition-all cursor-pointer"
+                    className="p-8 bg-white rounded-3xl shadow-sm border border-primary/5 group hover:border-accent transition-all cursor-pointer space-y-4"
                   >
-                    <div className="space-y-1">
-                      <h4 className="text-xl font-black text-primary group-hover:text-accent transition-colors">{job.title}</h4>
-                      <div className="flex items-center gap-4 text-xs font-bold text-gray-400 uppercase tracking-widest">
-                        <span className="flex items-center gap-1"><MapPin size={14} /> {job.location}</span>
-                        <span className="flex items-center gap-1"><Clock size={14} /> {job.type}</span>
+                    <div className="flex items-center justify-between">
+                      <div className="space-y-1">
+                        <h4 className="text-xl font-black text-primary group-hover:text-accent transition-colors">{job.title}</h4>
+                        <div className="flex items-center gap-4 text-xs font-bold text-gray-400 uppercase tracking-widest">
+                          <span className="flex items-center gap-1"><MapPin size={14} /> {job.location}</span>
+                          <span className="flex items-center gap-1"><Clock size={14} /> {job.type}</span>
+                        </div>
+                      </div>
+                      <div className="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-primary group-hover:bg-accent group-hover:text-white group-hover:rotate-45 transition-all shrink-0">
+                        <ArrowRight size={20} className={isRtl ? "rotate-180" : ""} />
                       </div>
                     </div>
-                    <div className="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-primary group-hover:bg-accent group-hover:text-white group-hover:rotate-45 transition-all">
-                      <ArrowRight size={20} className={isRtl ? "rotate-180" : ""} />
-                    </div>
+                    {job.requirements && (
+                      <div className="border-t border-slate-100 pt-3">
+                        <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">{isRtl ? "المتطلبات" : "Requirements"}</p>
+                        <p className="text-sm text-gray-500 leading-relaxed">{job.requirements}</p>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
