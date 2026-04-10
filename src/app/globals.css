@@ -43,7 +43,7 @@ body {
 [dir="rtl"] * {
   letter-spacing: 0 !important;
   text-transform: none !important;
-  line-height: 1.9 !important;
+  line-height: 1.55 !important;
   word-spacing: 0.12em !important;
 }
 
@@ -53,6 +53,12 @@ body {
 
 [dir="ltr"] * {
   letter-spacing: 0.04em !important;
+  line-height: 1.55 !important;
+}
+
+/* Preserve original line-height for hero section */
+.hero-spacing,
+.hero-spacing * {
   line-height: 1.9 !important;
 }
 
