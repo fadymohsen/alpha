@@ -1,0 +1,43 @@
+import { NextRequest, NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
+
+export async function GET() {
+  const faqs = await prisma.faq.findMany({ orderBy: { order: "asc" } });
+  return NextResponse.json(faqs);
+}
+
+export async function POST(req: NextRequest) {
+  const body = await req.json();
+  const maxOrder = await prisma.faq.aggregate({ _max: { order: true } });
+  const faq = await prisma.faq.create({
+    data: {
+      question_ar: body.question_ar,
+      question_en: body.question_en,
+      answer_ar: body.answer_ar,
+      answer_en: body.answer_en,
+      order: (maxOrder._max.order ?? -1) + 1,
+    },
+  });
+  return NextResponse.json(faq, { status: 201 });
+}
+
+export async function PUT(req: NextRequest) {
+  const body = await req.json();
+  const faq = await prisma.faq.update({
+    where: { id: body.id },
+    data: {
+      question_ar: body.question_ar,
+      question_en: body.question_en,
+      answer_ar: body.answer_ar,
+      answer_en: body.answer_en,
+      order: body.order,
+    },
+  });
+  return NextResponse.json(faq);
+}
+
+export async function DELETE(req: NextRequest) {
+  const { id } = await req.json();
+  await prisma.faq.delete({ where: { id } });
+  return NextResponse.json({ success: true });
+}

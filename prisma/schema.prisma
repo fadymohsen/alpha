@@ -33,3 +33,26 @@ model Career {
   req_en       String
   createdAt    DateTime @default(now())
 }
+
+model SiteContent {
+  key       String   @id
+  value_ar  String
+  value_en  String
+  updatedAt DateTime @updatedAt
+}
+
+model Faq {
+  id         String   @id @default(cuid())
+  question_ar String
+  question_en String
+  answer_ar   String
+  answer_en   String
+  order       Int     @default(0)
+  createdAt   DateTime @default(now())
+}
+
+model Setting {
+  key       String   @id
+  value     String
+  updatedAt DateTime @updatedAt
+}
