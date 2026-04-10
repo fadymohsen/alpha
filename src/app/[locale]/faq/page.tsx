@@ -1,14 +1,28 @@
 "use client";
 import { useDictionary } from "@/i18n/dictionary-provider";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+
+interface DbFaq { id: string; question_ar: string; question_en: string; answer_ar: string; answer_en: string; }
 
 export default function FaqPage({ params }: { params: { locale: string } }) {
   const dict = useDictionary();
   const locale = params.locale;
   const isRtl = locale === "ar";
   const [open, setOpen] = useState<number | null>(null);
+  const [dbFaqs, setDbFaqs] = useState<DbFaq[] | null>(null);
+
+  useEffect(() => {
+    fetch("/api/faq?visible=true")
+      .then((r) => r.ok ? r.json() : [])
+      .then((d) => { if (Array.isArray(d) && d.length > 0) setDbFaqs(d); })
+      .catch(() => {});
+  }, []);
+
+  const faqItems = dbFaqs
+    ? dbFaqs.map((f) => ({ q: isRtl ? f.question_ar : f.question_en, a: isRtl ? f.answer_ar : f.answer_en }))
+    : dict.faq.items;
 
   const toggle = (i: number) => setOpen(open === i ? null : i);
 
@@ -23,7 +37,7 @@ export default function FaqPage({ params }: { params: { locale: string } }) {
       </section>
 
       <div className="max-w-3xl mx-auto px-6 -mt-12 relative z-20 space-y-4">
-        {dict.faq.items.map((item: any, i: number) => (
+        {faqItems.map((item: any, i: number) => (
           <motion.div
             key={i}
             initial={{ opacity: 0, y: 20 }}

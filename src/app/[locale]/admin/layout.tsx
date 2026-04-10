@@ -7,8 +7,6 @@ import {
   LayoutDashboard,
   Truck,
   Briefcase,
-  Home,
-  Info,
   HelpCircle,
   Settings,
   LogOut,
@@ -21,8 +19,6 @@ const navItems = [
   { key: "dashboard", icon: LayoutDashboard, label: { ar: "لوحة التحكم", en: "Dashboard" }, href: "" },
   { key: "services", icon: Truck, label: { ar: "الخدمات", en: "Services" }, href: "/services" },
   { key: "careers", icon: Briefcase, label: { ar: "الوظائف", en: "Careers" }, href: "/careers" },
-  { key: "homepage", icon: Home, label: { ar: "الصفحة الرئيسية", en: "Homepage" }, href: "/homepage" },
-  { key: "about", icon: Info, label: { ar: "من نحن", en: "About" }, href: "/about" },
   { key: "faq", icon: HelpCircle, label: { ar: "الأسئلة الشائعة", en: "FAQ" }, href: "/faq" },
   { key: "settings", icon: Settings, label: { ar: "الإعدادات", en: "Settings" }, href: "/settings" },
 ];

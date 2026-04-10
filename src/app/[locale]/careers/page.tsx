@@ -30,7 +30,7 @@ const fallbackJobs = {
 
 export default async function CareersPage({ params: { locale } }: { params: { locale: string } }) {
   const isRtl = locale === "ar";
-  const careers = await prisma.career.findMany({ orderBy: { createdAt: "desc" } });
+  const careers = await prisma.career.findMany({ where: { visible: true }, orderBy: { createdAt: "desc" } });
 
   const jobs = careers.length > 0
     ? careers.map((c) => ({

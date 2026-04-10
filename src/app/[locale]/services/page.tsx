@@ -25,7 +25,7 @@ export default async function ServicesPage({ params }: { params: { locale: strin
   const dict = await getDictionary(locale as any);
   const isRtl = locale === "ar";
 
-  const services = await prisma.service.findMany({ orderBy: { updatedAt: "desc" } });
+  const services = await prisma.service.findMany({ where: { visible: true }, orderBy: { updatedAt: "desc" } });
 
   // Fallback to dictionary if no DB services yet
   const list = services.length > 0

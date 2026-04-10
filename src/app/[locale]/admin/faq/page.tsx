@@ -9,6 +9,7 @@ interface FaqItem {
   answer_ar: string;
   answer_en: string;
   order: number;
+  visible: boolean;
 }
 
 const empty = { question_ar: "", question_en: "", answer_ar: "", answer_en: "" };
@@ -21,6 +22,8 @@ export default function AdminFaqPage({ params: { locale } }: { params: { locale:
   const [modal, setModal] = useState<{ open: boolean; editing: FaqItem | null }>({ open: false, editing: null });
   const [form, setForm] = useState(empty);
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
+
+  const visibleCount = faqs.filter((f) => f.visible).length;
 
   const fetchFaqs = async () => {
     setLoading(true);
@@ -67,6 +70,17 @@ export default function AdminFaqPage({ params: { locale } }: { params: { locale:
     fetchFaqs();
   };
 
+  const handleToggleVisible = async (f: FaqItem) => {
+    if (!f.visible && visibleCount >= 4) return;
+    const updated = !f.visible;
+    setFaqs((prev) => prev.map((x) => (x.id === f.id ? { ...x, visible: updated } : x)));
+    await fetch("/api/faq", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: f.id, visible: updated }),
+    });
+  };
+
   const handleDelete = async (id: string) => {
     await fetch("/api/faq", {
       method: "DELETE",
@@ -82,7 +96,9 @@ export default function AdminFaqPage({ params: { locale } }: { params: { locale:
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-black text-primary">{isRtl ? "إدارة الأسئلة الشائعة" : "FAQ Management"}</h1>
-          <p className="text-sm text-slate-500 mt-1">{isRtl ? "إضافة وتعديل وحذف الأسئلة" : "Add, edit, and delete FAQ items"}</p>
+          <p className="text-sm text-slate-500 mt-1">
+            {isRtl ? `${visibleCount}/4 ظاهرة في الموقع` : `${visibleCount}/4 visible on website`}
+          </p>
         </div>
         <button onClick={openAdd} className="flex items-center gap-2 bg-primary text-white px-5 py-3 rounded-xl font-bold text-sm hover:bg-primary/90 transition-colors">
           <Plus size={18} />
@@ -102,13 +118,23 @@ export default function AdminFaqPage({ params: { locale } }: { params: { locale:
       ) : (
         <div className="space-y-3">
           {faqs.map((f, i) => (
-            <div key={f.id} className="bg-white rounded-2xl border border-slate-200 p-6 flex items-start justify-between gap-4">
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="text-xs font-black text-slate-300">#{i + 1}</span>
-                  <h4 className="font-bold text-sm text-primary truncate">{isRtl ? f.question_ar : f.question_en}</h4>
+            <div key={f.id} className={`bg-white rounded-2xl border border-slate-200 p-6 flex items-start justify-between gap-4 ${!f.visible ? "opacity-50" : ""}`}>
+              <div className="flex items-center gap-4 flex-1 min-w-0">
+                <button
+                  onClick={() => handleToggleVisible(f)}
+                  disabled={!f.visible && visibleCount >= 4}
+                  className={`relative w-12 h-7 rounded-full transition-colors flex-shrink-0 ${f.visible ? "bg-green-500" : "bg-slate-300"} ${!f.visible && visibleCount >= 4 ? "cursor-not-allowed" : "cursor-pointer"}`}
+                  title={!f.visible && visibleCount >= 4 ? (isRtl ? "الحد الأقصى 4" : "Max 4 visible") : ""}
+                >
+                  <span className={`absolute top-0.5 w-6 h-6 bg-white rounded-full shadow transition-all ${f.visible ? "start-5" : "start-0.5"}`} />
+                </button>
+                <div className="min-w-0">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-xs font-black text-slate-300">#{i + 1}</span>
+                    <h4 className="font-bold text-sm text-primary truncate">{isRtl ? f.question_ar : f.question_en}</h4>
+                  </div>
+                  <p className="text-xs text-slate-400 truncate">{isRtl ? f.answer_ar : f.answer_en}</p>
                 </div>
-                <p className="text-xs text-slate-400 truncate">{isRtl ? f.answer_ar : f.answer_en}</p>
               </div>
               <div className="flex items-center gap-2 flex-shrink-0">
                 <button onClick={() => openEdit(f)} className="p-2 rounded-lg hover:bg-blue-50 text-blue-500 transition-colors"><Pencil size={16} /></button>

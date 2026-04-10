@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Plus, Pencil, Trash2, X, Loader2 } from "lucide-react";
+import { Plus, Pencil, Trash2, X, Loader2, Eye, EyeOff } from "lucide-react";
 
 interface Service {
   id: string;
@@ -8,9 +8,10 @@ interface Service {
   title_en: string;
   desc_ar: string;
   desc_en: string;
+  visible: boolean;
 }
 
-const empty: Omit<Service, "id"> = { title_ar: "", title_en: "", desc_ar: "", desc_en: "" };
+const empty: Omit<Service, "id" | "visible"> = { title_ar: "", title_en: "", desc_ar: "", desc_en: "" };
 
 export default function AdminServicesPage({ params: { locale } }: { params: { locale: string } }) {
   const isRtl = locale === "ar";
@@ -20,6 +21,8 @@ export default function AdminServicesPage({ params: { locale } }: { params: { lo
   const [modal, setModal] = useState<{ open: boolean; editing: Service | null }>({ open: false, editing: null });
   const [form, setForm] = useState(empty);
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
+
+  const visibleCount = services.filter((s) => s.visible).length;
 
   const fetchServices = async () => {
     setLoading(true);
@@ -71,6 +74,17 @@ export default function AdminServicesPage({ params: { locale } }: { params: { lo
     fetchServices();
   };
 
+  const handleToggleVisible = async (s: Service) => {
+    if (!s.visible && visibleCount >= 4) return;
+    const updated = !s.visible;
+    setServices((prev) => prev.map((x) => (x.id === s.id ? { ...x, visible: updated } : x)));
+    await fetch("/api/services", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: s.id, visible: updated }),
+    });
+  };
+
   const handleDelete = async (id: string) => {
     await fetch("/api/services", {
       method: "DELETE",
@@ -87,7 +101,9 @@ export default function AdminServicesPage({ params: { locale } }: { params: { lo
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-black text-primary">{isRtl ? "إدارة الخدمات" : "Services Management"}</h1>
-          <p className="text-sm text-slate-500 mt-1">{isRtl ? "إضافة وتعديل وحذف الخدمات" : "Add, edit, and delete services"}</p>
+          <p className="text-sm text-slate-500 mt-1">
+            {isRtl ? `${visibleCount}/4 ظاهرة في الموقع` : `${visibleCount}/4 visible on website`}
+          </p>
         </div>
         <button onClick={openAdd} className="flex items-center gap-2 bg-primary text-white px-5 py-3 rounded-xl font-bold text-sm hover:bg-primary/90 transition-colors">
           <Plus size={18} />
@@ -114,6 +130,9 @@ export default function AdminServicesPage({ params: { locale } }: { params: { lo
               <thead>
                 <tr className="border-b border-slate-100">
                   <th className="text-start px-6 py-4 text-xs font-black text-slate-400 uppercase tracking-widest">
+                    {isRtl ? "الحالة" : "Visible"}
+                  </th>
+                  <th className="text-start px-6 py-4 text-xs font-black text-slate-400 uppercase tracking-widest">
                     {isRtl ? "العنوان (عربي)" : "Title (AR)"}
                   </th>
                   <th className="text-start px-6 py-4 text-xs font-black text-slate-400 uppercase tracking-widest">
@@ -126,7 +145,17 @@ export default function AdminServicesPage({ params: { locale } }: { params: { lo
               </thead>
               <tbody>
                 {services.map((s) => (
-                  <tr key={s.id} className="border-b border-slate-50 hover:bg-slate-50/50 transition-colors">
+                  <tr key={s.id} className={`border-b border-slate-50 hover:bg-slate-50/50 transition-colors ${!s.visible ? "opacity-50" : ""}`}>
+                    <td className="px-6 py-4">
+                      <button
+                        onClick={() => handleToggleVisible(s)}
+                        disabled={!s.visible && visibleCount >= 4}
+                        className={`relative w-12 h-7 rounded-full transition-colors ${s.visible ? "bg-green-500" : "bg-slate-300"} ${!s.visible && visibleCount >= 4 ? "cursor-not-allowed" : "cursor-pointer"}`}
+                        title={!s.visible && visibleCount >= 4 ? (isRtl ? "الحد الأقصى 4" : "Max 4 visible") : ""}
+                      >
+                        <span className={`absolute top-0.5 w-6 h-6 bg-white rounded-full shadow transition-all ${s.visible ? "start-5" : "start-0.5"}`} />
+                      </button>
+                    </td>
                     <td className="px-6 py-4 font-bold text-sm text-primary">{s.title_ar}</td>
                     <td className="px-6 py-4 font-medium text-sm text-slate-600">{s.title_en}</td>
                     <td className="px-6 py-4">
@@ -178,62 +207,26 @@ export default function AdminServicesPage({ params: { locale } }: { params: { lo
                   <label className="block text-xs font-black text-slate-500 uppercase tracking-widest mb-2">
                     {isRtl ? "العنوان (عربي)" : "Title (Arabic)"}
                   </label>
-                  <input
-                    required
-                    dir="rtl"
-                    value={form.title_ar}
-                    onChange={(e) => setForm({ ...form, title_ar: e.target.value })}
-                    className="w-full px-4 py-3 bg-slate-50 rounded-xl outline-none focus:ring-2 ring-primary/20 font-medium text-sm"
-                  />
+                  <input required dir="rtl" value={form.title_ar} onChange={(e) => setForm({ ...form, title_ar: e.target.value })} className="w-full px-4 py-3 bg-slate-50 rounded-xl outline-none focus:ring-2 ring-primary/20 font-medium text-sm" />
                 </div>
                 <div>
                   <label className="block text-xs font-black text-slate-500 uppercase tracking-widest mb-2">
                     {isRtl ? "العنوان (إنجليزي)" : "Title (English)"}
                   </label>
-                  <input
-                    required
-                    dir="ltr"
-                    value={form.title_en}
-                    onChange={(e) => setForm({ ...form, title_en: e.target.value })}
-                    className="w-full px-4 py-3 bg-slate-50 rounded-xl outline-none focus:ring-2 ring-primary/20 font-medium text-sm"
-                  />
+                  <input required dir="ltr" value={form.title_en} onChange={(e) => setForm({ ...form, title_en: e.target.value })} className="w-full px-4 py-3 bg-slate-50 rounded-xl outline-none focus:ring-2 ring-primary/20 font-medium text-sm" />
                 </div>
               </div>
               <div>
-                <label className="block text-xs font-black text-slate-500 uppercase tracking-widest mb-2">
-                  {isRtl ? "الوصف (عربي)" : "Description (Arabic)"}
-                </label>
-                <textarea
-                  required
-                  dir="rtl"
-                  rows={3}
-                  value={form.desc_ar}
-                  onChange={(e) => setForm({ ...form, desc_ar: e.target.value })}
-                  className="w-full px-4 py-3 bg-slate-50 rounded-xl outline-none focus:ring-2 ring-primary/20 font-medium text-sm resize-none"
-                />
+                <label className="block text-xs font-black text-slate-500 uppercase tracking-widest mb-2">{isRtl ? "الوصف (عربي)" : "Description (Arabic)"}</label>
+                <textarea required dir="rtl" rows={3} value={form.desc_ar} onChange={(e) => setForm({ ...form, desc_ar: e.target.value })} className="w-full px-4 py-3 bg-slate-50 rounded-xl outline-none focus:ring-2 ring-primary/20 font-medium text-sm resize-none" />
               </div>
               <div>
-                <label className="block text-xs font-black text-slate-500 uppercase tracking-widest mb-2">
-                  {isRtl ? "الوصف (إنجليزي)" : "Description (English)"}
-                </label>
-                <textarea
-                  required
-                  dir="ltr"
-                  rows={3}
-                  value={form.desc_en}
-                  onChange={(e) => setForm({ ...form, desc_en: e.target.value })}
-                  className="w-full px-4 py-3 bg-slate-50 rounded-xl outline-none focus:ring-2 ring-primary/20 font-medium text-sm resize-none"
-                />
+                <label className="block text-xs font-black text-slate-500 uppercase tracking-widest mb-2">{isRtl ? "الوصف (إنجليزي)" : "Description (English)"}</label>
+                <textarea required dir="ltr" rows={3} value={form.desc_en} onChange={(e) => setForm({ ...form, desc_en: e.target.value })} className="w-full px-4 py-3 bg-slate-50 rounded-xl outline-none focus:ring-2 ring-primary/20 font-medium text-sm resize-none" />
               </div>
-              <button
-                type="submit"
-                disabled={saving}
-                className="w-full bg-primary text-white py-4 rounded-xl font-black text-sm hover:bg-primary/90 transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
-              >
+              <button type="submit" disabled={saving} className="w-full bg-primary text-white py-4 rounded-xl font-black text-sm hover:bg-primary/90 transition-colors disabled:opacity-50 flex items-center justify-center gap-2">
                 {saving && <Loader2 size={16} className="animate-spin" />}
-                {modal.editing
-                  ? (isRtl ? "حفظ التعديلات" : "Save Changes")
-                  : (isRtl ? "إضافة الخدمة" : "Add Service")}
+                {modal.editing ? (isRtl ? "حفظ التعديلات" : "Save Changes") : (isRtl ? "إضافة الخدمة" : "Add Service")}
               </button>
             </form>
           </div>

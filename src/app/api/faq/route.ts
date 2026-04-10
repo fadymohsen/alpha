@@ -3,9 +3,13 @@ import { prisma } from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   try {
-    const faqs = await prisma.faq.findMany({ orderBy: { order: "asc" } });
+    const visibleOnly = req.nextUrl.searchParams.get("visible") === "true";
+    const faqs = await prisma.faq.findMany({
+      where: visibleOnly ? { visible: true } : undefined,
+      orderBy: { order: "asc" },
+    });
     return NextResponse.json(faqs);
   } catch (e) {
     console.error("GET /api/faq error:", e);
@@ -39,6 +43,15 @@ export async function PUT(req: NextRequest) {
       answer_en: body.answer_en,
       order: body.order,
     },
+  });
+  return NextResponse.json(faq);
+}
+
+export async function PATCH(req: NextRequest) {
+  const body = await req.json();
+  const faq = await prisma.faq.update({
+    where: { id: body.id },
+    data: { visible: body.visible },
   });
   return NextResponse.json(faq);
 }

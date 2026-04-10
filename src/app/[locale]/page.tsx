@@ -87,11 +87,35 @@ const TypewriterText = ({ text, delay = 0 }: { text: string, delay?: number }) =
   );
 };
 
+interface DbService { id: string; title_ar: string; title_en: string; desc_ar: string; desc_en: string; }
+interface DbFaq { id: string; question_ar: string; question_en: string; answer_ar: string; answer_en: string; }
+
 export default function HomePage({ params }: { params: { locale: string } }) {
   const dict = useDictionary();
   const locale = params.locale;
   const isRtl = locale === "ar";
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
+  const [dbServices, setDbServices] = useState<DbService[] | null>(null);
+  const [dbFaqs, setDbFaqs] = useState<DbFaq[] | null>(null);
+
+  useEffect(() => {
+    fetch("/api/services?visible=true")
+      .then((r) => r.ok ? r.json() : [])
+      .then((d) => { if (Array.isArray(d) && d.length > 0) setDbServices(d.slice(0, 4)); })
+      .catch(() => {});
+    fetch("/api/faq?visible=true")
+      .then((r) => r.ok ? r.json() : [])
+      .then((d) => { if (Array.isArray(d) && d.length > 0) setDbFaqs(d.slice(0, 4)); })
+      .catch(() => {});
+  }, []);
+
+  const servicesList = dbServices
+    ? dbServices.map((s) => ({ id: s.id, title: isRtl ? s.title_ar : s.title_en, desc: isRtl ? s.desc_ar : s.desc_en }))
+    : dict.services.list;
+
+  const faqItems = dbFaqs
+    ? dbFaqs.map((f) => ({ q: isRtl ? f.question_ar : f.question_en, a: isRtl ? f.answer_ar : f.answer_en }))
+    : dict.faq.items.slice(0, 4);
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
@@ -274,7 +298,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-stretch">
-               {dict.services.list.map((s: any, i: number) => (
+               {servicesList.map((s: any, i: number) => (
                  <motion.div
                   key={s.id}
                   initial={{ opacity: 0, y: 30 }}
@@ -380,7 +404,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
           </motion.div>
 
           <div className="space-y-3">
-            {dict.faq.items.slice(0, 4).map((item: any, i: number) => (
+            {faqItems.map((item: any, i: number) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}

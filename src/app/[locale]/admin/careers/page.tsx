@@ -10,6 +10,7 @@ interface Career {
   location_en: string;
   req_ar: string;
   req_en: string;
+  visible: boolean;
 }
 
 const empty = { title_ar: "", title_en: "", location_ar: "", location_en: "", req_ar: "", req_en: "" };
@@ -22,6 +23,8 @@ export default function AdminCareersPage({ params: { locale } }: { params: { loc
   const [modal, setModal] = useState<{ open: boolean; editing: Career | null }>({ open: false, editing: null });
   const [form, setForm] = useState(empty);
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
+
+  const visibleCount = careers.filter((c) => c.visible).length;
 
   const fetchCareers = async () => {
     setLoading(true);
@@ -73,6 +76,17 @@ export default function AdminCareersPage({ params: { locale } }: { params: { loc
     fetchCareers();
   };
 
+  const handleToggleVisible = async (c: Career) => {
+    if (!c.visible && visibleCount >= 4) return;
+    const updated = !c.visible;
+    setCareers((prev) => prev.map((x) => (x.id === c.id ? { ...x, visible: updated } : x)));
+    await fetch("/api/careers", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: c.id, visible: updated }),
+    });
+  };
+
   const handleDelete = async (id: string) => {
     await fetch("/api/careers", {
       method: "DELETE",
@@ -89,7 +103,9 @@ export default function AdminCareersPage({ params: { locale } }: { params: { loc
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-black text-primary">{isRtl ? "إدارة الوظائف" : "Careers Management"}</h1>
-          <p className="text-sm text-slate-500 mt-1">{isRtl ? "إدارة فرص العمل المتاحة" : "Manage job openings"}</p>
+          <p className="text-sm text-slate-500 mt-1">
+            {isRtl ? `${visibleCount}/4 ظاهرة في الموقع` : `${visibleCount}/4 visible on website`}
+          </p>
         </div>
         <button onClick={openAdd} className="flex items-center gap-2 bg-primary text-white px-5 py-3 rounded-xl font-bold text-sm hover:bg-primary/90 transition-colors">
           <Plus size={18} />
@@ -115,6 +131,7 @@ export default function AdminCareersPage({ params: { locale } }: { params: { loc
             <table className="w-full">
               <thead>
                 <tr className="border-b border-slate-100">
+                  <th className="text-start px-6 py-4 text-xs font-black text-slate-400 uppercase tracking-widest">{isRtl ? "الحالة" : "Visible"}</th>
                   <th className="text-start px-6 py-4 text-xs font-black text-slate-400 uppercase tracking-widest">{isRtl ? "المسمى الوظيفي" : "Job Title"}</th>
                   <th className="text-start px-6 py-4 text-xs font-black text-slate-400 uppercase tracking-widest">{isRtl ? "الموقع" : "Location"}</th>
                   <th className="text-start px-6 py-4 text-xs font-black text-slate-400 uppercase tracking-widest">{isRtl ? "الإجراءات" : "Actions"}</th>
@@ -122,7 +139,17 @@ export default function AdminCareersPage({ params: { locale } }: { params: { loc
               </thead>
               <tbody>
                 {careers.map((c) => (
-                  <tr key={c.id} className="border-b border-slate-50 hover:bg-slate-50/50 transition-colors">
+                  <tr key={c.id} className={`border-b border-slate-50 hover:bg-slate-50/50 transition-colors ${!c.visible ? "opacity-50" : ""}`}>
+                    <td className="px-6 py-4">
+                      <button
+                        onClick={() => handleToggleVisible(c)}
+                        disabled={!c.visible && visibleCount >= 4}
+                        className={`relative w-12 h-7 rounded-full transition-colors ${c.visible ? "bg-green-500" : "bg-slate-300"} ${!c.visible && visibleCount >= 4 ? "cursor-not-allowed" : "cursor-pointer"}`}
+                        title={!c.visible && visibleCount >= 4 ? (isRtl ? "الحد الأقصى 4" : "Max 4 visible") : ""}
+                      >
+                        <span className={`absolute top-0.5 w-6 h-6 bg-white rounded-full shadow transition-all ${c.visible ? "start-5" : "start-0.5"}`} />
+                      </button>
+                    </td>
                     <td className="px-6 py-4">
                       <p className="font-bold text-sm text-primary">{isRtl ? c.title_ar : c.title_en}</p>
                       <p className="text-xs text-slate-400 mt-0.5">{isRtl ? c.title_en : c.title_ar}</p>
