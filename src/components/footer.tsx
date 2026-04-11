@@ -13,7 +13,7 @@ export function Footer({ locale }: { locale: string }) {
   return (
     <footer className="bg-dark text-white pt-20 pb-10 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 pb-16 border-b border-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16 pb-16 border-b border-white/10">
           {/* Brand Column */}
           <div className="space-y-6">
             <Link href={`/${locale}`} className="inline-block group">
@@ -48,27 +48,7 @@ export function Footer({ locale }: { locale: string }) {
             </div>
           </div>
 
-          {/* Legal Links */}
-          <div className="flex flex-col items-start lg:items-center">
-            <div>
-              <h4 className="text-xs font-black uppercase tracking-[0.4em] text-[#C1922C] mb-8">
-                {isRtl ? "قانوني" : "Legal"}
-              </h4>
-              <ul className="space-y-4">
-                {[
-                  { href: `/${locale}/privacy`, label: isRtl ? "سياسة الخصوصية" : "Privacy Policy" },
-                  { href: `/${locale}/terms`, label: isRtl ? "الشروط والأحكام" : "Terms & Conditions" },
-                  { href: `/${locale}/refund`, label: isRtl ? "سياسة الاسترجاع" : "Refund Policy" },
-                ].map((link) => (
-                  <li key={link.href}>
-                    <Link href={link.href} className="text-white/60 hover:text-white transition-colors font-medium text-sm">
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          {/* Legal Links - hidden for now */}
 
           {/* Contact Info */}
           <div>
