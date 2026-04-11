@@ -227,6 +227,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
           >
             {[
               { name: "Saudi Al-Terais", src: "/partners/al-terais.jpeg" },
+              { name: "JAL Development", src: "/partners/jal.jpeg" },
             ].map((partner, i) => (
               <motion.div
                 key={partner.name}
