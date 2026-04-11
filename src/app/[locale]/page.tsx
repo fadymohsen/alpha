@@ -235,7 +235,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 * i }}
-                className="w-48 h-32 bg-[#fafafa] rounded-2xl border border-primary/5 flex items-center justify-center p-5 hover:shadow-lg transition-shadow duration-300"
+                className="w-48 h-32 rounded-2xl flex items-center justify-center p-5"
               >
                 <div className="relative w-full h-full">
                   <Image src={partner.src} alt={partner.name} fill className="object-contain" />
@@ -375,7 +375,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
                 ].map((client, i) => (
                   <div
                     key={`${setIndex}-${i}`}
-                    className="w-44 h-28 shrink-0 bg-white rounded-2xl border border-primary/5 flex items-center justify-center p-5 hover:shadow-lg transition-shadow duration-300"
+                    className="w-44 h-28 shrink-0 rounded-2xl flex items-center justify-center p-5"
                   >
                     <div className="relative w-full h-full">
                       <Image src={client.src} alt={client.name} fill className="object-contain" />
