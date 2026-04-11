@@ -20,7 +20,7 @@ const config: Config = {
         cairo: ["var(--font-cairo)", "sans-serif"],
       },
       animation: {
-        marquee: "marquee 30s linear infinite",
+        marquee: "marquee 20s linear infinite",
       },
       keyframes: {
         marquee: {
