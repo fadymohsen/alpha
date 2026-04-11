@@ -47,18 +47,22 @@ export function Navbar({ locale }: { locale: string }) {
   const switchLocale = currentLocale === "ar" ? "en" : "ar";
   const switchHref = pathname ? pathname.replace(`/${currentLocale}`, `/${switchLocale}`) : `/${switchLocale}`;
   const isRtl = currentLocale === "ar";
+  const isHome = pathname === `/${currentLocale}` || pathname === `/${currentLocale}/`;
+  const isTransparent = isHome && !scrolled;
 
   return (
     <>
       <nav className={cn(
-        "fixed top-0 w-full z-50 transition-all duration-500 bg-white border-b border-gray-100",
-        scrolled ? "shadow-lg" : "shadow-sm"
+        "fixed top-0 w-full z-50 transition-all duration-500",
+        isTransparent
+          ? "bg-transparent"
+          : "bg-white border-b border-gray-100 shadow-lg"
       )}>
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           {/* Logo */}
           <Link href={`/${currentLocale}`} className="flex items-center gap-3 shrink-0">
             <div className="relative w-16 h-16">
-              <Image src="/logo-transperent.png" alt="ALFA" fill className="object-contain" />
+              <Image src="/logo-transperent.png" alt="ALFA" fill className={cn("object-contain transition-all duration-500", isTransparent ? "brightness-0 invert" : "")} />
             </div>
           </Link>
 
@@ -73,9 +77,13 @@ export function Navbar({ locale }: { locale: string }) {
                   href={href}
                   className={cn(
                     "px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-300",
-                    isActive
-                      ? "bg-primary text-white shadow-md"
-                      : "text-gray-600 hover:text-primary hover:bg-gray-50"
+                    isTransparent
+                      ? isActive
+                        ? "bg-white/20 text-white backdrop-blur-sm"
+                        : "text-white/80 hover:text-white hover:bg-white/10"
+                      : isActive
+                        ? "bg-primary text-white shadow-md"
+                        : "text-gray-600 hover:text-primary hover:bg-gray-50"
                   )}
                 >
                   {link.name}
@@ -88,7 +96,12 @@ export function Navbar({ locale }: { locale: string }) {
           <div className="hidden lg:flex items-center gap-4">
             <Link
               href={switchHref}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-full border border-gray-200 text-sm font-bold text-gray-600 hover:border-primary hover:text-primary transition-all"
+              className={cn(
+                "flex items-center gap-2 px-4 py-2.5 rounded-full border text-sm font-bold transition-all",
+                isTransparent
+                  ? "border-white/30 text-white hover:bg-white/10"
+                  : "border-gray-200 text-gray-600 hover:border-primary hover:text-primary"
+              )}
             >
               <Globe size={16} />
               <span>{currentLocale === "ar" ? "English" : "عربي"}</span>
@@ -97,7 +110,10 @@ export function Navbar({ locale }: { locale: string }) {
 
           {/* Mobile Toggle */}
           <button
-            className="lg:hidden w-11 h-11 flex items-center justify-center rounded-xl bg-primary text-white shadow-lg active:scale-95 transition-transform"
+            className={cn(
+              "lg:hidden w-11 h-11 flex items-center justify-center rounded-xl shadow-lg active:scale-95 transition-all",
+              isTransparent ? "bg-white/20 backdrop-blur-sm text-white" : "bg-primary text-white"
+            )}
             onClick={() => setIsOpen(true)}
           >
             <Menu size={22} />
