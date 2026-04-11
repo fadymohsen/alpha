@@ -11,8 +11,8 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   return {
     title: isAr ? "اتصل بنا" : "Contact Us",
     description: isAr
-      ? "تواصل مع شركة ألفا للنقل المحدودة. الرياض، المملكة العربية السعودية. هاتف: 0114152675 | واتساب: 0555955056"
-      : "Contact ALFA TRANS, CO.LTD. Riyadh, Saudi Arabia. Phone: 0114152675 | WhatsApp: 0555955056",
+      ? "تواصل مع شركة ألفا للنقل المحدودة. الرياض، المملكة العربية السعودية. هاتف: 0557746126 | واتساب: 0557746126"
+      : "Contact ALFA TRANS, CO.LTD. Riyadh, Saudi Arabia. Phone: 0557746126 | WhatsApp: 0557746126",
   };
 }
 
@@ -24,9 +24,9 @@ export default async function ContactPage({ params }: { params: { locale: string
   const settingsRows = await prisma.setting.findMany();
   const s: Record<string, string> = {};
   settingsRows.forEach((r) => { s[r.key] = r.value; });
-  const phone = s.phone || "0114152675";
-  const whatsapp = s.whatsapp || "966555955056";
-  const email = s.email || "alfa.ex@hotmail.com";
+  const phone = s.phone || "0557746126";
+  const whatsapp = s.whatsapp || "966557746126";
+  const email = s.email || "Info@alfatransport.sa";
   const address = isRtl
     ? (s.address_ar || dict.contact.info.address)
     : (s.address_en || dict.contact.info.address);

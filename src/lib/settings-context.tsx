@@ -10,9 +10,9 @@ interface SiteSettings {
 }
 
 const defaults: SiteSettings = {
-  phone: "0114152675",
-  whatsapp: "966555955056",
-  email: "alfa.ex@hotmail.com",
+  phone: "0557746126",
+  whatsapp: "966557746126",
+  email: "Info@alfatransport.sa",
   address_ar: "الرياض ١١٤٣٣ - السلي شارع هارون الرشيد - س.ب ١٠٤٨٤",
   address_en: "Riyadh 11433 - As Sulay, Harun Al Rashid St - P.O.Box 10484",
 };

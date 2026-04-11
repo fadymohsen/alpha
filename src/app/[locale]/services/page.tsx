@@ -27,7 +27,7 @@ export default async function ServicesPage({ params }: { params: { locale: strin
 
   const services = await prisma.service.findMany({ orderBy: { updatedAt: "desc" } });
   const whatsappSetting = await prisma.setting.findUnique({ where: { key: "whatsapp" } });
-  const whatsapp = whatsappSetting?.value || "966555955056";
+  const whatsapp = whatsappSetting?.value || "966557746126";
 
   // Fallback to dictionary if no DB services yet
   const list = services.length > 0

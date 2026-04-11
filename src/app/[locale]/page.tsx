@@ -341,6 +341,53 @@ export default function HomePage({ params }: { params: { locale: string } }) {
          </div>
       </section>
 
+      {/* Clients - Auto-scrolling Marquee */}
+      <section className="py-24 bg-[#fafafa] overflow-hidden">
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-14 space-y-4"
+          >
+            <h2 className="text-5xl md:text-7xl font-black text-primary tracking-tighter leading-none">{dict.clients.title}</h2>
+            <p className="text-lg text-gray-500 font-medium max-w-2xl mx-auto">{dict.clients.subtitle}</p>
+          </motion.div>
+        </div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="relative"
+        >
+          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#fafafa] to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#fafafa] to-transparent z-10 pointer-events-none" />
+          <div className="flex animate-marquee gap-8">
+            {[...Array(2)].map((_, setIndex) => (
+              <div key={setIndex} className="flex gap-8 shrink-0">
+                {[
+                  { name: "SABIC", src: "/partners/sabic.jpeg" },
+                  { name: "SAPAC", src: "/partners/sapac.jpeg" },
+                  { name: "Al-Terais", src: "/partners/al-terais.jpeg" },
+                  { name: "T. Nagadi", src: "/partners/nagadi.jpeg" },
+                  { name: "Tawuniya", src: "/partners/tawuniya.jpeg" },
+                  { name: "Qassim Cement", src: "/partners/qassim-cement.jpeg" },
+                ].map((client, i) => (
+                  <div
+                    key={`${setIndex}-${i}`}
+                    className="w-44 h-28 shrink-0 bg-white rounded-2xl border border-primary/5 flex items-center justify-center p-5 hover:shadow-lg transition-shadow duration-300"
+                  >
+                    <div className="relative w-full h-full">
+                      <Image src={client.src} alt={client.name} fill className="object-contain" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
       {/* CTA → Careers */}
       <section className="py-20 bg-[#fafafa]">
         <div className="max-w-5xl mx-auto px-6">

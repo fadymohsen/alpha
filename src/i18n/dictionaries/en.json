@@ -55,6 +55,10 @@
       { "id": "4", "title": "International Transport", "desc": "Cross-border transport connecting the Kingdom with neighboring countries according to global standards." }
     ]
   },
+  "clients": {
+    "title": "Our Clients",
+    "subtitle": "Trusted by leading companies and institutions across the Kingdom"
+  },
   "specialized_solutions": {
     "title": "Specialized Bulk Cement & Heavy Transport Solutions",
     "description": "We operate integrated distribution stations ensuring supply chain stability for our partners in the construction and infrastructure sector of the Kingdom.",
@@ -71,8 +75,8 @@
       "email_us": "Email Address",
       "working_hours": "Sun - Thu: 8:00 AM - 5:00 PM",
       "address": "Riyadh 11433 - As Sulay, Harun Al Rashid St - P.O.Box 10484",
-      "phones": "0114152675 | 0555955056",
-      "email": "alfa.ex@hotmail.com",
+      "phones": "0557746126",
+      "email": "Info@alfatransport.sa",
       "cr": "CR: 2511010026"
     },
     "form": {

@@ -55,7 +55,7 @@ export default async function TermsPage({ params }: { params: { locale: string }
         {
           title: "٨. تعديل الشروط والأحكام",
           content:
-            "تحتفظ شركة ألفا للنقل المحدودة بحق تعديل هذه الشروط والأحكام في أي وقت. سيتم نشر أي تعديلات على موقعنا الإلكتروني، ويعتبر استمراركم في استخدام خدماتنا بعد النشر موافقة على الشروط المعدلة. للتواصل: البريد الإلكتروني: alfa.ex@hotmail.com | الهاتف: 0114152675.",
+            "تحتفظ شركة ألفا للنقل المحدودة بحق تعديل هذه الشروط والأحكام في أي وقت. سيتم نشر أي تعديلات على موقعنا الإلكتروني، ويعتبر استمراركم في استخدام خدماتنا بعد النشر موافقة على الشروط المعدلة. للتواصل: البريد الإلكتروني: Info@alfatransport.sa | الهاتف: 0557746126.",
         },
       ]
     : [
@@ -97,7 +97,7 @@ export default async function TermsPage({ params }: { params: { locale: string }
         {
           title: "8. Amendments",
           content:
-            "ALFA TRANS, CO.LTD reserves the right to modify these Terms and Conditions at any time. Any amendments will be published on our website, and your continued use of our services after publication constitutes acceptance of the modified terms. Contact: Email: alfa.ex@hotmail.com | Phone: 0114152675.",
+            "ALFA TRANS, CO.LTD reserves the right to modify these Terms and Conditions at any time. Any amendments will be published on our website, and your continued use of our services after publication constitutes acceptance of the modified terms. Contact: Email: Info@alfatransport.sa | Phone: 0557746126.",
         },
       ];
 

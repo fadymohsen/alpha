@@ -55,7 +55,7 @@ export default async function PrivacyPage({ params }: { params: { locale: string
         {
           title: "٨. التواصل معنا",
           content:
-            "لأي استفسارات تتعلق بسياسة الخصوصية أو لممارسة حقوقكم المتعلقة بالبيانات الشخصية، يرجى التواصل معنا عبر البريد الإلكتروني: alfa.ex@hotmail.com أو الهاتف: 0114152675. العنوان: الرياض، المملكة العربية السعودية.",
+            "لأي استفسارات تتعلق بسياسة الخصوصية أو لممارسة حقوقكم المتعلقة بالبيانات الشخصية، يرجى التواصل معنا عبر البريد الإلكتروني: Info@alfatransport.sa أو الهاتف: 0557746126. العنوان: الرياض، المملكة العربية السعودية.",
         },
       ]
     : [
@@ -97,7 +97,7 @@ export default async function PrivacyPage({ params }: { params: { locale: string
         {
           title: "8. Contact Us",
           content:
-            "For any inquiries regarding this Privacy Policy or to exercise your data rights, please contact us at email: alfa.ex@hotmail.com or phone: 0114152675. Address: Riyadh, Kingdom of Saudi Arabia.",
+            "For any inquiries regarding this Privacy Policy or to exercise your data rights, please contact us at email: Info@alfatransport.sa or phone: 0557746126. Address: Riyadh, Kingdom of Saudi Arabia.",
         },
       ];
 

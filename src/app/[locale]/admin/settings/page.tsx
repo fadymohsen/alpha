@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 import { Loader2, Save, Phone, Mail, MessageCircle, MapPin } from "lucide-react";
 
 const settingFields = [
-  { key: "phone", label: { ar: "رقم الهاتف", en: "Phone Number" }, icon: Phone, placeholder: "0114152675" },
-  { key: "whatsapp", label: { ar: "رقم الواتساب", en: "WhatsApp Number" }, icon: MessageCircle, placeholder: "966555955056" },
-  { key: "email", label: { ar: "البريد الإلكتروني", en: "Email Address" }, icon: Mail, placeholder: "alfa.ex@hotmail.com" },
+  { key: "phone", label: { ar: "رقم الهاتف", en: "Phone Number" }, icon: Phone, placeholder: "0557746126" },
+  { key: "whatsapp", label: { ar: "رقم الواتساب", en: "WhatsApp Number" }, icon: MessageCircle, placeholder: "966557746126" },
+  { key: "email", label: { ar: "البريد الإلكتروني", en: "Email Address" }, icon: Mail, placeholder: "Info@alfatransport.sa" },
   { key: "address_ar", label: { ar: "العنوان (عربي)", en: "Address (Arabic)" }, icon: MapPin, placeholder: "" },
   { key: "address_en", label: { ar: "العنوان (إنجليزي)", en: "Address (English)" }, icon: MapPin, placeholder: "" },
 ];

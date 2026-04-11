@@ -45,7 +45,7 @@ export default async function RefundPage({ params }: { params: { locale: string 
         {
           title: "٦. إجراءات تقديم طلب الاسترداد",
           content:
-            "لتقديم طلب استرداد، يجب على العميل التواصل مع الشركة عبر البريد الإلكتروني: alfa.ex@hotmail.com أو الهاتف: 0114152675 مع توضيح رقم الطلب وسبب الاسترداد. سيتم مراجعة الطلب خلال خمسة (5) أيام عمل وإبلاغ العميل بالقرار. يجب تقديم طلب الاسترداد خلال أربعة عشر (14) يوماً من تاريخ تقديم الخدمة أو التاريخ المقرر لها.",
+            "لتقديم طلب استرداد، يجب على العميل التواصل مع الشركة عبر البريد الإلكتروني: Info@alfatransport.sa أو الهاتف: 0557746126 مع توضيح رقم الطلب وسبب الاسترداد. سيتم مراجعة الطلب خلال خمسة (5) أيام عمل وإبلاغ العميل بالقرار. يجب تقديم طلب الاسترداد خلال أربعة عشر (14) يوماً من تاريخ تقديم الخدمة أو التاريخ المقرر لها.",
         },
         {
           title: "٧. طريقة الاسترداد",
@@ -55,7 +55,7 @@ export default async function RefundPage({ params }: { params: { locale: string 
         {
           title: "٨. التواصل والشكاوى",
           content:
-            "في حال عدم الرضا عن قرار الاسترداد، يحق للعميل تقديم شكوى رسمية عبر قنوات التواصل المعتمدة. تلتزم الشركة بمراجعة الشكاوى والرد عليها خلال عشرة (10) أيام عمل. كما يحق للعميل التقدم بشكوى لدى وزارة التجارة أو الجهات المختصة في المملكة العربية السعودية. للتواصل: البريد الإلكتروني: alfa.ex@hotmail.com | الهاتف: 0114152675 | العنوان: الرياض، المملكة العربية السعودية.",
+            "في حال عدم الرضا عن قرار الاسترداد، يحق للعميل تقديم شكوى رسمية عبر قنوات التواصل المعتمدة. تلتزم الشركة بمراجعة الشكاوى والرد عليها خلال عشرة (10) أيام عمل. كما يحق للعميل التقدم بشكوى لدى وزارة التجارة أو الجهات المختصة في المملكة العربية السعودية. للتواصل: البريد الإلكتروني: Info@alfatransport.sa | الهاتف: 0557746126 | العنوان: الرياض، المملكة العربية السعودية.",
         },
       ]
     : [
@@ -87,7 +87,7 @@ export default async function RefundPage({ params }: { params: { locale: string 
         {
           title: "6. Refund Request Procedure",
           content:
-            "To submit a refund request, the client must contact the company via email at alfa.ex@hotmail.com or phone at 0114152675, specifying the order number and reason for the refund. The request will be reviewed within five (5) business days and the client will be notified of the decision. Refund requests must be submitted within fourteen (14) days from the service date or its scheduled date.",
+            "To submit a refund request, the client must contact the company via email at Info@alfatransport.sa or phone at 0557746126, specifying the order number and reason for the refund. The request will be reviewed within five (5) business days and the client will be notified of the decision. Refund requests must be submitted within fourteen (14) days from the service date or its scheduled date.",
         },
         {
           title: "7. Refund Method",
@@ -97,7 +97,7 @@ export default async function RefundPage({ params }: { params: { locale: string 
         {
           title: "8. Communication and Complaints",
           content:
-            "If the client is not satisfied with the refund decision, they have the right to file a formal complaint through the approved communication channels. The company is committed to reviewing and responding to complaints within ten (10) business days. The client also has the right to file a complaint with the Ministry of Commerce or relevant authorities in the Kingdom of Saudi Arabia. Contact: Email: alfa.ex@hotmail.com | Phone: 0114152675 | Address: Riyadh, Kingdom of Saudi Arabia.",
+            "If the client is not satisfied with the refund decision, they have the right to file a formal complaint through the approved communication channels. The company is committed to reviewing and responding to complaints within ten (10) business days. The client also has the right to file a complaint with the Ministry of Commerce or relevant authorities in the Kingdom of Saudi Arabia. Contact: Email: Info@alfatransport.sa | Phone: 0557746126 | Address: Riyadh, Kingdom of Saudi Arabia.",
         },
       ];
 
