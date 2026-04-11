@@ -25,7 +25,6 @@ export function Navbar({ locale }: { locale: string }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Scroll Lock
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -48,132 +47,149 @@ export function Navbar({ locale }: { locale: string }) {
   const switchLocale = currentLocale === "ar" ? "en" : "ar";
   const switchHref = pathname ? pathname.replace(`/${currentLocale}`, `/${switchLocale}`) : `/${switchLocale}`;
   const isRtl = currentLocale === "ar";
-  const isHome = pathname === `/${currentLocale}` || pathname === `/${currentLocale}/`;
-  const isTransparent = isHome && !scrolled;
 
   return (
     <>
-      <nav className={cn("fixed top-0 w-full z-50 transition-all duration-700", scrolled ? "bg-white/95 backdrop-blur-md h-20 shadow-xl border-b border-primary/5" : isHome ? "bg-transparent h-32" : "bg-white h-32")}>
-        <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
-          <Link href={`/${currentLocale}`} className="flex items-center gap-4 group">
-            <motion.div
-              whileHover={{ scale: 1.05, rotate: 2 }}
-              className="relative w-20 h-20 md:w-24 md:h-24 overflow-hidden"
-            >
-               <Image src="/logo-transperent.png" alt="ALFA" fill className={cn("object-contain transition-all duration-700", isTransparent ? "brightness-0 invert" : "")} />
-            </motion.div>
+      <nav className={cn(
+        "fixed top-0 w-full z-50 transition-all duration-500 bg-white border-b border-gray-100",
+        scrolled ? "shadow-lg" : "shadow-sm"
+      )}>
+        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+          {/* Logo */}
+          <Link href={`/${currentLocale}`} className="flex items-center gap-3 shrink-0">
+            <div className="relative w-16 h-16">
+              <Image src="/logo-transperent.png" alt="ALFA" fill className="object-contain" />
+            </div>
           </Link>
 
-          {/* Desktop Links */}
-          <div className="hidden lg:flex items-center gap-10">
+          {/* Desktop Nav Links */}
+          <div className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => {
               const href = `/${currentLocale}${link.href}`;
               const isActive = pathname === href || (pathname === `/${currentLocale}` && link.href === "/");
               return (
-                <motion.div key={link.href} whileHover={{ y: -2 }}>
-                  <Link href={href} className={cn("text-sm font-black uppercase tracking-widest transition-all relative py-2", isTransparent ? (isActive ? "text-white" : "text-white/70") : (isActive ? "text-primary" : "text-gray-500"), isTransparent ? "hover:text-white" : "hover:text-accent")}>
-                    {link.name}
-                    {isActive && <motion.div layoutId="nav-glow" className={cn("absolute -bottom-1 inset-x-0 h-1 rounded-full", isTransparent ? "bg-white shadow-[0_0_15px_rgba(255,255,255,0.3)]" : "bg-accent shadow-[0_0_15px_rgba(122,54,59,0.5)]")} />}
-                  </Link>
-                </motion.div>
+                <Link
+                  key={link.href}
+                  href={href}
+                  className={cn(
+                    "px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-300",
+                    isActive
+                      ? "bg-primary text-white shadow-md"
+                      : "text-gray-600 hover:text-primary hover:bg-gray-50"
+                  )}
+                >
+                  {link.name}
+                </Link>
               );
             })}
           </div>
 
-          <div className="hidden lg:flex items-center gap-6">
-            <Link href={switchHref} className={cn("flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] transition-all", isTransparent ? "text-white hover:text-white/80" : "text-primary hover:text-accent")}>
+          {/* Desktop Right Actions */}
+          <div className="hidden lg:flex items-center gap-4">
+            <Link
+              href={switchHref}
+              className="flex items-center gap-2 px-4 py-2.5 rounded-full border border-gray-200 text-sm font-bold text-gray-600 hover:border-primary hover:text-primary transition-all"
+            >
               <Globe size={16} />
               <span>{currentLocale === "ar" ? "English" : "عربي"}</span>
-            </Link>
-            <Link href={`https://wa.me/${whatsapp}`} target="_blank" className="bg-secondary text-white px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-widest shadow-2xl hover:bg-secondary/90 transition-all active:scale-95 flex items-center gap-2">
-               <Phone size={16} />{currentLocale === "ar" ? "طلب عرض سعر" : "Get Quote"}
             </Link>
           </div>
 
           {/* Mobile Toggle */}
-          <button className={cn("lg:hidden relative w-12 h-12 flex items-center justify-center rounded-2xl shadow-2xl transition-all active:scale-95", isTransparent ? "bg-white/20 backdrop-blur-sm text-white" : "bg-primary text-white")} onClick={() => setIsOpen(true)}>
-            <Menu size={24} />
+          <button
+            className="lg:hidden w-11 h-11 flex items-center justify-center rounded-xl bg-primary text-white shadow-lg active:scale-95 transition-transform"
+            onClick={() => setIsOpen(true)}
+          >
+            <Menu size={22} />
           </button>
         </div>
       </nav>
 
-      {/* Premium Full-Screen Mobile Menu - Moved Outside Nav for better z-index and scroll behavior */}
+      {/* Full-Screen Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }} 
-            exit={{ opacity: 0 }} 
-            transition={{ duration: 0.5 }}
-            className="fixed inset-0 z-[100] bg-[#141414]/95 backdrop-blur-2xl flex flex-col text-cream overflow-hidden"
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className="fixed inset-0 z-[100] bg-white flex flex-col overflow-hidden"
           >
-            {/* Ambient Background Accents */}
-            <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
-            <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/10 rounded-full blur-[100px] pointer-events-none" />
-
             {/* Header */}
-            <div className="flex shrink-0 h-28 px-8 items-center justify-end relative z-10">
-               <button onClick={() => setIsOpen(false)} className="w-12 h-12 rounded-xl bg-white/10 text-white flex items-center justify-center hover:rotate-90 transition-transform duration-500 active:scale-90">
-                 <X size={24} />
-               </button>
+            <div className="flex shrink-0 h-20 px-6 items-center justify-between border-b border-gray-100">
+              <Link href={`/${currentLocale}`} onClick={() => setIsOpen(false)} className="relative w-14 h-14">
+                <Image src="/logo-transperent.png" alt="ALFA" fill className="object-contain" />
+              </Link>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="w-11 h-11 rounded-xl bg-gray-100 text-gray-600 flex items-center justify-center hover:bg-gray-200 transition-colors active:scale-90"
+              >
+                <X size={22} />
+              </button>
             </div>
 
             {/* Navigation Links */}
-            <div className="flex-grow flex flex-col justify-center px-8 relative z-10">
-               <div className="space-y-1 max-w-lg">
-                  {navLinks.map((link, i) => (
+            <div className="flex-grow flex flex-col px-6 pt-6 overflow-y-auto">
+              <div className="space-y-1">
+                {navLinks.map((link, i) => {
+                  const href = `/${currentLocale}${link.href}`;
+                  const isActive = pathname === href || (pathname === `/${currentLocale}` && link.href === "/");
+                  return (
                     <motion.div
                       key={link.href}
-                      className="overflow-hidden"
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: i * 0.05, duration: 0.3 }}
                     >
-                       <Link
-                          href={`/${currentLocale}${link.href}`}
-                          onClick={() => setIsOpen(false)}
-                          className="group flex items-center justify-between py-4 border-b border-white/5 transition-all"
-                          style={{
-                             animation: `slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards ${i * 50}ms`,
-                             opacity: 0,
-                             transform: 'translateY(15px)'
-                          }}
-                       >
-                          <span className="text-xl font-bold text-white group-hover:text-secondary transition-colors duration-300">
-                             {link.name}
-                          </span>
-                          <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-secondary/20 transition-colors">
-                             {isRtl ? <ArrowLeft size={16} className="text-white/30 group-hover:text-secondary transition-colors" /> : <ArrowRight size={16} className="text-white/30 group-hover:text-secondary transition-colors" />}
-                          </div>
-                       </Link>
+                      <Link
+                        href={href}
+                        onClick={() => setIsOpen(false)}
+                        className={cn(
+                          "flex items-center justify-between py-4 px-4 rounded-2xl transition-all",
+                          isActive
+                            ? "bg-primary text-white"
+                            : "text-gray-700 hover:bg-gray-50"
+                        )}
+                      >
+                        <span className="text-base font-bold">{link.name}</span>
+                        <div className={cn(
+                          "w-8 h-8 rounded-full flex items-center justify-center",
+                          isActive ? "bg-white/20" : "bg-gray-100"
+                        )}>
+                          {isRtl
+                            ? <ArrowLeft size={16} className={isActive ? "text-white" : "text-gray-400"} />
+                            : <ArrowRight size={16} className={isActive ? "text-white" : "text-gray-400"} />
+                          }
+                        </div>
+                      </Link>
                     </motion.div>
-                  ))}
-               </div>
+                  );
+                })}
+              </div>
             </div>
 
             {/* Bottom Actions */}
-            <div className="px-8 pb-10 pt-6 shrink-0 relative z-10 flex flex-col gap-4">
-               <Link href={switchHref} onClick={() => setIsOpen(false)} className="flex items-center justify-center gap-3 py-4 rounded-2xl border border-white/10 bg-white/5 text-white text-sm font-bold">
-                 <Globe size={18} className="text-secondary" />
-                 <span>{currentLocale === "ar" ? "English" : "عربي"}</span>
-               </Link>
-               <Link
-                 href={`/${currentLocale}/contact`}
-                 onClick={() => setIsOpen(false)}
-                 className="flex items-center justify-center gap-3 py-4 rounded-2xl bg-secondary text-white text-sm font-bold"
-               >
-                 <Phone size={18} />
-                 {currentLocale === "ar" ? "تواصل معنا" : "Contact Us"}
-               </Link>
+            <div className="px-6 pb-8 pt-4 shrink-0 flex flex-col gap-3 border-t border-gray-100">
+              <Link
+                href={switchHref}
+                onClick={() => setIsOpen(false)}
+                className="flex items-center justify-center gap-3 py-4 rounded-2xl border border-gray-200 text-gray-700 text-sm font-bold hover:border-primary transition-colors"
+              >
+                <Globe size={18} className="text-primary" />
+                <span>{currentLocale === "ar" ? "English" : "عربي"}</span>
+              </Link>
+              <Link
+                href={`/${currentLocale}/contact`}
+                onClick={() => setIsOpen(false)}
+                className="flex items-center justify-center gap-3 py-4 rounded-2xl bg-primary text-white text-sm font-bold shadow-lg"
+              >
+                <Phone size={18} />
+                {currentLocale === "ar" ? "تواصل معنا" : "Contact Us"}
+              </Link>
             </div>
-
-            <style jsx>{`
-              @keyframes slideUp {
-                from { opacity: 0; transform: translateY(20px); }
-                to { opacity: 1; transform: translateY(0); }
-              }
-            `}</style>
           </motion.div>
         )}
       </AnimatePresence>
     </>
   );
-
 }
