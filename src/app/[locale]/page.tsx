@@ -207,8 +207,8 @@ export default function HomePage({ params }: { params: { locale: string } }) {
          </div>
       </section>
 
-      {/* Partners - Auto-scrolling Marquee */}
-      <section className="py-24 bg-white overflow-hidden">
+      {/* Partners */}
+      <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -219,39 +219,30 @@ export default function HomePage({ params }: { params: { locale: string } }) {
             <h2 className="text-5xl md:text-7xl font-black text-primary tracking-tighter leading-none">{isRtl ? "شركاؤنا" : "Our Partners"}</h2>
             <p className="text-lg text-gray-500 font-medium max-w-2xl mx-auto">{isRtl ? "نفتخر بشراكاتنا الاستراتيجية مع كبرى الشركات الرائدة" : "Proud of our strategic partnerships with leading companies"}</p>
           </motion.div>
-        </div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="relative"
-        >
-          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
-          <div className="flex animate-marquee gap-8">
-            {[...Array(2)].map((_, setIndex) => (
-              <div key={setIndex} className="flex gap-8 shrink-0">
-                {[
-                  { name: "SABIC", src: "/partners/sabic.jpeg" },
-                  { name: "SAPAC", src: "/partners/sapac.jpeg" },
-                  { name: "Al-Terais", src: "/partners/al-terais.jpeg" },
-                  { name: "T. Nagadi", src: "/partners/nagadi.jpeg" },
-                  { name: "Tawuniya", src: "/partners/tawuniya.jpeg" },
-                  { name: "Qassim Cement", src: "/partners/qassim-cement.jpeg" },
-                ].map((partner, i) => (
-                  <div
-                    key={`${setIndex}-${i}`}
-                    className="w-44 h-28 shrink-0 bg-[#fafafa] rounded-2xl border border-primary/5 flex items-center justify-center p-5 hover:shadow-lg transition-shadow duration-300"
-                  >
-                    <div className="relative w-full h-full">
-                      <Image src={partner.src} alt={partner.name} fill className="object-contain" />
-                    </div>
-                  </div>
-                ))}
-              </div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="flex items-center justify-center gap-12 flex-wrap"
+          >
+            {[
+              { name: "Saudi Al-Terais", src: "/partners/al-terais.jpeg" },
+            ].map((partner, i) => (
+              <motion.div
+                key={partner.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 * i }}
+                className="w-48 h-32 bg-[#fafafa] rounded-2xl border border-primary/5 flex items-center justify-center p-5 hover:shadow-lg transition-shadow duration-300"
+              >
+                <div className="relative w-full h-full">
+                  <Image src={partner.src} alt={partner.name} fill className="object-contain" />
+                </div>
+              </motion.div>
             ))}
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </section>
 
       {/* Core Values */}
@@ -371,12 +362,15 @@ export default function HomePage({ params }: { params: { locale: string } }) {
             {[...Array(2)].map((_, setIndex) => (
               <div key={setIndex} className="flex gap-8 shrink-0">
                 {[
-                  { name: "SABIC", src: "/partners/sabic.jpeg" },
-                  { name: "SAPAC", src: "/partners/sapac.jpeg" },
-                  { name: "Al-Terais", src: "/partners/al-terais.jpeg" },
-                  { name: "T. Nagadi", src: "/partners/nagadi.jpeg" },
-                  { name: "Tawuniya", src: "/partners/tawuniya.jpeg" },
-                  { name: "Qassim Cement", src: "/partners/qassim-cement.jpeg" },
+                  { name: "Aramco", src: "/clients/aramco.jpeg" },
+                  { name: "SABIC", src: "/clients/sabic.jpeg" },
+                  { name: "SAPAC", src: "/clients/sapac.jpeg" },
+                  { name: "T. Nagadi", src: "/clients/nagadi.jpeg" },
+                  { name: "Tawuniya", src: "/clients/tawuniya.jpeg" },
+                  { name: "Qassim Cement", src: "/clients/qassim-cement.jpeg" },
+                  { name: "Saudi HEPCO", src: "/clients/hepco.jpeg" },
+                  { name: "Energya Steel", src: "/clients/energya.jpeg" },
+                  { name: "Al-Ittefaq Steel", src: "/clients/al-ittefaq.jpeg" },
                 ].map((client, i) => (
                   <div
                     key={`${setIndex}-${i}`}
