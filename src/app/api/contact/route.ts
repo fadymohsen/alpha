@@ -1,11 +1,11 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 const ADMIN_EMAIL = "info@alfatransport.sa";
 
 export async function POST(req: Request) {
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const { name, email, message, type, jobTitle, phone, about } = await req.json();
 
     if (type === "career") {
