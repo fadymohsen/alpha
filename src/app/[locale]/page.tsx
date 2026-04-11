@@ -359,31 +359,29 @@ export default function HomePage({ params }: { params: { locale: string } }) {
         >
           <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#fafafa] to-transparent z-10 pointer-events-none" />
           <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#fafafa] to-transparent z-10 pointer-events-none" />
-          <div className="flex animate-marquee gap-8">
-            {[...Array(2)].map((_, setIndex) => (
-              <div key={setIndex} className="flex gap-8 shrink-0">
-                {[
-                  { name: "Aramco", src: "/clients/aramco.jpeg" },
-                  { name: "SABIC", src: "/clients/sabic.jpeg" },
-                  { name: "SAPAC", src: "/clients/sapac.jpeg" },
-                  { name: "T. Nagadi", src: "/clients/nagadi.jpeg" },
-                  { name: "Tawuniya", src: "/clients/tawuniya.jpeg" },
-                  { name: "Qassim Cement", src: "/clients/qassim-cement.jpeg" },
-                  { name: "Saudi HEPCO", src: "/clients/hepco.jpeg" },
-                  { name: "Energya Steel", src: "/clients/energya.jpeg" },
-                  { name: "Al-Ittefaq Steel", src: "/clients/al-ittefaq.jpeg" },
-                ].map((client, i) => (
-                  <div
-                    key={`${setIndex}-${i}`}
-                    className="w-44 h-28 shrink-0 rounded-2xl flex items-center justify-center p-5"
-                  >
-                    <div className="relative w-full h-full">
-                      <Image src={client.src} alt={client.name} fill className="object-contain" />
-                    </div>
+          <div className="flex animate-marquee">
+            {[...Array(3)].flatMap((_, setIndex) =>
+              [
+                { name: "Aramco", src: "/clients/aramco.jpeg" },
+                { name: "SABIC", src: "/clients/sabic.jpeg" },
+                { name: "SAPAC", src: "/clients/sapac.jpeg" },
+                { name: "T. Nagadi", src: "/clients/nagadi.jpeg" },
+                { name: "Tawuniya", src: "/clients/tawuniya.jpeg" },
+                { name: "Qassim Cement", src: "/clients/qassim-cement.jpeg" },
+                { name: "Saudi HEPCO", src: "/clients/hepco.jpeg" },
+                { name: "Energya Steel", src: "/clients/energya.jpeg" },
+                { name: "Al-Ittefaq Steel", src: "/clients/al-ittefaq.jpeg" },
+              ].map((client, i) => (
+                <div
+                  key={`${setIndex}-${i}`}
+                  className="w-40 h-24 shrink-0 mx-6 rounded-2xl flex items-center justify-center p-4"
+                >
+                  <div className="relative w-full h-full">
+                    <Image src={client.src} alt={client.name} fill className="object-contain" />
                   </div>
-                ))}
-              </div>
-            ))}
+                </div>
+              ))
+            )}
           </div>
         </motion.div>
       </section>
