@@ -1,6 +1,7 @@
 import { getDictionary } from "@/i18n/get-dictionary";
 import { prisma } from "@/lib/prisma";
-import { Send, MapPin, Phone, Mail, MessageCircle } from "lucide-react";
+import { MapPin, Phone, Mail, MessageCircle } from "lucide-react";
+import { ContactForm } from "@/components/contact-form";
 import type { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
@@ -88,26 +89,7 @@ export default async function ContactPage({ params }: { params: { locale: string
         </div>
 
         {/* Contact Form Card */}
-        <form className="bg-white p-10 rounded-[2.5rem] shadow-2xl border border-primary/5 space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="space-y-2">
-              <label className="text-xs font-black uppercase tracking-widest text-primary/50 px-2">{dict.contact.form.name}</label>
-              <input type="text" className="w-full px-6 py-4 bg-slate-50 rounded-2xl outline-none focus:ring-4 ring-primary/5 transition-all text-sm font-medium" placeholder={dict.contact.form.name_placeholder} />
-            </div>
-            <div className="space-y-2">
-              <label className="text-xs font-black uppercase tracking-widest text-primary/50 px-2">{dict.contact.form.email}</label>
-              <input type="email" className="w-full px-6 py-4 bg-slate-50 rounded-2xl outline-none focus:ring-4 ring-primary/5 transition-all text-sm font-medium text-start" placeholder={dict.contact.form.email_placeholder} />
-            </div>
-          </div>
-          <div className="space-y-2">
-            <label className="text-xs font-black uppercase tracking-widest text-primary/50 px-2">{dict.contact.form.message}</label>
-            <textarea rows={5} className="w-full px-6 py-4 bg-slate-50 rounded-2xl outline-none focus:ring-4 ring-primary/5 transition-all text-sm font-medium resize-none" placeholder={dict.contact.form.message_placeholder}></textarea>
-          </div>
-          <button className="w-full group relative overflow-hidden bg-primary text-white py-5 rounded-2xl font-black text-xs uppercase tracking-[0.3em] transition-all hover:scale-[1.01] active:scale-[0.99] shadow-xl flex items-center justify-center gap-4">
-            <div className="absolute inset-0 bg-secondary translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-700" />
-            <span className="relative z-10 flex items-center gap-3"><Send size={18} className={isRtl ? "rotate-180" : ""} /> {dict.contact.form.submit}</span>
-          </button>
-        </form>
+        <ContactForm dict={dict.contact.form} isRtl={isRtl} />
       </div>
     </main>
   );

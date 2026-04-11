@@ -22,28 +22,44 @@ export default function CareersContent({ locale, jobs }: CareersContentProps) {
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
   const [form, setForm] = useState({ name: "", phone: "", email: "", about: "" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedJob) return;
+    setSubmitting(true);
 
-    const message = isRtl
-      ? `📋 *طلب توظيف - ${selectedJob.title}*
-👤 الاسم: ${form.name}
-📱 الجوال: ${form.phone}
-📧 البريد: ${form.email}
-📍 الموقع: ${selectedJob.location}
-💼 نبذة: ${form.about}`
-      : `📋 *Job Application - ${selectedJob.title}*
-👤 Name: ${form.name}
-📱 Phone: ${form.phone}
-📧 Email: ${form.email}
-📍 Location: ${selectedJob.location}
-💼 About: ${form.about}`;
-
-    const url = `https://wa.me/${whatsapp}?text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank");
-    setSelectedJob(null);
-    setForm({ name: "", phone: "", email: "", about: "" });
+    try {
+      await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "career",
+          name: form.name,
+          phone: form.phone,
+          email: form.email,
+          about: form.about,
+          jobTitle: selectedJob.title,
+        }),
+      });
+      setSubmitted(true);
+      setTimeout(() => {
+        setSelectedJob(null);
+        setForm({ name: "", phone: "", email: "", about: "" });
+        setSubmitted(false);
+      }, 3000);
+    } catch {
+      // Fallback to WhatsApp if email fails
+      const message = isRtl
+        ? `📋 *طلب توظيف - ${selectedJob.title}*\n👤 الاسم: ${form.name}\n📱 الجوال: ${form.phone}\n📧 البريد: ${form.email}\n💼 نبذة: ${form.about}`
+        : `📋 *Job Application - ${selectedJob.title}*\n👤 Name: ${form.name}\n📱 Phone: ${form.phone}\n📧 Email: ${form.email}\n💼 About: ${form.about}`;
+      window.open(`https://wa.me/${whatsapp}?text=${encodeURIComponent(message)}`, "_blank");
+      setSelectedJob(null);
+      setForm({ name: "", phone: "", email: "", about: "" });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const closeModal = () => {
@@ -237,16 +253,22 @@ export default function CareersContent({ locale, jobs }: CareersContentProps) {
                 {/* Submit */}
                 <button
                   type="submit"
-                  className="w-full group relative overflow-hidden bg-[#25D366] text-white py-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] transition-all hover:scale-[1.02] active:scale-[0.98] shadow-xl flex items-center justify-center gap-3"
+                  disabled={submitting || submitted}
+                  className="w-full group relative overflow-hidden bg-primary text-white py-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] transition-all hover:scale-[1.02] active:scale-[0.98] shadow-xl flex items-center justify-center gap-3 disabled:opacity-70"
                 >
-                  <Send size={16} className={isRtl ? "rotate-180" : ""} />
-                  {isRtl ? "إرسال عبر واتساب" : "Send via WhatsApp"}
+                  {submitting ? (
+                    <>{isRtl ? "جاري الإرسال..." : "Sending..."}</>
+                  ) : submitted ? (
+                    <>{isRtl ? "تم الإرسال بنجاح!" : "Sent successfully!"}</>
+                  ) : (
+                    <><Send size={16} className={isRtl ? "rotate-180" : ""} /> {isRtl ? "إرسال الطلب" : "Submit Application"}</>
+                  )}
                 </button>
 
                 <p className="text-center text-xs text-gray-400 font-medium">
                   {isRtl
-                    ? "سيتم فتح واتساب لإرسال بيانات طلبك مباشرة"
-                    : "WhatsApp will open to send your application details directly"}
+                    ? "سيتم إرسال طلبك عبر البريد الإلكتروني وستصلك رسالة تأكيد"
+                    : "Your application will be sent via email and you'll receive a confirmation"}
                 </p>
               </form>
             </motion.div>
