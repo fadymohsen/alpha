@@ -13,8 +13,8 @@ const defaults: SiteSettings = {
   phone: "0557746126",
   whatsapp: "966557746126",
   email: "Info@alfatransport.sa",
-  address_ar: "الرياض ١١٤٣٣ - السلي شارع هارون الرشيد - س.ب ١٠٤٨٤",
-  address_en: "Riyadh 11433 - As Sulay, Harun Al Rashid St - P.O.Box 10484",
+  address_ar: "رقم المبنى 2423، طريق مكة المكرمة، حي الربوة، الرياض 12821، المملكة العربية السعودية",
+  address_en: "Building No. 2423, Makkah Al Mukarramah Street, Al Rabwah District, Riyadh 12821, Kingdom of Saudi Arabia",
 };
 
 const SettingsContext = createContext<SiteSettings>(defaults);
