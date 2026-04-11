@@ -72,15 +72,15 @@ export default async function ContactPage({ params }: { params: { locale: string
                 <p className="text-primary font-bold text-sm group-hover:text-secondary transition-colors">{email}</p>
               </div>
             </a>
-            <div className="flex items-center gap-4">
+            <a href="https://maps.google.com/?q=24.706114,46.749271" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
               <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center flex-shrink-0">
                 <MapPin size={20} className="text-secondary" />
               </div>
               <div>
                 <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-0.5">{dict.contact.info.hq}</p>
-                <p className="text-gray-500 font-medium text-sm leading-relaxed">{address}</p>
+                <p className="text-gray-500 group-hover:text-secondary transition-colors font-medium text-sm leading-relaxed">{address}</p>
               </div>
-            </div>
+            </a>
           </div>
           <div className="pt-6 border-t border-primary/5">
             <p className="text-xs font-black uppercase tracking-widest text-gray-400">{dict.contact.info.working_hours}</p>

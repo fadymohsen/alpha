@@ -86,10 +86,10 @@ export function Footer({ locale }: { locale: string }) {
                 <Mail size={18} className="text-[#C1922C] flex-shrink-0" />
                 <span className="text-white/60 group-hover:text-white transition-colors font-medium text-sm">{settings.email}</span>
               </a>
-              <div className="flex items-start gap-3">
+              <a href="https://maps.google.com/?q=24.706114,46.749271" target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 group">
                 <MapPin size={18} className="text-[#C1922C] flex-shrink-0 mt-0.5" />
-                <p className="text-white/60 text-sm font-medium leading-relaxed">{isRtl ? settings.address_ar : settings.address_en}</p>
-              </div>
+                <p className="text-white/60 group-hover:text-white transition-colors text-sm font-medium leading-relaxed">{isRtl ? settings.address_ar : settings.address_en}</p>
+              </a>
             </div>
           </div>
         </div>
