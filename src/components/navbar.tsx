@@ -52,13 +52,13 @@ export function Navbar({ locale }: { locale: string }) {
 
   return (
     <>
-      <nav className={cn(
-        "fixed top-0 w-full z-50 transition-all duration-500",
-        isTransparent
-          ? "bg-transparent"
-          : "bg-white border-b border-gray-100 shadow-lg"
-      )}>
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <nav className="fixed top-0 w-full z-50 px-4 pt-4 transition-all duration-500">
+        <div className={cn(
+          "max-w-7xl mx-auto px-6 h-16 flex items-center justify-between rounded-full transition-all duration-500",
+          isTransparent
+            ? "bg-white/15 backdrop-blur-md border border-white/20"
+            : "bg-white shadow-xl border border-gray-100"
+        )}>
           {/* Logo */}
           <Link href={`/${currentLocale}`} className="flex items-center gap-3 shrink-0">
             <div className="relative w-16 h-16">
@@ -111,8 +111,8 @@ export function Navbar({ locale }: { locale: string }) {
           {/* Mobile Toggle */}
           <button
             className={cn(
-              "lg:hidden w-11 h-11 flex items-center justify-center rounded-xl shadow-lg active:scale-95 transition-all",
-              isTransparent ? "bg-white/20 backdrop-blur-sm text-white" : "bg-primary text-white"
+              "lg:hidden w-10 h-10 flex items-center justify-center rounded-full active:scale-95 transition-all",
+              isTransparent ? "bg-white/20 text-white" : "bg-primary text-white"
             )}
             onClick={() => setIsOpen(true)}
           >
