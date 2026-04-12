@@ -123,6 +123,55 @@ export default async function AboutPage({ params }: { params: { locale: string }
             </div>
          </div>
       </section>
+      {/* Partners */}
+      <section className="py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-14 space-y-4">
+            <h2 className="text-3xl md:text-5xl font-black text-primary tracking-tighter leading-none">{isRtl ? "شركاؤنا" : "Our Partners"}</h2>
+            <p className="text-lg text-gray-500 font-medium max-w-2xl mx-auto">{isRtl ? "نفتخر بشراكاتنا الاستراتيجية مع كبرى الشركات الرائدة" : "Proud of our strategic partnerships with leading companies"}</p>
+          </div>
+          <div className="flex items-center justify-center gap-12 flex-wrap">
+            {[
+              { name: "Saudi Al-Terais", src: "/partners/al-terais.jpeg" },
+              { name: "JAL Development", src: "/partners/jal.jpeg" },
+            ].map((partner) => (
+              <div key={partner.name} className="w-48 h-32 rounded-2xl flex items-center justify-center p-5">
+                <div className="relative w-full h-full">
+                  <Image src={partner.src} alt={partner.name} fill className="object-contain" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Clients */}
+      <section className="py-24 bg-[#fafafa]">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-14 space-y-4">
+            <h2 className="text-3xl md:text-5xl font-black text-primary tracking-tighter leading-none">{dict.clients.title}</h2>
+            <p className="text-lg text-gray-500 font-medium max-w-2xl mx-auto">{dict.clients.subtitle}</p>
+          </div>
+          <div className="flex items-center justify-center gap-8 flex-wrap">
+            {[
+              { name: "SABIC", src: "/clients/sabic.jpeg" },
+              { name: "SAPAC", src: "/clients/sapac.jpeg" },
+              { name: "T. Nagadi", src: "/clients/nagadi.jpeg" },
+              { name: "Tawuniya", src: "/clients/tawuniya.jpeg" },
+              { name: "Qassim Cement", src: "/clients/qassim-cement.jpeg" },
+              { name: "Saudi HEPCO", src: "/clients/hepco.jpeg" },
+              { name: "Energya Steel", src: "/clients/energya.jpeg" },
+              { name: "Al-Ittefaq Steel", src: "/clients/al-ittefaq.jpeg" },
+            ].map((client) => (
+              <div key={client.name} className="w-40 h-24 rounded-2xl flex items-center justify-center p-4">
+                <div className="relative w-full h-full">
+                  <Image src={client.src} alt={client.name} fill className="object-contain" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

@@ -338,8 +338,8 @@ export default function HomePage({ params }: { params: { locale: string } }) {
          </div>
       </section>
 
-      {/* Clients - Auto-scrolling Marquee */}
-      <section className="py-24 bg-[#fafafa] overflow-hidden">
+      {/* Clients */}
+      <section className="py-24 bg-[#fafafa]">
         <div className="max-w-6xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -350,40 +350,37 @@ export default function HomePage({ params }: { params: { locale: string } }) {
             <h2 className="text-3xl md:text-5xl font-black text-primary tracking-tighter leading-none">{dict.clients.title}</h2>
             <p className="text-lg text-gray-500 font-medium max-w-2xl mx-auto">{dict.clients.subtitle}</p>
           </motion.div>
-        </div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="relative"
-        >
-          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#fafafa] to-transparent z-10 pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#fafafa] to-transparent z-10 pointer-events-none" />
-          <div className="flex animate-marquee">
-            {[...Array(3)].flatMap((_, setIndex) =>
-              [
-                { name: "Aramco", src: "/clients/aramco.jpeg" },
-                { name: "SABIC", src: "/clients/sabic.jpeg" },
-                { name: "SAPAC", src: "/clients/sapac.jpeg" },
-                { name: "T. Nagadi", src: "/clients/nagadi.jpeg" },
-                { name: "Tawuniya", src: "/clients/tawuniya.jpeg" },
-                { name: "Qassim Cement", src: "/clients/qassim-cement.jpeg" },
-                { name: "Saudi HEPCO", src: "/clients/hepco.jpeg" },
-                { name: "Energya Steel", src: "/clients/energya.jpeg" },
-                { name: "Al-Ittefaq Steel", src: "/clients/al-ittefaq.jpeg" },
-              ].map((client, i) => (
-                <div
-                  key={`${setIndex}-${i}`}
-                  className="w-40 h-24 shrink-0 mx-6 rounded-2xl flex items-center justify-center p-4"
-                >
-                  <div className="relative w-full h-full">
-                    <Image src={client.src} alt={client.name} fill className="object-contain" />
-                  </div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="flex items-center justify-center gap-8 flex-wrap"
+          >
+            {[
+              { name: "SABIC", src: "/clients/sabic.jpeg" },
+              { name: "SAPAC", src: "/clients/sapac.jpeg" },
+              { name: "T. Nagadi", src: "/clients/nagadi.jpeg" },
+              { name: "Tawuniya", src: "/clients/tawuniya.jpeg" },
+              { name: "Qassim Cement", src: "/clients/qassim-cement.jpeg" },
+              { name: "Saudi HEPCO", src: "/clients/hepco.jpeg" },
+              { name: "Energya Steel", src: "/clients/energya.jpeg" },
+              { name: "Al-Ittefaq Steel", src: "/clients/al-ittefaq.jpeg" },
+            ].map((client, i) => (
+              <motion.div
+                key={client.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.05 * i }}
+                className="w-40 h-24 rounded-2xl flex items-center justify-center p-4"
+              >
+                <div className="relative w-full h-full">
+                  <Image src={client.src} alt={client.name} fill className="object-contain" />
                 </div>
-              ))
-            )}
-          </div>
-        </motion.div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </section>
 
       {/* CTA → Careers */}

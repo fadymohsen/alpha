@@ -83,9 +83,6 @@ export default async function ContactPage({ params }: { params: { locale: string
               </div>
             </a>
           </div>
-          <div className="pt-6 border-t border-primary/5">
-            <p className="text-xs font-black uppercase tracking-widest text-gray-400">{dict.contact.info.working_hours}</p>
-          </div>
         </div>
 
         {/* Contact Form Card */}

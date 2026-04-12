@@ -19,16 +19,7 @@ const config: Config = {
         tajawal: ["var(--font-tajawal)", "sans-serif"],
         cairo: ["var(--font-cairo)", "sans-serif"],
       },
-      animation: {
-        marquee: "marquee 20s linear infinite",
-      },
-      keyframes: {
-        marquee: {
-          "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-33.333%)" },
-        },
-      },
-      borderRadius: {
+borderRadius: {
         "3xl": "1.5rem",
         "4xl": "2rem",
         "5xl": "3rem",
