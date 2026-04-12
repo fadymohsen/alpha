@@ -199,7 +199,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
          <div className="absolute top-0 right-0 w-1/2 h-full bg-accent/5 -skew-x-12 translate-x-1/2" />
          <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 gap-16 relative z-10">
             {Object.entries(dict.stats).map(([key, val], i) => {
-              const values = [15, 500, 10, 200];
+              const values = [17, 10, 10000, 200];
               return (
                 <CountUpStat key={key} end={values[i]} label={val as string} index={i} isRtl={isRtl} />
               );
