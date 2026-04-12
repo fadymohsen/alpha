@@ -208,9 +208,8 @@ export default function HomePage({ params }: { params: { locale: string } }) {
          </div>
       </section>
 
-      {/* Fleet Gallery - uncomment when photos are added to /public/fleet/
+      {/* Fleet Gallery */}
       <FleetGallery isRtl={isRtl} />
-      */}
 
       {/* Partners */}
       <section className="py-24 bg-white">
