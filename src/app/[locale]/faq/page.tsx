@@ -31,7 +31,7 @@ export default function FaqPage({ params }: { params: { locale: string } }) {
       <section className="py-24 bg-[#fafafa] text-center relative overflow-hidden">
         <div className="absolute top-0 right-0 w-80 h-80 bg-accent/5 rounded-full blur-[100px]" />
         <div className="max-w-4xl mx-auto px-6 relative z-10 space-y-4">
-          <h1 className="text-5xl md:text-7xl font-black text-primary tracking-tighter leading-tight-override">{dict.faq.title}</h1>
+          <h1 className="text-3xl md:text-7xl font-black text-primary tracking-tighter leading-tight-override">{dict.faq.title}</h1>
           <p className="text-lg text-gray-500 font-medium leading-relaxed max-w-2xl mx-auto">{dict.faq.subtitle}</p>
         </div>
       </section>

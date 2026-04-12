@@ -2,6 +2,7 @@ import { getDictionary } from "@/i18n/get-dictionary";
 import { Target, Eye, Star, Award, Users, MapPin, Globe2 } from "lucide-react";
 import Image from "next/image";
 import type { Metadata } from "next";
+import { FleetGallery } from "@/components/fleet-gallery";
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const { locale } = params;
@@ -27,7 +28,7 @@ export default async function AboutPage({ params }: { params: { locale: string }
            <div className="absolute -bottom-48 -right-48 w-96 h-96 bg-white rounded-full blur-[100px]" />
         </div>
         <div className="max-w-4xl mx-auto px-6 relative z-10 space-y-8">
-          <h1 className="text-5xl md:text-8xl font-black text-white tracking-tighter leading-none whitespace-pre-line">{dict.nav.about}</h1>
+          <h1 className="text-3xl md:text-8xl font-black text-white tracking-tighter leading-none whitespace-pre-line">{dict.nav.about}</h1>
           <p className="text-xl text-[#C1922C] font-bold uppercase tracking-[0.3em]">{dict.hero.title1}</p>
           <p className="text-xl text-white/80 max-w-2xl mx-auto leading-relaxed font-medium">{dict.about.description}</p>
         </div>
@@ -38,7 +39,7 @@ export default async function AboutPage({ params }: { params: { locale: string }
          <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
             <div className="space-y-10 order-2 lg:order-1">
                <div className="space-y-6">
-                  <h2 className="text-5xl font-black text-primary leading-tight">{isRtl ? "حضورنا العالمي والمحلي" : "Our Global and Local Presence"}</h2>
+                  <h2 className="text-2xl md:text-5xl font-black text-primary leading-tight">{isRtl ? "حضورنا العالمي والمحلي" : "Our Global and Local Presence"}</h2>
                   <p className="text-xl text-gray-500 font-medium leading-relaxed">
                     {isRtl ? "نحن نربط المملكة العربية السعودية بالعالم عبر أسطولنا المتطور وشبكتنا اللوجستية الواسعة. نغطي كافة مناطق المملكة ونمتد إلى دول الخليج والشرق الأوسط، مع رؤية للتوسع العالمي." : "We connect the Kingdom of Saudi Arabia to the world through our advanced fleet and wide logistics network. We cover all regions of the Kingdom and extend to the Gulf and Middle East countries, with a vision for global expansion."}
                   </p>
@@ -99,7 +100,7 @@ export default async function AboutPage({ params }: { params: { locale: string }
          <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
             <div className="space-y-10">
                <div className="space-y-4">
-                  <h2 className="text-5xl font-black text-white leading-tight">{isRtl ? "شريككم اللوجستي الموثوق في المملكة" : "Your Trusted Logistics Partner in the Kingdom"}</h2>
+                  <h2 className="text-2xl md:text-5xl font-black text-white leading-tight">{isRtl ? "شريككم اللوجستي الموثوق في المملكة" : "Your Trusted Logistics Partner in the Kingdom"}</h2>
                   <p className="text-lg text-white/80 font-medium leading-relaxed">{isRtl ? "منذ تأسيسنا، ونحن نضع رضا العملاء هدفاً أسمى، والالتزام سراً لنجاحنا. نمتلك اليوم أسطولاً مجهزاً بأحدث التقنيات لنقل كافة أنواع المنقولات بكفاءة واحترافية." : "Since our founding, we have put customer satisfaction as a supreme goal, and commitment as the secret of our success. Today, we have a fleet equipped with the latest technologies to transport all types of cargo efficiently and professionally."}</p>
                </div>
                <div className="grid grid-cols-2 gap-8">
@@ -123,11 +124,15 @@ export default async function AboutPage({ params }: { params: { locale: string }
             </div>
          </div>
       </section>
+      {/* Fleet Gallery - uncomment when photos are added to /public/fleet/
+      <FleetGallery isRtl={isRtl} />
+      */}
+
       {/* Partners */}
       <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-14 space-y-4">
-            <h2 className="text-3xl md:text-5xl font-black text-primary tracking-tighter leading-none">{isRtl ? "شركاؤنا" : "Our Partners"}</h2>
+            <h2 className="text-2xl md:text-5xl font-black text-primary tracking-tighter leading-none">{isRtl ? "شركاؤنا" : "Our Partners"}</h2>
             <p className="text-lg text-gray-500 font-medium max-w-2xl mx-auto">{isRtl ? "نفتخر بشراكاتنا الاستراتيجية مع كبرى الشركات الرائدة" : "Proud of our strategic partnerships with leading companies"}</p>
           </div>
           <div className="grid grid-cols-2 gap-8 max-w-md mx-auto">
@@ -149,7 +154,7 @@ export default async function AboutPage({ params }: { params: { locale: string }
       <section className="py-24 bg-[#fafafa]">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-14 space-y-4">
-            <h2 className="text-3xl md:text-5xl font-black text-primary tracking-tighter leading-none">{dict.clients.title}</h2>
+            <h2 className="text-2xl md:text-5xl font-black text-primary tracking-tighter leading-none">{dict.clients.title}</h2>
             <p className="text-lg text-gray-500 font-medium max-w-2xl mx-auto">{dict.clients.subtitle}</p>
           </div>
           <div className="flex items-center justify-center gap-8 flex-wrap">

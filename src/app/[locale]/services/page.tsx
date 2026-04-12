@@ -4,6 +4,7 @@ import { Truck, Activity, Construction, ShieldCheck, Microscope, Globe, MessageC
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { FleetGallery } from "@/components/fleet-gallery";
 
 const icons = [Truck, Construction, ShieldCheck, Globe, Activity, Microscope];
 
@@ -40,7 +41,7 @@ export default async function ServicesPage({ params }: { params: { locale: strin
       <section className="bg-[#fafafa] py-24 text-center relative overflow-hidden">
          <div className="absolute top-0 right-0 w-80 h-80 bg-accent/5 rounded-full blur-[100px]" />
          <div className="max-w-4xl mx-auto px-6 relative z-10 space-y-4">
-            <h1 className="text-5xl md:text-7xl font-black text-primary tracking-tighter leading-none">{dict.services.title}</h1>
+            <h1 className="text-3xl md:text-7xl font-black text-primary tracking-tighter leading-none">{dict.services.title}</h1>
             <p className="text-lg text-gray-500 font-medium leading-relaxed max-w-2xl mx-auto">{dict.why_choose_us.subtitle}</p>
          </div>
       </section>
@@ -82,7 +83,7 @@ export default async function ServicesPage({ params }: { params: { locale: strin
             </div>
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                <div className="space-y-6">
-                  <h2 className="text-4xl font-black text-white leading-tight-override">
+                  <h2 className="text-2xl md:text-4xl font-black text-white leading-tight-override">
                     {isRtl ? "حلول تخصصية لنقل الاسمنت السائب والمعدات الثقيلة" : "Specialized Bulk Cement & Heavy Transport Solutions"}
                   </h2>
                   <p className="text-base text-white/70 leading-relaxed font-medium">
@@ -106,11 +107,15 @@ export default async function ServicesPage({ params }: { params: { locale: strin
             </div>
          </div>
       </section>
+      {/* Fleet Gallery - uncomment when photos are added to /public/fleet/
+      <FleetGallery isRtl={isRtl} />
+      */}
+
       {/* Partners */}
       <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-14 space-y-4">
-            <h2 className="text-3xl md:text-5xl font-black text-primary tracking-tighter leading-none">{isRtl ? "شركاؤنا" : "Our Partners"}</h2>
+            <h2 className="text-2xl md:text-5xl font-black text-primary tracking-tighter leading-none">{isRtl ? "شركاؤنا" : "Our Partners"}</h2>
             <p className="text-lg text-gray-500 font-medium max-w-2xl mx-auto">{isRtl ? "نفتخر بشراكاتنا الاستراتيجية مع كبرى الشركات الرائدة" : "Proud of our strategic partnerships with leading companies"}</p>
           </div>
           <div className="grid grid-cols-2 gap-8 max-w-md mx-auto">
@@ -132,7 +137,7 @@ export default async function ServicesPage({ params }: { params: { locale: strin
       <section className="py-24 bg-[#fafafa]">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-14 space-y-4">
-            <h2 className="text-3xl md:text-5xl font-black text-primary tracking-tighter leading-none">{dict.clients.title}</h2>
+            <h2 className="text-2xl md:text-5xl font-black text-primary tracking-tighter leading-none">{dict.clients.title}</h2>
             <p className="text-lg text-gray-500 font-medium max-w-2xl mx-auto">{dict.clients.subtitle}</p>
           </div>
           <div className="flex items-center justify-center gap-8 flex-wrap">

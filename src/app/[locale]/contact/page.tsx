@@ -36,7 +36,7 @@ export default async function ContactPage({ params }: { params: { locale: string
     <main className="flex-grow pt-32 pb-16">
       <section className="bg-primary py-24 text-center relative overflow-hidden">
          <div className="max-w-4xl mx-auto px-6 relative z-10 space-y-4">
-            <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none">{dict.contact.title}</h1>
+            <h1 className="text-3xl md:text-7xl font-black text-white tracking-tighter leading-none">{dict.contact.title}</h1>
             <p className="text-lg text-white/70 font-medium leading-relaxed max-w-2xl mx-auto">{dict.footer.slogan}</p>
          </div>
       </section>

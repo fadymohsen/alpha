@@ -91,7 +91,7 @@ export default function CareersContent({ locale, jobs }: CareersContentProps) {
             {/* Why work */}
             <div className="space-y-10">
               <div className="space-y-4">
-                <h2 className="text-5xl font-black text-primary leading-tight">
+                <h2 className="text-2xl md:text-5xl font-black text-primary leading-tight">
                   {isRtl ? "لماذا تعمل في ألفا؟" : "Why Work at ALFA?"}
                 </h2>
                 <p className="text-lg text-gray-500 font-medium leading-relaxed">

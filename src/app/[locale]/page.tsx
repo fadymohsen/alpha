@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { FleetGallery } from "@/components/fleet-gallery";
 
 const CountUpStat = ({ end, label, index, isRtl }: { end: number; label: string; index: number; isRtl: boolean }) => {
   const [count, setCount] = useState(0);
@@ -207,6 +208,10 @@ export default function HomePage({ params }: { params: { locale: string } }) {
          </div>
       </section>
 
+      {/* Fleet Gallery - uncomment when photos are added to /public/fleet/
+      <FleetGallery isRtl={isRtl} />
+      */}
+
       {/* Partners */}
       <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6">
@@ -216,7 +221,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
             viewport={{ once: true }}
             className="text-center mb-14 space-y-4"
           >
-            <h2 className="text-3xl md:text-5xl font-black text-primary tracking-tighter leading-none">{isRtl ? "شركاؤنا" : "Our Partners"}</h2>
+            <h2 className="text-2xl md:text-5xl font-black text-primary tracking-tighter leading-none">{isRtl ? "شركاؤنا" : "Our Partners"}</h2>
             <p className="text-lg text-gray-500 font-medium max-w-2xl mx-auto">{isRtl ? "نفتخر بشراكاتنا الاستراتيجية مع كبرى الشركات الرائدة" : "Proud of our strategic partnerships with leading companies"}</p>
           </motion.div>
           <motion.div
@@ -255,7 +260,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
               viewport={{ once: true }} 
               className="max-w-2xl space-y-6 mb-24 text-center mx-auto"
             >
-               <h2 className="text-3xl md:text-5xl font-black text-primary tracking-tighter leading-none">{isRtl ? "قيمنا الجوهرية" : "Our Core Values"}</h2>
+               <h2 className="text-2xl md:text-5xl font-black text-primary tracking-tighter leading-none">{isRtl ? "قيمنا الجوهرية" : "Our Core Values"}</h2>
                <p className="text-lg text-gray-500 font-medium leading-relaxed max-w-xl mx-auto">{isRtl ? "نحن نؤمن بأن للوجيستيات روحاً، وقيمنا هي المحرك الرئيسي لكل رحلة نقوم بها لضمان رضا عملائنا." : "We believe logistics has a soul, and our values are the main engine for every journey we take to ensure our clients' satisfaction."}</p>
             </motion.div>
             
@@ -291,7 +296,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
          <div className="max-w-6xl mx-auto px-6">
             <div className="flex flex-col justify-center items-center text-center gap-10 mb-14">
                <motion.div initial={{ opacity: 0, scale: 0.98 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="space-y-6">
-                  <h2 className="text-3xl md:text-5xl font-black text-primary tracking-tighter leading-none">{dict.services.title}</h2>
+                  <h2 className="text-2xl md:text-5xl font-black text-primary tracking-tighter leading-none">{dict.services.title}</h2>
                   <p className="text-lg text-gray-500 font-medium max-w-2xl mx-auto">{dict.why_choose_us.subtitle}</p>
                </motion.div>
             </div>
@@ -347,7 +352,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
             viewport={{ once: true }}
             className="text-center mb-14 space-y-4"
           >
-            <h2 className="text-3xl md:text-5xl font-black text-primary tracking-tighter leading-none">{dict.clients.title}</h2>
+            <h2 className="text-2xl md:text-5xl font-black text-primary tracking-tighter leading-none">{dict.clients.title}</h2>
             <p className="text-lg text-gray-500 font-medium max-w-2xl mx-auto">{dict.clients.subtitle}</p>
           </motion.div>
           <motion.div
@@ -415,7 +420,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
               className="space-y-16"
             >
                <div className="space-y-8 max-w-4xl mx-auto">
-                  <h2 className="text-3xl md:text-5xl font-black text-white tracking-tighter leading-tight-override">{dict.specialized_solutions.title}</h2>
+                  <h2 className="text-2xl md:text-5xl font-black text-white tracking-tighter leading-tight-override">{dict.specialized_solutions.title}</h2>
                   <p className="text-xl text-white/80 leading-relaxed font-medium mx-auto max-w-2xl">{dict.specialized_solutions.description}</p>
                </div>
                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
@@ -443,7 +448,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
             viewport={{ once: true }}
             className="text-center mb-16 space-y-4"
           >
-            <h2 className="text-3xl md:text-5xl font-black text-primary tracking-tighter leading-tight-override">{dict.faq.title}</h2>
+            <h2 className="text-2xl md:text-5xl font-black text-primary tracking-tighter leading-tight-override">{dict.faq.title}</h2>
             <p className="text-lg text-gray-500 font-medium max-w-2xl mx-auto">{dict.faq.subtitle}</p>
           </motion.div>
 
