@@ -281,7 +281,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
                       <div className="scale-110">{v.icon}</div>
                     </div>
                     <div className="space-y-4">
-                      <h4 className="text-3xl font-black text-primary tracking-tight">{v.title}</h4>
+                      <h4 className="text-xl md:text-2xl font-black text-primary tracking-tight">{v.title}</h4>
                       <p className="text-base text-gray-500 font-medium leading-relaxed px-2">{v.desc}</p>
                     </div>
                  </motion.div>
@@ -315,7 +315,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
                        {i === 0 ? <Truck size={32} /> : i === 2 ? <ShieldCheck size={32} /> : <Activity size={32} />}
                     </div>
                     <div className="space-y-4 relative z-10 flex-grow">
-                      <h3 className="text-3xl font-black text-primary group-hover:text-white transition-colors tracking-tighter leading-none">{s.title}</h3>
+                      <h3 className="text-xl md:text-2xl font-black text-primary group-hover:text-white transition-colors tracking-tighter leading-none">{s.title}</h3>
                       <p className="text-base text-gray-500 font-medium leading-relaxed group-hover:text-white/60 transition-all">{s.desc}</p>
                     </div>
                     <div className="pt-6 relative z-10 mt-auto">

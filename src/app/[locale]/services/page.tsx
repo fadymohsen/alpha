@@ -56,7 +56,7 @@ export default async function ServicesPage({ params }: { params: { locale: strin
                  <Icon size={32} />
               </div>
               <div className="space-y-3 relative z-10 flex-grow">
-                <h3 className="text-3xl font-black text-primary group-hover:text-white transition-colors tracking-tighter">{s.title}</h3>
+                <h3 className="text-xl md:text-2xl font-black text-primary group-hover:text-white transition-colors tracking-tighter">{s.title}</h3>
                 <p className="text-base text-gray-500 font-medium leading-relaxed group-hover:text-white/80 transition-all">{s.desc}</p>
               </div>
               <div className="pt-6 relative z-10 mt-auto">
