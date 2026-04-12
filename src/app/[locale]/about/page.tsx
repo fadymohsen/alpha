@@ -130,12 +130,12 @@ export default async function AboutPage({ params }: { params: { locale: string }
             <h2 className="text-3xl md:text-5xl font-black text-primary tracking-tighter leading-none">{isRtl ? "شركاؤنا" : "Our Partners"}</h2>
             <p className="text-lg text-gray-500 font-medium max-w-2xl mx-auto">{isRtl ? "نفتخر بشراكاتنا الاستراتيجية مع كبرى الشركات الرائدة" : "Proud of our strategic partnerships with leading companies"}</p>
           </div>
-          <div className="flex items-center justify-center gap-12 flex-wrap">
+          <div className="grid grid-cols-2 gap-8 max-w-md mx-auto">
             {[
               { name: "Saudi Al-Terais", src: "/partners/al-terais.jpeg" },
               { name: "JAL Development", src: "/partners/jal.jpeg" },
             ].map((partner) => (
-              <div key={partner.name} className="w-48 h-32 rounded-2xl flex items-center justify-center p-5">
+              <div key={partner.name} className="h-32 rounded-2xl flex items-center justify-center p-5">
                 <div className="relative w-full h-full">
                   <Image src={partner.src} alt={partner.name} fill className="object-contain" />
                 </div>
