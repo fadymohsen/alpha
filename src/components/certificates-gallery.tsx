@@ -48,7 +48,7 @@ export function CertificatesGallery({ isRtl }: { isRtl: boolean }) {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {certificates.map((cert, i) => (
             <motion.div
               key={cert.id}
