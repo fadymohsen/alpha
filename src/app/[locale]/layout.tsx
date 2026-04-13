@@ -20,18 +20,23 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   const isAr = locale === "ar";
 
   const title = isAr
-    ? "شركة ألفا للنقل المحدودة | حلول لوجستية متكاملة"
-    : "ALFA TRANS, CO.LTD | Integrated Logistics Solutions";
+    ? "شركة الفا للنقل المحدودة | ألفا للنقل | حلول لوجستية متكاملة"
+    : "ALFA TRANS, CO.LTD | Alfa Transport | Integrated Logistics Solutions";
   const description = isAr
-    ? "شركة ألفا للنقل المحدودة رائدة في النقل البري وتوزيع الاسمنت السائب في المملكة العربية السعودية. حلول لوجستية متكاملة تدعم رؤية 2030."
-    : "ALFA TRANS is a pioneer in land transport and bulk cement distribution in Saudi Arabia. Integrated logistics solutions supporting Vision 2030.";
+    ? "شركة الفا للنقل المحدودة (ألفا للنقل) - رائدة في النقل البري وتوزيع الاسمنت السائب والنقل الدولي في المملكة العربية السعودية. أكثر من 17 عاماً من الخبرة في حلول النقل واللوجستيات المتكاملة. خدمات نقل بري متخصص، فحص وسلامة الشحنات، ونقل دولي لدول الخليج."
+    : "ALFA TRANS (Alfa Transport) - A pioneer in land transport, bulk cement distribution, and international shipping in Saudi Arabia. Over 17 years of experience in integrated transport and logistics solutions. Specialized land transport, cargo safety inspection, and Gulf countries shipping.";
+
+  const keywords = isAr
+    ? ["الفا للنقل", "ألفا للنقل", "شركة الفا للنقل", "شركة ألفا للنقل المحدودة", "الفا للنقل المحدودة", "نقل بري", "نقل بري السعودية", "توزيع اسمنت سائب", "شركة نقل", "شركة نقل بري", "لوجستيات السعودية", "نقل دولي", "فحص الشحنات", "نقل بضائع", "شركة شحن"]
+    : ["alfa trans", "alfa transport", "alfa transport saudi", "land transport saudi arabia", "bulk cement distribution", "logistics company saudi", "cargo safety", "international shipping ksa", "freight transport"];
 
   return {
     title: {
       default: title,
-      template: isAr ? "%s | شركة ألفا للنقل" : "%s | ALFA TRANS",
+      template: isAr ? "%s | شركة الفا للنقل" : "%s | ALFA TRANS",
     },
     description,
+    keywords,
     metadataBase: new URL(siteUrl),
     icons: {
       icon: "/logo-transperent.png",
@@ -41,13 +46,13 @@ export async function generateMetadata({ params }: { params: { locale: string } 
       title,
       description,
       url: `${siteUrl}/${locale}`,
-      siteName: isAr ? "شركة ألفا للنقل المحدودة" : "ALFA TRANS, CO.LTD",
+      siteName: isAr ? "شركة الفا للنقل المحدودة" : "ALFA TRANS, CO.LTD",
       images: [
         {
           url: "/logo.jpeg",
           width: 800,
           height: 800,
-          alt: isAr ? "شركة ألفا للنقل" : "ALFA TRANS",
+          alt: isAr ? "شركة الفا للنقل - ألفا للنقل المحدودة" : "ALFA TRANS - Alfa Transport Company",
         },
       ],
       locale: isAr ? "ar_SA" : "en_US",
@@ -66,6 +71,9 @@ export async function generateMetadata({ params }: { params: { locale: string } 
         en: `${siteUrl}/en`,
       },
     },
+    verification: {
+      google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
+    },
   };
 }
 
@@ -77,6 +85,48 @@ export default async function LocaleLayout({ children, params }: { children: Rea
     <html lang={locale} dir={isRtl ? "rtl" : "ltr"} className={`${tajawal.variable} ${cairo.variable}`}>
       <head>
         <GoogleTagManager />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "TransportCompany",
+              name: "شركة الفا للنقل المحدودة - ALFA TRANS",
+              alternateName: ["الفا للنقل", "ألفا للنقل", "Alfa Transport", "ALFA TRANS CO LTD"],
+              url: "https://alpha-transportation.vercel.app",
+              logo: "https://alpha-transportation.vercel.app/logo.jpeg",
+              description: "شركة الفا للنقل المحدودة - رائدة في النقل البري وتوزيع الاسمنت السائب والنقل الدولي في المملكة العربية السعودية",
+              foundingDate: "2007",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "طريق مكة المكرمة، حي الربوة",
+                addressLocality: "الرياض",
+                addressRegion: "الرياض",
+                postalCode: "12821",
+                addressCountry: "SA",
+              },
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: 24.706114,
+                longitude: 46.749271,
+              },
+              telephone: "+966557746126",
+              email: "Info@alfatransport.sa",
+              areaServed: [
+                { "@type": "Country", name: "Saudi Arabia" },
+                { "@type": "Place", name: "Gulf Countries" },
+              ],
+              serviceType: [
+                "النقل البري المتخصص",
+                "توزيع الاسمنت السائب",
+                "حلول النقل الدولي",
+                "فحص وسلامة الشحنات",
+              ],
+              numberOfEmployees: { "@type": "QuantitativeValue", value: 200 },
+              sameAs: [],
+            }),
+          }}
+        />
       </head>
       <body className="antialiased min-h-screen flex flex-col">
         <GoogleTagManagerNoscript />
