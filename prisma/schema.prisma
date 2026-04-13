@@ -64,6 +64,16 @@ model Fleet {
   createdAt DateTime @default(now())
 }
 
+model Certificate {
+  id        String   @id @default(cuid())
+  title_ar  String
+  title_en  String
+  image     String
+  order     Int      @default(0)
+  visible   Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
 model Setting {
   key       String   @id
   value     String

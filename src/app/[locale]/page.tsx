@@ -7,6 +7,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { FleetGallery } from "@/components/fleet-gallery";
+import { CertificatesGallery } from "@/components/certificates-gallery";
 
 const CountUpStat = ({ end, label, index, isRtl }: { end: number; label: string; index: number; isRtl: boolean }) => {
   const [count, setCount] = useState(0);
@@ -210,6 +211,9 @@ export default function HomePage({ params }: { params: { locale: string } }) {
 
       {/* Fleet Gallery */}
       <FleetGallery isRtl={isRtl} />
+
+      {/* Certificates */}
+      <CertificatesGallery isRtl={isRtl} />
 
       {/* Partners */}
       <section className="py-24 bg-white">

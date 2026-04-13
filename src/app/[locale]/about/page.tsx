@@ -3,6 +3,7 @@ import { Target, Eye, Star, Award, Users, MapPin, Globe2 } from "lucide-react";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { FleetGallery } from "@/components/fleet-gallery";
+import { CertificatesGallery } from "@/components/certificates-gallery";
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const { locale } = params;
@@ -126,6 +127,9 @@ export default async function AboutPage({ params }: { params: { locale: string }
       </section>
       {/* Fleet Gallery */}
       <FleetGallery isRtl={isRtl} />
+
+      {/* Certificates */}
+      <CertificatesGallery isRtl={isRtl} />
 
       {/* Partners */}
       <section className="py-24 bg-white">

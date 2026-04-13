@@ -13,11 +13,13 @@ import {
   X,
   ChevronLeft,
   ImageIcon,
+  Award,
 } from "lucide-react";
 
 const navItems = [
   { key: "services", icon: Truck, label: { ar: "الخدمات", en: "Services" }, href: "/services" },
   { key: "fleet", icon: ImageIcon, label: { ar: "الأسطول", en: "Fleet" }, href: "/fleet" },
+  { key: "certificates", icon: Award, label: { ar: "الشهادات", en: "Certificates" }, href: "/certificates" },
   { key: "careers", icon: Briefcase, label: { ar: "الوظائف", en: "Careers" }, href: "/careers" },
   { key: "faq", icon: HelpCircle, label: { ar: "الأسئلة الشائعة", en: "FAQ" }, href: "/faq" },
   { key: "settings", icon: Settings, label: { ar: "الإعدادات", en: "Settings" }, href: "/settings" },
