@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Loader2, Save, Phone, Mail, MessageCircle, MapPin } from "lucide-react";
+import { Loader2, Save, Phone, Mail, MessageCircle, MapPin, Briefcase } from "lucide-react";
 
 const settingFields = [
   { key: "phone", label: { ar: "رقم الهاتف", en: "Phone Number" }, icon: Phone, placeholder: "0557746126" },
@@ -78,6 +78,30 @@ export default function AdminSettingsPage({ params: { locale } }: { params: { lo
             />
           </div>
         ))}
+      </div>
+
+      {/* Module Visibility */}
+      <div>
+        <h2 className="text-lg font-black text-primary mb-3">{isRtl ? "إظهار / إخفاء الأقسام" : "Show / Hide Sections"}</h2>
+        <div className="bg-white rounded-xl border border-slate-200 divide-y divide-slate-100">
+          <div className="p-4 sm:p-5 flex items-center justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 bg-slate-100 rounded-lg flex items-center justify-center text-slate-500 shrink-0">
+                <Briefcase size={16} />
+              </div>
+              <div>
+                <span className="text-sm font-bold text-primary">{isRtl ? "قسم الوظائف" : "Careers Section"}</span>
+                <p className="text-xs text-slate-400 mt-0.5">{isRtl ? "إخفاء من القائمة والصفحة الرئيسية والفوتر" : "Hide from navbar, homepage, and footer"}</p>
+              </div>
+            </div>
+            <button
+              onClick={() => setData({ ...data, careers_visible: data.careers_visible === "false" ? "true" : (data.careers_visible === "true" ? "false" : "false") })}
+              className={`relative w-11 h-6 rounded-full transition-colors cursor-pointer ${data.careers_visible !== "false" ? "bg-green-500" : "bg-slate-300"}`}
+            >
+              <span className={`absolute top-0.5 w-5 h-5 bg-white rounded-full shadow transition-all ${data.careers_visible !== "false" ? "start-5" : "start-0.5"}`} />
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -97,7 +97,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
   const dict = useDictionary();
   const locale = params.locale;
   const isRtl = locale === "ar";
-  const settings = useSettings();
+  const { careers_visible, ...settings } = useSettings();
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
   const [dbServices, setDbServices] = useState<DbService[] | null>(null);
   const [dbFaqs, setDbFaqs] = useState<DbFaq[] | null>(null);
@@ -392,6 +392,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
       </section>
 
       {/* CTA → Careers */}
+      {careers_visible && (
       <section className="py-20 bg-[#fafafa]">
         <div className="max-w-5xl mx-auto px-6">
           <motion.div
@@ -411,6 +412,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
           </motion.div>
         </div>
       </section>
+      )}
 
       {/* Specialized Solutions */}
       <section className="py-32 bg-primary relative overflow-hidden">

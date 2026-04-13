@@ -7,6 +7,7 @@ interface SiteSettings {
   email: string;
   address_ar: string;
   address_en: string;
+  careers_visible: boolean;
 }
 
 const defaults: SiteSettings = {
@@ -15,6 +16,7 @@ const defaults: SiteSettings = {
   email: "Info@alfatransport.sa",
   address_ar: "رقم المبنى 2423، طريق مكة المكرمة، حي الربوة، الرياض 12821، المملكة العربية السعودية",
   address_en: "Building No. 2423, Makkah Al Mukarramah Street, Al Rabwah District, Riyadh 12821, Kingdom of Saudi Arabia",
+  careers_visible: true,
 };
 
 const SettingsContext = createContext<SiteSettings>(defaults);
@@ -35,6 +37,7 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
           email: map.email || defaults.email,
           address_ar: map.address_ar || defaults.address_ar,
           address_en: map.address_en || defaults.address_en,
+          careers_visible: map.careers_visible !== undefined ? map.careers_visible === "true" : defaults.careers_visible,
         });
       })
       .catch(() => {});

@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export function Footer({ locale }: { locale: string }) {
   const dict = useDictionary();
-  const settings = useSettings();
+  const { careers_visible, ...settings } = useSettings();
   const isRtl = locale === "ar";
 
   return (
@@ -34,7 +34,7 @@ export function Footer({ locale }: { locale: string }) {
                 {[
                   { href: `/${locale}/about`, label: dict.nav.about },
                   { href: `/${locale}/services`, label: dict.nav.services },
-                  { href: `/${locale}/careers`, label: dict.nav.careers },
+                  ...(careers_visible ? [{ href: `/${locale}/careers`, label: dict.nav.careers }] : []),
                   { href: `/${locale}/contact`, label: dict.nav.contact },
                   { href: `/${locale}/faq`, label: dict.nav.faq },
                 ].map((link) => (

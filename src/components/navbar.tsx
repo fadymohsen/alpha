@@ -14,7 +14,7 @@ function cn(...inputs: ClassValue[]) { return twMerge(clsx(inputs)); }
 
 export function Navbar({ locale }: { locale: string }) {
   const dict = useDictionary();
-  const { whatsapp } = useSettings();
+  const { whatsapp, careers_visible } = useSettings();
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -38,7 +38,7 @@ export function Navbar({ locale }: { locale: string }) {
     { name: dict.nav.home, href: "/" },
     { name: dict.nav.about, href: "/about" },
     { name: dict.nav.services, href: "/services" },
-    { name: dict.nav.careers, href: "/careers" },
+    ...(careers_visible ? [{ name: dict.nav.careers, href: "/careers" }] : []),
     { name: dict.nav.contact, href: "/contact" },
     { name: dict.nav.faq, href: "/faq" },
   ];
