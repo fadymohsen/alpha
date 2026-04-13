@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const siteUrl = "https://alpha-transportation.vercel.app";
+const siteUrl = "https://alfatransport.sa";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const locales = ["ar", "en"];

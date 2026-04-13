@@ -13,7 +13,7 @@ const cairo = Cairo({ subsets: ["arabic"], weight: ["400", "700"], variable: "--
 
 export async function generateStaticParams() { return locales.map((locale) => ({ locale })); }
 
-const siteUrl = "https://alpha-transportation.vercel.app";
+const siteUrl = "https://alfatransport.sa";
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const { locale } = params;
@@ -93,8 +93,8 @@ export default async function LocaleLayout({ children, params }: { children: Rea
               "@type": "TransportCompany",
               name: "شركة الفا للنقل المحدودة - ALFA TRANS",
               alternateName: ["الفا للنقل", "ألفا للنقل", "شركه الفا للنقل", "شركة الفا للنقل", "Alfa Transport", "ALFA TRANS CO LTD"],
-              url: "https://alpha-transportation.vercel.app",
-              logo: "https://alpha-transportation.vercel.app/logo.jpeg",
+              url: "https://alfatransport.sa",
+              logo: "https://alfatransport.sa/logo.jpeg",
               description: "شركة الفا للنقل المحدودة - رائدة في النقل البري وتوزيع الاسمنت السائب والنقل الدولي في المملكة العربية السعودية",
               foundingDate: "2007",
               address: {
