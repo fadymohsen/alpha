@@ -59,7 +59,7 @@ export function CertificatesGallery({ isRtl }: { isRtl: boolean }) {
               className="bg-white rounded-2xl overflow-hidden cursor-pointer group shadow-sm hover:shadow-xl transition-all duration-500 border border-primary/5"
               onClick={() => openLightbox(i)}
             >
-              <div className="relative aspect-[3/4] overflow-hidden">
+              <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
                   src={cert.image}
                   alt={isRtl ? cert.title_ar : cert.title_en}
@@ -103,7 +103,7 @@ export function CertificatesGallery({ isRtl }: { isRtl: boolean }) {
             <ChevronRight size={40} />
           </button>
           <div className="flex flex-col items-center gap-4" onClick={(e) => e.stopPropagation()}>
-            <div className="relative w-full max-w-2xl aspect-[3/4] rounded-2xl overflow-hidden">
+            <div className="relative w-full max-w-4xl aspect-[4/3] rounded-2xl overflow-hidden">
               <Image
                 src={certificates[selectedIndex].image}
                 alt={isRtl ? certificates[selectedIndex].title_ar : certificates[selectedIndex].title_en}

@@ -120,7 +120,7 @@ export default function AdminCertificatesPage({ params: { locale } }: { params: 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {certificates.map((item) => (
             <div key={item.id} className={`bg-white rounded-xl border border-slate-200 overflow-hidden ${!item.visible ? "opacity-50" : ""}`}>
-              <div className="relative aspect-[3/4]">
+              <div className="relative aspect-[4/3]">
                 <img src={item.image} alt={item.title_en} className="absolute inset-0 w-full h-full object-cover" />
               </div>
               <div className="p-4 space-y-3">
@@ -168,7 +168,7 @@ export default function AdminCertificatesPage({ params: { locale } }: { params: 
               <div>
                 <label className="block text-xs font-black text-slate-500 uppercase tracking-widest mb-1.5">{isRtl ? "صورة الشهادة" : "Certificate Image"}</label>
                 {preview ? (
-                  <div className="relative aspect-[3/4] rounded-xl overflow-hidden bg-slate-100 mb-2">
+                  <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-slate-100 mb-2">
                     <img src={preview} alt="Preview" className="absolute inset-0 w-full h-full object-cover" />
                     <label className="absolute inset-0 flex flex-col items-center justify-center bg-black/0 hover:bg-black/50 transition-colors cursor-pointer group">
                       {uploading ? (
@@ -183,7 +183,7 @@ export default function AdminCertificatesPage({ params: { locale } }: { params: 
                     </label>
                   </div>
                 ) : (
-                  <label className="flex flex-col items-center justify-center aspect-[3/4] rounded-xl border-2 border-dashed border-slate-300 bg-slate-50 cursor-pointer hover:border-primary/40 hover:bg-primary/5 transition-colors">
+                  <label className="flex flex-col items-center justify-center aspect-[4/3] rounded-xl border-2 border-dashed border-slate-300 bg-slate-50 cursor-pointer hover:border-primary/40 hover:bg-primary/5 transition-colors">
                     {uploading ? (
                       <Loader2 size={24} className="animate-spin text-primary" />
                     ) : (
