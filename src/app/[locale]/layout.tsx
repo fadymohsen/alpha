@@ -20,14 +20,14 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   const isAr = locale === "ar";
 
   const title = isAr
-    ? "شركة الفا للنقل المحدودة | ألفا للنقل | حلول لوجستية متكاملة"
+    ? "شركة الفا للنقل المحدودة | شركه الفا للنقل | ألفا للنقل | حلول لوجستية متكاملة"
     : "ALFA TRANS, CO.LTD | Alfa Transport | Integrated Logistics Solutions";
   const description = isAr
-    ? "شركة الفا للنقل المحدودة (ألفا للنقل) - رائدة في النقل البري وتوزيع الاسمنت السائب والنقل الدولي في المملكة العربية السعودية. أكثر من 17 عاماً من الخبرة في حلول النقل واللوجستيات المتكاملة. خدمات نقل بري متخصص، فحص وسلامة الشحنات، ونقل دولي لدول الخليج."
+    ? "شركة الفا للنقل المحدودة (شركه الفا للنقل - ألفا للنقل) - رائدة في النقل البري وتوزيع الاسمنت السائب والنقل الدولي في المملكة العربية السعودية. أكثر من 17 عاماً من الخبرة في حلول النقل واللوجستيات المتكاملة. خدمات نقل بري متخصص، فحص وسلامة الشحنات، ونقل دولي لدول الخليج."
     : "ALFA TRANS (Alfa Transport) - A pioneer in land transport, bulk cement distribution, and international shipping in Saudi Arabia. Over 17 years of experience in integrated transport and logistics solutions. Specialized land transport, cargo safety inspection, and Gulf countries shipping.";
 
   const keywords = isAr
-    ? ["الفا للنقل", "ألفا للنقل", "شركة الفا للنقل", "شركة ألفا للنقل المحدودة", "الفا للنقل المحدودة", "نقل بري", "نقل بري السعودية", "توزيع اسمنت سائب", "شركة نقل", "شركة نقل بري", "لوجستيات السعودية", "نقل دولي", "فحص الشحنات", "نقل بضائع", "شركة شحن"]
+    ? ["الفا للنقل", "ألفا للنقل", "شركة الفا للنقل", "شركه الفا للنقل", "شركة ألفا للنقل المحدودة", "شركه الفا للنقل المحدودة", "الفا للنقل المحدودة", "نقل بري", "نقل بري السعودية", "توزيع اسمنت سائب", "شركة نقل", "شركة نقل بري", "لوجستيات السعودية", "نقل دولي", "فحص الشحنات", "نقل بضائع", "شركة شحن"]
     : ["alfa trans", "alfa transport", "alfa transport saudi", "land transport saudi arabia", "bulk cement distribution", "logistics company saudi", "cargo safety", "international shipping ksa", "freight transport"];
 
   return {
@@ -92,7 +92,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
               "@context": "https://schema.org",
               "@type": "TransportCompany",
               name: "شركة الفا للنقل المحدودة - ALFA TRANS",
-              alternateName: ["الفا للنقل", "ألفا للنقل", "Alfa Transport", "ALFA TRANS CO LTD"],
+              alternateName: ["الفا للنقل", "ألفا للنقل", "شركه الفا للنقل", "شركة الفا للنقل", "Alfa Transport", "ALFA TRANS CO LTD"],
               url: "https://alpha-transportation.vercel.app",
               logo: "https://alpha-transportation.vercel.app/logo.jpeg",
               description: "شركة الفا للنقل المحدودة - رائدة في النقل البري وتوزيع الاسمنت السائب والنقل الدولي في المملكة العربية السعودية",
