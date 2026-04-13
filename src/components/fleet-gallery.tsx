@@ -1,25 +1,33 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
-const fleetImages = [
-  { src: "/fleet/fleet-1.jpg", alt: "Fleet Vehicle 1" },
-  { src: "/fleet/fleet-2.jpg", alt: "Fleet Vehicle 2" },
-  { src: "/fleet/fleet-3.jpg", alt: "Fleet Vehicle 3" },
-  { src: "/fleet/fleet-4.jpg", alt: "Fleet Vehicle 4" },
-  { src: "/fleet/fleet-5.jpg", alt: "Fleet Vehicle 5" },
-  { src: "/fleet/fleet-6.jpg", alt: "Fleet Vehicle 6" },
-];
+interface FleetImage {
+  id: string;
+  alt_ar: string;
+  alt_en: string;
+  image: string;
+}
 
 export function FleetGallery({ isRtl }: { isRtl: boolean }) {
+  const [fleetImages, setFleetImages] = useState<FleetImage[]>([]);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    fetch("/api/fleet?visible=true")
+      .then((res) => res.json())
+      .then((data) => setFleetImages(Array.isArray(data) ? data : []))
+      .catch(() => setFleetImages([]));
+  }, []);
 
   const openLightbox = (index: number) => setSelectedIndex(index);
   const closeLightbox = () => setSelectedIndex(null);
   const goNext = () => setSelectedIndex((prev) => (prev !== null ? (prev + 1) % fleetImages.length : null));
   const goPrev = () => setSelectedIndex((prev) => (prev !== null ? (prev - 1 + fleetImages.length) % fleetImages.length : null));
+
+  if (fleetImages.length === 0) return null;
 
   return (
     <section className="py-24 bg-white">
@@ -43,7 +51,7 @@ export function FleetGallery({ isRtl }: { isRtl: boolean }) {
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {fleetImages.map((img, i) => (
             <motion.div
-              key={i}
+              key={img.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -52,8 +60,8 @@ export function FleetGallery({ isRtl }: { isRtl: boolean }) {
               onClick={() => openLightbox(i)}
             >
               <Image
-                src={img.src}
-                alt={img.alt}
+                src={img.image}
+                alt={isRtl ? img.alt_ar : img.alt_en}
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
@@ -92,8 +100,8 @@ export function FleetGallery({ isRtl }: { isRtl: boolean }) {
             onClick={(e) => e.stopPropagation()}
           >
             <Image
-              src={fleetImages[selectedIndex].src}
-              alt={fleetImages[selectedIndex].alt}
+              src={fleetImages[selectedIndex].image}
+              alt={isRtl ? fleetImages[selectedIndex].alt_ar : fleetImages[selectedIndex].alt_en}
               fill
               className="object-contain"
             />

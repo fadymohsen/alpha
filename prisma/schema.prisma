@@ -54,6 +54,16 @@ model Faq {
   createdAt   DateTime @default(now())
 }
 
+model Fleet {
+  id        String   @id @default(cuid())
+  alt_ar    String
+  alt_en    String
+  image     String
+  order     Int      @default(0)
+  visible   Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
 model Setting {
   key       String   @id
   value     String

@@ -1,9 +1,10 @@
 "use client";
 import Link from "next/link";
-import { Truck, Briefcase, HelpCircle, Settings } from "lucide-react";
+import { Truck, Briefcase, HelpCircle, Settings, ImageIcon } from "lucide-react";
 
 const modules = [
   { icon: Truck, label: { ar: "إدارة الخدمات", en: "Services" }, desc: { ar: "إضافة وتعديل وحذف الخدمات", en: "Add, edit, and delete services" }, href: "/services", color: "bg-blue-500" },
+  { icon: ImageIcon, label: { ar: "إدارة الأسطول", en: "Fleet" }, desc: { ar: "إضافة وتعديل وحذف صور الأسطول", en: "Manage fleet gallery images" }, href: "/fleet", color: "bg-amber-500" },
   { icon: Briefcase, label: { ar: "إدارة الوظائف", en: "Careers" }, desc: { ar: "إدارة فرص العمل المتاحة", en: "Manage job openings" }, href: "/careers", color: "bg-emerald-500" },
   { icon: HelpCircle, label: { ar: "الأسئلة الشائعة", en: "FAQ" }, desc: { ar: "إدارة الأسئلة والأجوبة", en: "Manage Q&A items" }, href: "/faq", color: "bg-rose-500" },
   { icon: Settings, label: { ar: "الإعدادات", en: "Settings" }, desc: { ar: "الهاتف، البريد، الروابط", en: "Phone, email, links" }, href: "/settings", color: "bg-slate-500" },
