@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Plus, Pencil, Trash2, X, Loader2, MapPin, Clock } from "lucide-react";
+import { Plus, Pencil, Trash2, X, Loader2, MapPin, Clock, Eye, EyeOff } from "lucide-react";
 
 interface Career {
   id: string;
@@ -26,6 +26,27 @@ export default function AdminCareersPage({ params: { locale } }: { params: { loc
   const [modal, setModal] = useState<{ open: boolean; editing: Career | null }>({ open: false, editing: null });
   const [form, setForm] = useState(empty);
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
+  const [careersVisible, setCareersVisible] = useState(true);
+
+  const fetchVisibility = async () => {
+    try {
+      const res = await fetch("/api/settings");
+      if (!res.ok) return;
+      const items: { key: string; value: string }[] = await res.json();
+      const found = items.find((i) => i.key === "careers_visible");
+      if (found) setCareersVisible(found.value !== "false");
+    } catch {}
+  };
+
+  const toggleVisibility = async () => {
+    const newVal = !careersVisible;
+    setCareersVisible(newVal);
+    await fetch("/api/settings", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ items: [{ key: "careers_visible", value: String(newVal) }] }),
+    });
+  };
 
   const fetchCareers = async () => {
     setLoading(true);
@@ -42,7 +63,7 @@ export default function AdminCareersPage({ params: { locale } }: { params: { loc
     }
   };
 
-  useEffect(() => { fetchCareers(); }, []);
+  useEffect(() => { fetchCareers(); fetchVisibility(); }, []);
 
   const openAdd = () => { setForm(empty); setModal({ open: true, editing: null }); };
   const openEdit = (c: Career) => {
@@ -72,6 +93,29 @@ export default function AdminCareersPage({ params: { locale } }: { params: { loc
 
   return (
     <div className="space-y-4 sm:space-y-6">
+      {/* Visibility Toggle */}
+      <div className={`rounded-xl border p-4 flex items-center justify-between gap-3 ${careersVisible ? "bg-green-50 border-green-200" : "bg-amber-50 border-amber-200"}`}>
+        <div className="flex items-center gap-3">
+          {careersVisible ? <Eye size={18} className="text-green-600" /> : <EyeOff size={18} className="text-amber-600" />}
+          <div>
+            <p className={`text-sm font-bold ${careersVisible ? "text-green-700" : "text-amber-700"}`}>
+              {careersVisible
+                ? (isRtl ? "قسم الوظائف ظاهر في الموقع" : "Careers section is visible on site")
+                : (isRtl ? "قسم الوظائف مخفي من الموقع" : "Careers section is hidden from site")}
+            </p>
+            <p className={`text-xs ${careersVisible ? "text-green-600/70" : "text-amber-600/70"}`}>
+              {isRtl ? "القائمة، الفوتر، والصفحة الرئيسية" : "Navbar, footer, and homepage"}
+            </p>
+          </div>
+        </div>
+        <button
+          onClick={toggleVisibility}
+          className={`relative w-11 h-6 rounded-full transition-colors cursor-pointer ${careersVisible ? "bg-green-500" : "bg-slate-300"}`}
+        >
+          <span className={`absolute top-0.5 w-5 h-5 bg-white rounded-full shadow transition-all ${careersVisible ? "start-5" : "start-0.5"}`} />
+        </button>
+      </div>
+
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
           <h1 className="text-xl sm:text-2xl font-black text-primary">{isRtl ? "إدارة الوظائف" : "Careers Management"}</h1>
