@@ -51,7 +51,7 @@ export default async function AboutPage({ params }: { params: { locale: string }
                   </div>
                   <div className="space-y-4 min-w-0">
                      <span className="text-2xl md:text-4xl font-black text-secondary">{isRtl ? "دولي" : "International"}</span>
-                     <p className="text-sm font-bold text-primary uppercase tracking-widest">{isRtl ? "درب الحرير" : "Global Corridors"}</p>
+                     <p className="text-sm font-bold text-primary uppercase tracking-widest">{isRtl ? "دول الخليج" : "Gulf Countries"}</p>
                   </div>
                </div>
             </div>
