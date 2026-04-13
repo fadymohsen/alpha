@@ -63,6 +63,7 @@ export function FleetGallery({ isRtl }: { isRtl: boolean }) {
                 src={img.image}
                 alt={isRtl ? img.alt_ar : img.alt_en}
                 fill
+                unoptimized={img.image.startsWith("data:")}
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-all duration-500" />
@@ -103,6 +104,7 @@ export function FleetGallery({ isRtl }: { isRtl: boolean }) {
               src={fleetImages[selectedIndex].image}
               alt={isRtl ? fleetImages[selectedIndex].alt_ar : fleetImages[selectedIndex].alt_en}
               fill
+              unoptimized={fleetImages[selectedIndex].image.startsWith("data:")}
               className="object-contain"
             />
           </div>

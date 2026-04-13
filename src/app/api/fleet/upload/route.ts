@@ -1,6 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { writeFile } from "fs/promises";
-import path from "path";
 
 export async function POST(req: NextRequest) {
   try {
@@ -10,14 +8,11 @@ export async function POST(req: NextRequest) {
 
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
+    const base64 = buffer.toString("base64");
+    const mimeType = file.type || "image/jpeg";
+    const dataUrl = `data:${mimeType};base64,${base64}`;
 
-    const ext = path.extname(file.name) || ".jpg";
-    const filename = `fleet-${Date.now()}${ext}`;
-    const filepath = path.join(process.cwd(), "public", "fleet", filename);
-
-    await writeFile(filepath, buffer);
-
-    return NextResponse.json({ url: `/fleet/${filename}` });
+    return NextResponse.json({ url: dataUrl });
   } catch (e) {
     console.error("Upload error:", e);
     return NextResponse.json({ error: "Upload failed" }, { status: 500 });

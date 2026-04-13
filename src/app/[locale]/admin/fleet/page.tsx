@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import Image from "next/image";
-import { Plus, Pencil, Trash2, X, Loader2, Upload, GripVertical } from "lucide-react";
+import { Plus, Pencil, Trash2, X, Loader2, Upload } from "lucide-react";
 
 interface FleetItem {
   id: string;
@@ -50,24 +49,19 @@ export default function AdminFleetPage({ params: { locale } }: { params: { local
   };
   const closeModal = () => { setModal({ open: false, editing: null }); setPreview(null); };
 
-  const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
     setUploading(true);
-    try {
-      const fd = new FormData();
-      fd.append("file", file);
-      const res = await fetch("/api/fleet/upload", { method: "POST", body: fd });
-      const data = await res.json();
-      if (data.url) {
-        setForm((prev) => ({ ...prev, image: data.url }));
-        setPreview(data.url);
-      }
-    } catch (err) {
-      console.error("Upload failed:", err);
-    } finally {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const dataUrl = reader.result as string;
+      setForm((prev) => ({ ...prev, image: dataUrl }));
+      setPreview(dataUrl);
       setUploading(false);
-    }
+    };
+    reader.onerror = () => setUploading(false);
+    reader.readAsDataURL(file);
   };
 
   const handleSave = async (e: React.FormEvent) => {
@@ -127,7 +121,7 @@ export default function AdminFleetPage({ params: { locale } }: { params: { local
           {fleet.map((item) => (
             <div key={item.id} className={`bg-white rounded-xl border border-slate-200 overflow-hidden ${!item.visible ? "opacity-50" : ""}`}>
               <div className="relative aspect-[4/3]">
-                <Image src={item.image} alt={item.alt_en} fill className="object-cover" />
+                <img src={item.image} alt={item.alt_en} className="absolute inset-0 w-full h-full object-cover" />
               </div>
               <div className="p-4 space-y-3">
                 <div className="min-w-0">
@@ -175,10 +169,18 @@ export default function AdminFleetPage({ params: { locale } }: { params: { local
                 <label className="block text-xs font-black text-slate-500 uppercase tracking-widest mb-1.5">{isRtl ? "الصورة" : "Image"}</label>
                 {preview ? (
                   <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-slate-100 mb-2">
-                    <Image src={preview} alt="Preview" fill className="object-cover" />
-                    <button type="button" onClick={() => { setPreview(null); setForm((prev) => ({ ...prev, image: "" })); }} className="absolute top-2 end-2 p-1.5 bg-black/50 text-white rounded-lg hover:bg-black/70">
-                      <X size={14} />
-                    </button>
+                    <img src={preview} alt="Preview" className="absolute inset-0 w-full h-full object-cover" />
+                    <label className="absolute inset-0 flex flex-col items-center justify-center bg-black/0 hover:bg-black/50 transition-colors cursor-pointer group">
+                      {uploading ? (
+                        <Loader2 size={24} className="animate-spin text-white" />
+                      ) : (
+                        <div className="opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center">
+                          <Upload size={24} className="text-white mb-2" />
+                          <span className="text-sm font-bold text-white">{isRtl ? "تغيير الصورة" : "Change Image"}</span>
+                        </div>
+                      )}
+                      <input type="file" accept="image/*" onChange={handleUpload} className="hidden" />
+                    </label>
                   </div>
                 ) : (
                   <label className="flex flex-col items-center justify-center aspect-[4/3] rounded-xl border-2 border-dashed border-slate-300 bg-slate-50 cursor-pointer hover:border-primary/40 hover:bg-primary/5 transition-colors">
